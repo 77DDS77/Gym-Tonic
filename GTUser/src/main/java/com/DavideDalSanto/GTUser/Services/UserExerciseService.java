@@ -83,6 +83,35 @@ public class UserExerciseService {
     }
 
     /**
+     * PUT -
+     * Update a modified UserExercise
+     * */
+    public UserExerciseDTO updateUserExercise(Long GTUserID, UserExerciseDTO updated) throws IOException, URISyntaxException, InterruptedException {
+        Optional<GTUser> found = ur.findById(GTUserID);
+        if(found.isPresent()){
+            String stringedExercise = objectMapper.writeValueAsString(updated);
+
+            HttpClient httpClient = HttpClient.newHttpClient();
+
+            HttpRequest postRequest = HttpRequest.newBuilder()
+                    .uri(new URI("http://localhost:9090/GT/user-exercises/new-exercise"))
+                    .POST(HttpRequest.BodyPublishers.ofString(stringedExercise))
+                    .build();
+
+            HttpResponse<String> postResponse= httpClient.send(postRequest, HttpResponse.BodyHandlers.ofString());
+
+            return objectMapper.readValue(
+                    postResponse.body(),
+                    objectMapper.getTypeFactory().constructType(UserExerciseDTO.class));
+        }
+        return null;
+    }
+
+
+
+
+
+    /**
      * DELETE -
      * Given the GTUser ID and the UserExercise ID checks
      * if the user exist and if the given UserExercise

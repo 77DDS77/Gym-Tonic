@@ -1,6 +1,7 @@
 package com.DavideDalSanto.GTUser.Controllers;
 
 import com.DavideDalSanto.GTUser.DTO.PlanDTO;
+import com.DavideDalSanto.GTUser.DTO.WorkoutDTO;
 import com.DavideDalSanto.GTUser.Services.GTUserService;
 import com.DavideDalSanto.GTUser.Services.PlanService;
 import lombok.extern.slf4j.Slf4j;
@@ -63,6 +64,16 @@ public class PlanController {
     public ResponseEntity<String> deletePlan(@PathVariable(name = "id") Long GTUserid, @PathVariable(name = "pID") Long planID){
         try{
             return new ResponseEntity<>(ps.deletePlan(GTUserid, planID), HttpStatus.OK);
+        } catch (IOException | URISyntaxException | InterruptedException e) {
+            log.error(e.getMessage(), e);
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("users/{id}/update-plan")
+    public ResponseEntity<PlanDTO> updatePlan(@PathVariable(name = "id") Long GTUserid, @RequestBody PlanDTO updated){
+        try{
+            return new ResponseEntity<>(ps.updateWorkout(GTUserid, updated), HttpStatus.OK);
         } catch (IOException | URISyntaxException | InterruptedException e) {
             log.error(e.getMessage(), e);
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

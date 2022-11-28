@@ -1,5 +1,6 @@
 package com.DavideDalSanto.GTUser.Controllers;
 
+import com.DavideDalSanto.GTUser.DTO.UserExerciseDTO;
 import com.DavideDalSanto.GTUser.DTO.WorkoutDTO;
 import com.DavideDalSanto.GTUser.Services.GTUserService;
 import com.DavideDalSanto.GTUser.Services.WorkoutService;
@@ -63,6 +64,17 @@ public class WorkoutController {
         try{
             return new ResponseEntity<>(ws.deleteWorkout(GTUserid, workoutID), HttpStatus.OK);
         } catch (IOException | URISyntaxException | InterruptedException e) {
+            log.error(e.getMessage(), e);
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("users/{id}/update-workout")
+    public ResponseEntity<WorkoutDTO> updateWorkout(@PathVariable(name = "id") Long GTUserid, @RequestBody WorkoutDTO updated){
+        try{
+            return new ResponseEntity<>(ws.updateWorkout(GTUserid, updated), HttpStatus.OK);
+        } catch (IOException | URISyntaxException | InterruptedException e) {
+            log.error(e.getMessage(), e);
             log.error(e.getMessage(), e);
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }

@@ -1,5 +1,6 @@
 package com.DavideDalSanto.GTUser.Services;
 
+import com.DavideDalSanto.GTUser.DTO.UserExerciseDTO;
 import com.DavideDalSanto.GTUser.DTO.WorkoutDTO;
 import com.DavideDalSanto.GTUser.Entities.GTUser;
 import com.DavideDalSanto.GTUser.Repositories.GTUserRepository;
@@ -111,6 +112,31 @@ public class WorkoutService {
             return "User ("+ GTUserID + ") have no Workout with id (" + workoutID + ").";
         }
         return "User ("+ GTUserID + ") not found";
+    }
+
+    /**
+     * PUT -
+     * Update a modified Workout.
+     * */
+    public WorkoutDTO updateWorkout(Long GTUserID, WorkoutDTO updated) throws IOException, URISyntaxException, InterruptedException {
+        Optional<GTUser> found = ur.findById(GTUserID);
+        if(found.isPresent()){
+            String stringedWorkout = objectMapper.writeValueAsString(updated);
+
+            HttpClient httpClient = HttpClient.newHttpClient();
+
+            HttpRequest postRequest = HttpRequest.newBuilder()
+                    .uri(new URI("http://localhost:9090/GT/workouts/new-workout"))
+                    .POST(HttpRequest.BodyPublishers.ofString(stringedWorkout))
+                    .build();
+
+            HttpResponse<String> postResponse= httpClient.send(postRequest, HttpResponse.BodyHandlers.ofString());
+
+            return objectMapper.readValue(
+                    postResponse.body(),
+                    objectMapper.getTypeFactory().constructType(WorkoutDTO.class));
+        }
+        return null;
     }
 
 

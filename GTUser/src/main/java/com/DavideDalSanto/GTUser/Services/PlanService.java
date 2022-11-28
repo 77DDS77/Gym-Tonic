@@ -1,6 +1,7 @@
 package com.DavideDalSanto.GTUser.Services;
 
 import com.DavideDalSanto.GTUser.DTO.PlanDTO;
+import com.DavideDalSanto.GTUser.DTO.WorkoutDTO;
 import com.DavideDalSanto.GTUser.Entities.GTUser;
 import com.DavideDalSanto.GTUser.Repositories.GTUserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -111,5 +112,30 @@ public class PlanService {
             return "User ("+ GTUserID + ") have no Plan with id (" + planID + ").";
         }
         return "User ("+ GTUserID + ") not found";
+    }
+
+    /**
+     * PUT -
+     * Update a modified Plan.
+     * */
+    public PlanDTO updateWorkout(Long GTUserID, PlanDTO updated) throws IOException, URISyntaxException, InterruptedException {
+        Optional<GTUser> found = ur.findById(GTUserID);
+        if(found.isPresent()){
+            String stringedPlan = objectMapper.writeValueAsString(updated);
+
+            HttpClient httpClient = HttpClient.newHttpClient();
+
+            HttpRequest postRequest = HttpRequest.newBuilder()
+                    .uri(new URI("http://localhost:9090/GT/plans/new-plan"))
+                    .POST(HttpRequest.BodyPublishers.ofString(stringedPlan))
+                    .build();
+
+            HttpResponse<String> postResponse= httpClient.send(postRequest, HttpResponse.BodyHandlers.ofString());
+
+            return objectMapper.readValue(
+                    postResponse.body(),
+                    objectMapper.getTypeFactory().constructType(PlanDTO.class));
+        }
+        return null;
     }
 }
