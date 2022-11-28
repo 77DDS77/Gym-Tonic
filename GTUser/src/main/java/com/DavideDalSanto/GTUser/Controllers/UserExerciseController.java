@@ -2,6 +2,7 @@ package com.DavideDalSanto.GTUser.Controllers;
 
 import com.DavideDalSanto.GTUser.DTO.UserExerciseDTO;
 import com.DavideDalSanto.GTUser.Services.GTUserService;
+import com.DavideDalSanto.GTUser.Services.UserExerciseService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class UserExerciseController {
     @Autowired
     private GTUserService us;
 
+    @Autowired
+    private UserExerciseService uer;
+
     /**
      * Gets all the exercises the given GTUser
      * has saved in his profile.
@@ -30,7 +34,7 @@ public class UserExerciseController {
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
     public ResponseEntity<List<UserExerciseDTO>> getUserExercises(@PathVariable(name = "id") Long id){
         try{
-            return new ResponseEntity<List<UserExerciseDTO>>(us.getUserExercises(id), HttpStatus.OK);
+            return new ResponseEntity<List<UserExerciseDTO>>(uer.getUserExercises(id), HttpStatus.OK);
         } catch (IOException | URISyntaxException | InterruptedException e) {
             log.error(e.getMessage(), e);
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
@@ -45,7 +49,7 @@ public class UserExerciseController {
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
     public ResponseEntity<UserExerciseDTO> postNewExercise(@PathVariable(name = "id") Long id, @RequestBody UserExerciseDTO exercise){
         try{
-            return new ResponseEntity<>(us.postNewUserExercise(id, exercise), HttpStatus.OK);
+            return new ResponseEntity<>(uer.postNewUserExercise(id, exercise), HttpStatus.OK);
         } catch (IOException | URISyntaxException | InterruptedException e) {
             log.error(e.getMessage(), e);
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
@@ -58,7 +62,7 @@ public class UserExerciseController {
     @PostMapping("users/{id}/delete-exercise/{exID}")
     public ResponseEntity<String> deleteUserExercise(@PathVariable(name = "id") Long GTUserid, @PathVariable(name = "exID") Long exID){
         try{
-            return new ResponseEntity<>(us.deleteExercise(GTUserid, exID), HttpStatus.OK);
+            return new ResponseEntity<>(uer.deleteExercise(GTUserid, exID), HttpStatus.OK);
         } catch (IOException | URISyntaxException | InterruptedException e) {
             log.error(e.getMessage(), e);
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

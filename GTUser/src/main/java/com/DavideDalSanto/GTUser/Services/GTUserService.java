@@ -71,10 +71,13 @@ public class GTUserService {
 
     ObjectMapper objectMapper = new ObjectMapper();
 
+    /*QUARANTINE*/
+
     /**
+     * MOVED TO USER_EXERCISE_SERVICE, HERE IN QUARANTINE
      * Post a new UserExercise on the Models Server,
      * updates the given GTUser's exercise List.
-     * */
+     *
     public UserExerciseDTO postNewUserExercise(Long GTUserID, UserExerciseDTO exercise) throws IOException, URISyntaxException, InterruptedException {
         Optional<GTUser> found = ur.findById(GTUserID);
         if(found.isPresent()){
@@ -98,8 +101,10 @@ public class GTUserService {
             return newEx;
         }
         return null;
-    }
+    }*/
 
+    /**MOVED TO USER_EXERCISE_SERVICE, HERE IN QUARANTINE
+    *
     public List<UserExerciseDTO> getUserExercises(Long GTUserID) throws IOException, URISyntaxException, InterruptedException {
         Optional<GTUser> found = ur.findById(GTUserID);
         if(found.isPresent()){
@@ -123,12 +128,42 @@ public class GTUserService {
             return res;
         }
         return null;
-    }
+    }*/
 
-    /**
+    /** MOVED TO USER_EXERCISE_SERVICE, HERE IN QUARANTINE
+     * Given the GTUser ID and the UserExercise ID checks
+     * if the user exist and if the given UserExercise
+     * exists in his profile, if both true deletes the
+     * UserExercise and update the GTUser profile
+     *
+    public String deleteExercise(Long GTUserID, Long exID) throws IOException, URISyntaxException, InterruptedException {
+        Optional<GTUser> found = ur.findById(GTUserID);
+        if(found.isPresent()){
+            if(found.get().getUserExercisesId().contains(exID)){
+                String stringedEx = objectMapper.writeValueAsString(exID);
+
+                HttpClient httpClient = HttpClient.newHttpClient();
+
+                HttpRequest postRequest = HttpRequest.newBuilder()
+                        .uri(new URI("http://localhost:9090/GT/user-exercises/delete-exercise"))
+                        .POST(HttpRequest.BodyPublishers.ofString(stringedEx))
+                        .build();
+
+                HttpResponse<String> postResponse= httpClient.send(postRequest, HttpResponse.BodyHandlers.ofString());
+
+                found.get().getUserExercisesId().remove(exID);
+                save(found.get());
+                return postResponse.body();
+            }
+            return "User ("+ GTUserID + ") have no Exercise with id (" + exID + ").";
+        }
+        return "User ("+ GTUserID + ") not found";
+    }*/
+
+    /** MOVED TO PLAN_SERVICE, HERE IN QUARANTINE
     * Given the GTUser ID find in the models Server his plans
      * and returns them.
-     * */
+     *
     public List<PlanDTO> getPlan(Long GTUserID) throws IOException, InterruptedException, URISyntaxException {
         Optional<GTUser> found = ur.findById(GTUserID);
         if(found.isPresent()){
@@ -152,12 +187,12 @@ public class GTUserService {
             return res;
         }
         return null;
-    }
+    }*/
 
-    /**
+    /** MOVED TO PLAN_SERVICE, HERE IN QUARANTINE
      * Post a new Plan on the Models Server,
      * updates the given GTUser's plans List.
-     * */
+     *
     public PlanDTO postNewPlan(Long GTUserID, PlanDTO plan) throws IOException, InterruptedException, URISyntaxException {
 
         Optional<GTUser> found = ur.findById(GTUserID);
@@ -182,12 +217,12 @@ public class GTUserService {
             return newPlan;
         }
         return null;
-    }
+    }*/
 
-    /**
+    /** MOVED TO WORKOUT_SERVICE, HERE IN QUARANTINE
      * Given the GTUser ID find in the models Server his workouts
      * and returns them.
-     * */
+     *
     public List<WorkoutDTO> getUserWorkouts(Long GTUserID) throws IOException, InterruptedException, URISyntaxException {
         Optional<GTUser> found = ur.findById(GTUserID);
         if(found.isPresent()){
@@ -211,12 +246,12 @@ public class GTUserService {
             return res;
         }
         return null;
-    }
+    }*/
 
-    /**
+    /** MOVED TO WORKOUT_SERVICE, HERE IN QUARANTINE
      * Post a new Workout on the Models Server,
      * updates the given GTUser's plans List.
-     * */
+     *
     public WorkoutDTO postNewUserWorkout(Long GTUserID, WorkoutDTO workout) throws IOException, InterruptedException, URISyntaxException {
 
         Optional<GTUser> found = ur.findById(GTUserID);
@@ -241,44 +276,14 @@ public class GTUserService {
             return newWorkout;
         }
         return null;
-    }
+    }*/
 
-    /**
-    * Given the GTUser ID and the UserExercise ID checks
-     * if the user exist and if the given UserExercise
-     * exists in his profile, if both true deletes the
-     * UserExercise and update the GTUser profile
-     * */
-    public String deleteExercise(Long GTUserID, Long exID) throws IOException, URISyntaxException, InterruptedException {
-        Optional<GTUser> found = ur.findById(GTUserID);
-        if(found.isPresent()){
-            if(found.get().getUserExercisesId().contains(exID)){
-                String stringedEx = objectMapper.writeValueAsString(exID);
-
-                HttpClient httpClient = HttpClient.newHttpClient();
-
-                HttpRequest postRequest = HttpRequest.newBuilder()
-                        .uri(new URI("http://localhost:9090/GT/user-exercises/delete-exercise"))
-                        .POST(HttpRequest.BodyPublishers.ofString(stringedEx))
-                        .build();
-
-                HttpResponse<String> postResponse= httpClient.send(postRequest, HttpResponse.BodyHandlers.ofString());
-
-                found.get().getUserExercisesId().remove(exID);
-                save(found.get());
-                return postResponse.body();
-            }
-            return "User ("+ GTUserID + ") have no Exercise with id (" + exID + ").";
-        }
-        return "User ("+ GTUserID + ") not found";
-    }
-
-    /**
+    /** MOVED TO WORKOUT_SERVICE, HERE IN QUARANTINE
      * Given the GTUser ID and the Workout ID checks
      * if the user exist and if the given Workout
      * exists in his profile, if both true deletes the
      * Workout and update the GTUser profile
-     * */
+     *
     public String deleteWorkout(Long GTUserID, Long workoutID) throws IOException, URISyntaxException, InterruptedException {
         Optional<GTUser> found = ur.findById(GTUserID);
         if(found.isPresent()){
@@ -301,14 +306,14 @@ public class GTUserService {
             return "User ("+ GTUserID + ") have no Workout with id (" + workoutID + ").";
         }
         return "User ("+ GTUserID + ") not found";
-    }
+    }*/
 
-    /**
+    /** MOVED TO PLAN_SERVICE, HERE IN QUARANTINE
      * Given the GTUser ID and the Plan ID checks
      * if the user exist and if the given Plan
      * exists in his profile, if both true deletes the
      * Plan and update the GTUser profile
-     * */
+     *
     public String deletePlan(Long GTUserID, Long planID) throws IOException, URISyntaxException, InterruptedException {
         Optional<GTUser> found = ur.findById(GTUserID);
         if(found.isPresent()){
@@ -331,7 +336,7 @@ public class GTUserService {
             return "User ("+ GTUserID + ") have no Plan with id (" + planID + ").";
         }
         return "User ("+ GTUserID + ") not found";
-    }
+    }*/
 
 
 }
