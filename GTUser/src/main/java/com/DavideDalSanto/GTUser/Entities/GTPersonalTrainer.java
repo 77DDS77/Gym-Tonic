@@ -21,15 +21,15 @@ public class GTPersonalTrainer extends JWTUser{
     @ElementCollection
     List<Long> gtUserIds = new ArrayList<>();
 
-    @Builder.Default
-    @ElementCollection
-    private List<Long> userPlansIds= new ArrayList<>();
-
-    @Builder.Default
-    @ElementCollection
-    private List<Long> userWorkoutsId = new ArrayList<>();
-
-    @Builder.Default
-    @ElementCollection
-    private List<Long> userExercisesId= new ArrayList<>();
+//    @Builder.Default
+//    @ElementCollection
+//    private List<Long> userPlansIds= new ArrayList<>();
+//
+//    @Builder.Default
+//    @ElementCollection
+//    private List<Long> userWorkoutsId = new ArrayList<>();
+//
+//    @Builder.Default
+//    @ElementCollection
+//    private List<Long> userExercisesId= new ArrayList<>();
 }

@@ -2,7 +2,9 @@ package com.DavideDalSanto.GTUser.Services;
 
 import com.DavideDalSanto.GTUser.DTO.UserExerciseDTO;
 import com.DavideDalSanto.GTUser.Entities.GTUser;
+import com.DavideDalSanto.GTUser.Entities.JWTUser;
 import com.DavideDalSanto.GTUser.Repositories.GTUserRepository;
+import com.DavideDalSanto.GTUser.Repositories.JWTUserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +22,7 @@ import java.util.Optional;
 public class UserExerciseService {
 
     @Autowired
-    private GTUserRepository ur;
+    private JWTUserRepository jr;
 
     ObjectMapper objectMapper = new ObjectMapper();
 
@@ -29,7 +31,7 @@ public class UserExerciseService {
      * GET all the exercises associated with the given GTUser
      * */
     public List<UserExerciseDTO> getUserExercises(Long GTUserID) throws IOException, URISyntaxException, InterruptedException {
-        Optional<GTUser> found = ur.findById(GTUserID);
+        Optional<JWTUser> found = jr.findById(GTUserID);
         if(found.isPresent()){
             List<Long> userEx = found.get().getUserExercisesId();
             String stringedExIds = objectMapper.writeValueAsString(userEx);
@@ -58,7 +60,7 @@ public class UserExerciseService {
      * updates the given GTUser's exercise List.
      * */
     public UserExerciseDTO postNewUserExercise(Long GTUserID, UserExerciseDTO exercise) throws IOException, URISyntaxException, InterruptedException {
-        Optional<GTUser> found = ur.findById(GTUserID);
+        Optional<JWTUser> found = jr.findById(GTUserID);
         if(found.isPresent()){
             String stringedExercise = objectMapper.writeValueAsString(exercise);
 
@@ -76,7 +78,7 @@ public class UserExerciseService {
                     objectMapper.getTypeFactory().constructType(UserExerciseDTO.class));
 
             found.get().getUserExercisesId().add(newEx.getId());
-            ur.save(found.get());
+            jr.save(found.get());
             return newEx;
         }
         return null;
@@ -87,7 +89,7 @@ public class UserExerciseService {
      * Update a modified UserExercise
      * */
     public UserExerciseDTO updateUserExercise(Long GTUserID, UserExerciseDTO updated) throws IOException, URISyntaxException, InterruptedException {
-        Optional<GTUser> found = ur.findById(GTUserID);
+        Optional<JWTUser> found = jr.findById(GTUserID);
         if(found.isPresent()){
             String stringedExercise = objectMapper.writeValueAsString(updated);
 
@@ -107,10 +109,6 @@ public class UserExerciseService {
         return null;
     }
 
-
-
-
-
     /**
      * DELETE -
      * Given the GTUser ID and the UserExercise ID checks
@@ -119,7 +117,7 @@ public class UserExerciseService {
      * UserExercise and update the GTUser profile
      * */
     public String deleteExercise(Long GTUserID, Long exID) throws IOException, URISyntaxException, InterruptedException {
-        Optional<GTUser> found = ur.findById(GTUserID);
+        Optional<JWTUser> found = jr.findById(GTUserID);
         if(found.isPresent()){
             if(found.get().getUserExercisesId().contains(exID)){
                 String stringedEx = objectMapper.writeValueAsString(exID);
@@ -134,7 +132,7 @@ public class UserExerciseService {
                 HttpResponse<String> postResponse= httpClient.send(postRequest, HttpResponse.BodyHandlers.ofString());
 
                 found.get().getUserExercisesId().remove(exID);
-                ur.save(found.get());
+                jr.save(found.get());
                 return postResponse.body();
             }
             return "User ("+ GTUserID + ") have no Exercise with id (" + exID + ").";

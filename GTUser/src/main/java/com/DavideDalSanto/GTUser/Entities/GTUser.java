@@ -16,17 +16,17 @@ import java.util.List;
 @Builder
 public class GTUser extends JWTUser{
 
-    @Builder.Default
-    @ElementCollection
-    private List<Long> userPlansIds= new ArrayList<>();
-
-    @Builder.Default
-    @ElementCollection
-    private List<Long> userWorkoutsId = new ArrayList<>();
-
-    @Builder.Default
-    @ElementCollection
-    private List<Long> userExercisesId= new ArrayList<>();
+//    @Builder.Default
+//    @ElementCollection
+//    private List<Long> userPlansIds= new ArrayList<>();
+//
+//    @Builder.Default
+//    @ElementCollection
+//    private List<Long> userWorkoutsId = new ArrayList<>();
+//
+//    @Builder.Default
+//    @ElementCollection
+//    private List<Long> userExercisesId= new ArrayList<>();
 
     //@NoArgsConstructor in sciopero
     public GTUser(){}

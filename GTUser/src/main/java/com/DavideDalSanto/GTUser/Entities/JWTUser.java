@@ -4,7 +4,9 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -40,6 +42,19 @@ public abstract class JWTUser {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles = new HashSet<Role>();
+
+
+    @Builder.Default
+    @ElementCollection
+    private List<Long> userPlansIds= new ArrayList<>();
+
+    @Builder.Default
+    @ElementCollection
+    private List<Long> userWorkoutsId = new ArrayList<>();
+
+    @Builder.Default
+    @ElementCollection
+    private List<Long> userExercisesId= new ArrayList<>();
 
     public JWTUser(String username, String email, String nome, String cognome, String password) {
         this.username = username;

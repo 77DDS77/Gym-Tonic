@@ -3,7 +3,9 @@ package com.DavideDalSanto.GTUser.Services;
 import com.DavideDalSanto.GTUser.DTO.UserExerciseDTO;
 import com.DavideDalSanto.GTUser.DTO.WorkoutDTO;
 import com.DavideDalSanto.GTUser.Entities.GTUser;
+import com.DavideDalSanto.GTUser.Entities.JWTUser;
 import com.DavideDalSanto.GTUser.Repositories.GTUserRepository;
+import com.DavideDalSanto.GTUser.Repositories.JWTUserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +23,7 @@ import java.util.Optional;
 public class WorkoutService {
 
     @Autowired
-    private GTUserRepository ur;
+    private JWTUserRepository jr;
 
     ObjectMapper objectMapper = new ObjectMapper();
 
@@ -30,7 +32,7 @@ public class WorkoutService {
      * and returns them.
      * */
     public List<WorkoutDTO> getUserWorkouts(Long GTUserID) throws IOException, InterruptedException, URISyntaxException {
-        Optional<GTUser> found = ur.findById(GTUserID);
+        Optional<JWTUser> found = jr.findById(GTUserID);
         if(found.isPresent()){
             List<Long> userWorkouts = found.get().getUserWorkoutsId();
             String workoutIds = objectMapper.writeValueAsString(userWorkouts);
@@ -60,7 +62,7 @@ public class WorkoutService {
      * */
     public WorkoutDTO postNewUserWorkout(Long GTUserID, WorkoutDTO workout) throws IOException, InterruptedException, URISyntaxException {
 
-        Optional<GTUser> found = ur.findById(GTUserID);
+        Optional<JWTUser> found = jr.findById(GTUserID);
         if(found.isPresent()){
             String stringedWorkout = objectMapper.writeValueAsString(workout);
 
@@ -78,7 +80,7 @@ public class WorkoutService {
                     objectMapper.getTypeFactory().constructType(WorkoutDTO.class));
 
             found.get().getUserWorkoutsId().add(newWorkout.getId());
-            ur.save(found.get());
+            jr.save(found.get());
             return newWorkout;
         }
         return null;
@@ -91,7 +93,7 @@ public class WorkoutService {
      * Workout and update the GTUser profile
      * */
     public String deleteWorkout(Long GTUserID, Long workoutID) throws IOException, URISyntaxException, InterruptedException {
-        Optional<GTUser> found = ur.findById(GTUserID);
+        Optional<JWTUser> found = jr.findById(GTUserID);
         if(found.isPresent()){
             if(found.get().getUserWorkoutsId().contains(workoutID)){
                 String stringedEWorkout= objectMapper.writeValueAsString(workoutID);
@@ -106,7 +108,7 @@ public class WorkoutService {
                 HttpResponse<String> postResponse= httpClient.send(postRequest, HttpResponse.BodyHandlers.ofString());
 
                 found.get().getUserWorkoutsId().remove(workoutID);
-                ur.save(found.get());
+                jr.save(found.get());
                 return postResponse.body();
             }
             return "User ("+ GTUserID + ") have no Workout with id (" + workoutID + ").";
@@ -119,7 +121,7 @@ public class WorkoutService {
      * Update a modified Workout.
      * */
     public WorkoutDTO updateWorkout(Long GTUserID, WorkoutDTO updated) throws IOException, URISyntaxException, InterruptedException {
-        Optional<GTUser> found = ur.findById(GTUserID);
+        Optional<JWTUser> found = jr.findById(GTUserID);
         if(found.isPresent()){
             String stringedWorkout = objectMapper.writeValueAsString(updated);
 

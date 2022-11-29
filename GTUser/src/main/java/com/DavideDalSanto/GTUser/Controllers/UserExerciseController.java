@@ -20,9 +20,6 @@ import java.util.List;
 public class UserExerciseController {
 
     @Autowired
-    private GTUserService us;
-
-    @Autowired
     private UserExerciseService ues;
 
     /**

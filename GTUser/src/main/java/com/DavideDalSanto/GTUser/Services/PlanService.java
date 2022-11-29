@@ -3,7 +3,9 @@ package com.DavideDalSanto.GTUser.Services;
 import com.DavideDalSanto.GTUser.DTO.PlanDTO;
 import com.DavideDalSanto.GTUser.DTO.WorkoutDTO;
 import com.DavideDalSanto.GTUser.Entities.GTUser;
+import com.DavideDalSanto.GTUser.Entities.JWTUser;
 import com.DavideDalSanto.GTUser.Repositories.GTUserRepository;
+import com.DavideDalSanto.GTUser.Repositories.JWTUserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +23,7 @@ import java.util.Optional;
 public class PlanService {
 
     @Autowired
-    private GTUserRepository ur;
+    private JWTUserRepository jr;
 
     ObjectMapper objectMapper = new ObjectMapper();
 
@@ -30,7 +32,7 @@ public class PlanService {
      * and returns them.
      * */
     public List<PlanDTO> getPlan(Long GTUserID) throws IOException, InterruptedException, URISyntaxException {
-        Optional<GTUser> found = ur.findById(GTUserID);
+        Optional<JWTUser> found = jr.findById(GTUserID);
         if(found.isPresent()){
             List<Long> userPlans = found.get().getUserPlansIds();
             String plansIds = objectMapper.writeValueAsString(userPlans);
@@ -60,7 +62,7 @@ public class PlanService {
      * */
     public PlanDTO postNewPlan(Long GTUserID, PlanDTO plan) throws IOException, InterruptedException, URISyntaxException {
 
-        Optional<GTUser> found = ur.findById(GTUserID);
+        Optional<JWTUser> found = jr.findById(GTUserID);
         if(found.isPresent()){
             String stringedPlan = objectMapper.writeValueAsString(plan);
 
@@ -78,7 +80,7 @@ public class PlanService {
                     objectMapper.getTypeFactory().constructType(PlanDTO.class));
 
             found.get().getUserPlansIds().add(newPlan.getId());
-            ur.save(found.get());
+            jr.save(found.get());
             return newPlan;
         }
         return null;
@@ -91,7 +93,7 @@ public class PlanService {
      * Plan and update the GTUser profile
      * */
     public String deletePlan(Long GTUserID, Long planID) throws IOException, URISyntaxException, InterruptedException {
-        Optional<GTUser> found = ur.findById(GTUserID);
+        Optional<JWTUser> found = jr.findById(GTUserID);
         if(found.isPresent()){
             if(found.get().getUserPlansIds().contains(planID)){
                 String stringedPlan= objectMapper.writeValueAsString(planID);
@@ -106,7 +108,7 @@ public class PlanService {
                 HttpResponse<String> postResponse= httpClient.send(postRequest, HttpResponse.BodyHandlers.ofString());
 
                 found.get().getUserPlansIds().remove(planID);
-                ur.save(found.get());
+                jr.save(found.get());
                 return postResponse.body();
             }
             return "User ("+ GTUserID + ") have no Plan with id (" + planID + ").";
@@ -119,7 +121,7 @@ public class PlanService {
      * Update a modified Plan.
      * */
     public PlanDTO updateWorkout(Long GTUserID, PlanDTO updated) throws IOException, URISyntaxException, InterruptedException {
-        Optional<GTUser> found = ur.findById(GTUserID);
+        Optional<JWTUser> found = jr.findById(GTUserID);
         if(found.isPresent()){
             String stringedPlan = objectMapper.writeValueAsString(updated);
 
