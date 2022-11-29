@@ -30,9 +30,9 @@ public class WorkoutController {
      * Gets all the exercises the given GTUser
      * has saved in his profile.
      * */
-    @PostMapping("users/{id}/workouts")
+    @PostMapping("{userId}/workouts")
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
-    public ResponseEntity<List<WorkoutDTO>> getUserWorkout(@PathVariable(name = "id") Long id){
+    public ResponseEntity<List<WorkoutDTO>> getUserWorkout(@PathVariable(name = "userId") Long id){
         try{
             return new ResponseEntity<List<WorkoutDTO>>(ws.getUserWorkouts(id), HttpStatus.OK);
         } catch (IOException | URISyntaxException | InterruptedException e) {
@@ -45,9 +45,9 @@ public class WorkoutController {
      * Post a new UserExercise on the Models Server,
      * updates the given GTUser's exercise List.
      * */
-    @PostMapping("users/{id}/new-workout")
+    @PostMapping("{userId}/new-workout")
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
-    public ResponseEntity<WorkoutDTO> postNewWorkout(@PathVariable(name = "id") Long id, @RequestBody WorkoutDTO workout){
+    public ResponseEntity<WorkoutDTO> postNewWorkout(@PathVariable(name = "userId") Long id, @RequestBody WorkoutDTO workout){
         try{
             return new ResponseEntity<>(ws.postNewUserWorkout(id, workout), HttpStatus.OK);
         } catch (IOException | URISyntaxException | InterruptedException e) {
@@ -59,9 +59,9 @@ public class WorkoutController {
     /**
      * Delete the given Workout from the user profile
      * */
-    @PostMapping("users/{id}/delete-workout/{wID}")
+    @PostMapping("{userId}/delete-workout/{wID}")
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
-    public ResponseEntity<String> deleteWorkout(@PathVariable(name = "id") Long GTUserid, @PathVariable(name = "wID") Long workoutID){
+    public ResponseEntity<String> deleteWorkout(@PathVariable(name = "userId") Long GTUserid, @PathVariable(name = "wID") Long workoutID){
         try{
             return new ResponseEntity<>(ws.deleteWorkout(GTUserid, workoutID), HttpStatus.OK);
         } catch (IOException | URISyntaxException | InterruptedException e) {
@@ -70,9 +70,9 @@ public class WorkoutController {
         }
     }
 
-    @PostMapping("users/{id}/update-workout")
+    @PostMapping("{userId}/update-workout")
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
-    public ResponseEntity<WorkoutDTO> updateWorkout(@PathVariable(name = "id") Long GTUserid, @RequestBody WorkoutDTO updated){
+    public ResponseEntity<WorkoutDTO> updateWorkout(@PathVariable(name = "userId") Long GTUserid, @RequestBody WorkoutDTO updated){
         try{
             return new ResponseEntity<>(ws.updateWorkout(GTUserid, updated), HttpStatus.OK);
         } catch (IOException | URISyntaxException | InterruptedException e) {

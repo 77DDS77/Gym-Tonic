@@ -26,9 +26,9 @@ public class UserExerciseController {
      * Gets all the exercises the given GTUser
      * has saved in his profile.
      * */
-    @PostMapping("users/{id}/exercises")
+    @PostMapping("{userId}/exercises")
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
-    public ResponseEntity<List<UserExerciseDTO>> getUserExercises(@PathVariable(name = "id") Long id){
+    public ResponseEntity<List<UserExerciseDTO>> getUserExercises(@PathVariable(name = "userId") Long id){
         try{
             return new ResponseEntity<List<UserExerciseDTO>>(ues.getUserExercises(id), HttpStatus.OK);
         } catch (IOException | URISyntaxException | InterruptedException e) {
@@ -41,9 +41,9 @@ public class UserExerciseController {
      * Post a new UserExercise on the Models Server,
      * updates the given GTUser's exercise List.
      * */
-    @PostMapping("users/{id}/new-exercise")
+    @PostMapping("{userId}/new-exercise")
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
-    public ResponseEntity<UserExerciseDTO> postNewExercise(@PathVariable(name = "id") Long id, @RequestBody UserExerciseDTO exercise){
+    public ResponseEntity<UserExerciseDTO> postNewExercise(@PathVariable(name = "userId") Long id, @RequestBody UserExerciseDTO exercise){
         try{
             return new ResponseEntity<>(ues.postNewUserExercise(id, exercise), HttpStatus.OK);
         } catch (IOException | URISyntaxException | InterruptedException e) {
@@ -55,9 +55,9 @@ public class UserExerciseController {
     /**
      * Delete the given exercise from the user profile
      * */
-    @PostMapping("users/{id}/delete-exercise/{exID}")
+    @PostMapping("{userId}/delete-exercise/{exID}")
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
-    public ResponseEntity<String> deleteUserExercise(@PathVariable(name = "id") Long GTUserid, @PathVariable(name = "exID") Long exID){
+    public ResponseEntity<String> deleteUserExercise(@PathVariable(name = "userId") Long GTUserid, @PathVariable(name = "exID") Long exID){
         try{
             return new ResponseEntity<>(ues.deleteExercise(GTUserid, exID), HttpStatus.OK);
         } catch (IOException | URISyntaxException | InterruptedException e) {
@@ -66,9 +66,9 @@ public class UserExerciseController {
         }
     }
 
-    @PostMapping("users/{id}/update-exercise")
+    @PostMapping("{userId}/update-exercise")
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
-    public ResponseEntity<UserExerciseDTO> updateUserExercise(@PathVariable(name = "id") Long GTUserid, @RequestBody UserExerciseDTO updated){
+    public ResponseEntity<UserExerciseDTO> updateUserExercise(@PathVariable(name = "userId") Long GTUserid, @RequestBody UserExerciseDTO updated){
         try{
             return new ResponseEntity<>(ues.updateUserExercise(GTUserid, updated), HttpStatus.OK);
         } catch (IOException | URISyntaxException | InterruptedException e) {

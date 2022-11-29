@@ -30,9 +30,9 @@ public class PlanController {
      * Given the id of a GTUSER gets from
      * the Models microservice his plans
      * */
-    @PostMapping("users/{id}/plans")
+    @PostMapping("{userId}/plans")
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
-    public ResponseEntity<List<PlanDTO>> getUserPlans(@PathVariable(name = "id") Long id){
+    public ResponseEntity<List<PlanDTO>> getUserPlans(@PathVariable(name = "userId") Long id){
         try{
             return new ResponseEntity<List<PlanDTO>>(ps.getPlan(id), HttpStatus.OK);
         } catch (IOException | URISyntaxException | InterruptedException e) {
@@ -45,9 +45,9 @@ public class PlanController {
      * Post a new Plan on the Models Server,
      * updates the given GTUser's plan List.
      * */
-    @PostMapping("users/{id}/new-plan")
+    @PostMapping("{userId}/new-plan")
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
-    public ResponseEntity<PlanDTO> postNewPlan(@PathVariable(name = "id") Long GTUserID, @RequestBody PlanDTO plan){
+    public ResponseEntity<PlanDTO> postNewPlan(@PathVariable(name = "userId") Long GTUserID, @RequestBody PlanDTO plan){
         try{
             return new ResponseEntity<>(ps.postNewPlan(GTUserID, plan), HttpStatus.OK);
         } catch (IOException | URISyntaxException | InterruptedException e) {
@@ -60,9 +60,9 @@ public class PlanController {
     /**
      * Delete the given Plan from the user profile
      * */
-    @PostMapping("users/{id}/delete-plan/{pID}")
+    @PostMapping("{userId}/delete-plan/{pID}")
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
-    public ResponseEntity<String> deletePlan(@PathVariable(name = "id") Long GTUserid, @PathVariable(name = "pID") Long planID){
+    public ResponseEntity<String> deletePlan(@PathVariable(name = "userId") Long GTUserid, @PathVariable(name = "pID") Long planID){
         try{
             return new ResponseEntity<>(ps.deletePlan(GTUserid, planID), HttpStatus.OK);
         } catch (IOException | URISyntaxException | InterruptedException e) {
@@ -71,9 +71,9 @@ public class PlanController {
         }
     }
 
-    @PostMapping("users/{id}/update-plan")
+    @PostMapping("{userId}/update-plan")
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
-    public ResponseEntity<PlanDTO> updatePlan(@PathVariable(name = "id") Long GTUserid, @RequestBody PlanDTO updated){
+    public ResponseEntity<PlanDTO> updatePlan(@PathVariable(name = "userId") Long GTUserid, @RequestBody PlanDTO updated){
         try{
             return new ResponseEntity<>(ps.updateWorkout(GTUserid, updated), HttpStatus.OK);
         } catch (IOException | URISyntaxException | InterruptedException e) {
