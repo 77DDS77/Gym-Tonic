@@ -1,9 +1,11 @@
 package com.DavideDalSanto.GTUser.Controllers;
 
+import com.DavideDalSanto.GTUser.Entities.GTPersonalTrainer;
 import com.DavideDalSanto.GTUser.Entities.GTUser;
+import com.DavideDalSanto.GTUser.Exceptions.GTPTIdException;
 import com.DavideDalSanto.GTUser.Exceptions.GTUserIdException;
 import com.DavideDalSanto.GTUser.Exceptions.NonExistingRoleException;
-import com.DavideDalSanto.GTUser.Services.GTUserService;
+import com.DavideDalSanto.GTUser.Services.GTPTService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,32 +19,32 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/GT/users")
-public class GTUserController {
+@RequestMapping("/GT/p-trainers")
+public class GTPTController {
 
     @Autowired
-    private GTUserService us;
+    private GTPTService pts;
 
     //--------------------------GET-------------------------
 
     @GetMapping("/all")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<List<GTUser>> getAllGTUsers(){
-        return new ResponseEntity<>(us.getAll(), HttpStatus.OK);
+    public ResponseEntity<List<GTPersonalTrainer>> getAllGTPTrainers(){
+        return new ResponseEntity<>(pts.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/all-pageable")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Page<GTUser>> getAllGTUsers(Pageable p){
-        return new ResponseEntity<>(us.getAllPaginate(p), HttpStatus.OK);
+    public ResponseEntity<Page<GTPersonalTrainer>> getAllGTUsers(Pageable p){
+        return new ResponseEntity<>(pts.getAllPaginate(p), HttpStatus.OK);
     }
 
     @GetMapping("{id}")
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
-    public ResponseEntity<GTUser> getById(@PathVariable(name = "id") Long GTUserid){
+    public ResponseEntity<GTPersonalTrainer> getById(@PathVariable(name = "id") Long GTPTid){
         try{
-            return new ResponseEntity<>(us.getById(GTUserid), HttpStatus.OK);
-        } catch (GTUserIdException e) {
+            return new ResponseEntity<>(pts.getById(GTPTid), HttpStatus.OK);
+        } catch (GTPTIdException e) {
             log.error((e.getMessage()));
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
@@ -50,11 +52,11 @@ public class GTUserController {
 
     //--------------------------POST-------------------------
 
-    @PostMapping("/new-user")
-    @PreAuthorize("hasAnyRole('GTUSER', 'ADMIN')")
-    public ResponseEntity<GTUser> newGTUser(@RequestBody GTUser user){
+    @PostMapping("/new-pt")
+    @PreAuthorize("hasAnyRole('GTPERSONALTRAINER', 'ADMIN')")
+    public ResponseEntity<GTPersonalTrainer> newGTUser(@RequestBody GTPersonalTrainer pt){
         try{
-            return new ResponseEntity<>(us.save(user), HttpStatus.OK);
+            return new ResponseEntity<>(pts.save(pt), HttpStatus.OK);
         } catch (NonExistingRoleException e) {
             throw new RuntimeException(e);
         }
@@ -62,23 +64,23 @@ public class GTUserController {
 
     //--------------------------PUT-------------------------
 
-    @PutMapping("/update-user")
-    @PreAuthorize("hasAnyRole('GTUSER', 'ADMIN')")
-    public ResponseEntity<GTUser> updateUser(@RequestBody GTUser updatedUser){
+    @PutMapping("/update-pt")
+    @PreAuthorize("hasAnyRole('GTPERSONALTRAINER', 'ADMIN')")
+    public ResponseEntity<GTPersonalTrainer> updateUser(@RequestBody GTPersonalTrainer updatedPT){
         try{
-            return new ResponseEntity<>(us.update(updatedUser), HttpStatus.OK);
-        } catch (GTUserIdException e) {
+            return new ResponseEntity<>(pts.update(updatedPT), HttpStatus.OK);
+        } catch (GTPTIdException e) {
             log.error(e.getMessage());
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
 
     @PutMapping("/update-password")
-    @PreAuthorize("hasAnyRole('GTUSER', 'ADMIN')")
-    public ResponseEntity<GTUser> updatePassword(@RequestBody GTUser updatedUser){
+    @PreAuthorize("hasAnyRole('GTPERSONALTRAINER', 'ADMIN')")
+    public ResponseEntity<GTPersonalTrainer> updatePassword(@RequestBody GTPersonalTrainer updatedPT){
         try{
-            return new ResponseEntity<>(us.updatePassword(updatedUser), HttpStatus.OK);
-        } catch (GTUserIdException e) {
+            return new ResponseEntity<>(pts.updatePassword(updatedPT), HttpStatus.OK);
+        } catch (GTPTIdException e) {
             log.error(e.getMessage());
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
@@ -87,15 +89,13 @@ public class GTUserController {
     //--------------------------DELETE-------------------------
 
     @DeleteMapping("/delete")
-    @PreAuthorize("hasAnyRole('GTUSER', 'ADMIN')")
-    public ResponseEntity<String> deleteUser(@RequestBody GTUser user){
+    @PreAuthorize("hasAnyRole('GTPERSONALTRAINER', 'ADMIN')")
+    public ResponseEntity<String> deleteUser(@RequestBody GTPersonalTrainer pt){
         try{
-            return new ResponseEntity<>(us.delete(user.getId()), HttpStatus.OK);
-        } catch (GTUserIdException e) {
+            return new ResponseEntity<>(pts.delete(pt.getId()), HttpStatus.OK);
+        } catch (GTPTIdException e) {
             log.error(e.getMessage());
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
-
-
 }

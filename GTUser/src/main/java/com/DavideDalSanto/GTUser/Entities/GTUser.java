@@ -16,9 +16,6 @@ import java.util.List;
 @Builder
 public class GTUser extends JWTUser{
 
-    //@NoArgsConstructor in sciopero
-    public GTUser(){}
-
     @Builder.Default
     @ElementCollection
     private List<Long> userPlansIds= new ArrayList<>();
@@ -31,4 +28,6 @@ public class GTUser extends JWTUser{
     @ElementCollection
     private List<Long> userExercisesId= new ArrayList<>();
 
+    //@NoArgsConstructor in sciopero
+    public GTUser(){}
 }

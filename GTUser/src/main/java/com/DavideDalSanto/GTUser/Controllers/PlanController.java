@@ -61,6 +61,7 @@ public class PlanController {
      * Delete the given Plan from the user profile
      * */
     @PostMapping("users/{id}/delete-plan/{pID}")
+    @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
     public ResponseEntity<String> deletePlan(@PathVariable(name = "id") Long GTUserid, @PathVariable(name = "pID") Long planID){
         try{
             return new ResponseEntity<>(ps.deletePlan(GTUserid, planID), HttpStatus.OK);
@@ -71,6 +72,7 @@ public class PlanController {
     }
 
     @PostMapping("users/{id}/update-plan")
+    @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
     public ResponseEntity<PlanDTO> updatePlan(@PathVariable(name = "id") Long GTUserid, @RequestBody PlanDTO updated){
         try{
             return new ResponseEntity<>(ps.updateWorkout(GTUserid, updated), HttpStatus.OK);

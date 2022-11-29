@@ -1,6 +1,8 @@
 package com.DavideDalSanto.GTUser.Services;
 
 import com.DavideDalSanto.GTUser.Entities.Role;
+import com.DavideDalSanto.GTUser.Entities.RoleType;
+import com.DavideDalSanto.GTUser.Exceptions.NonExistingRoleException;
 import com.DavideDalSanto.GTUser.Repositories.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -43,5 +45,14 @@ public class RoleService {
 
         return "Role deleted successfully.";
 
+    }
+
+    public Role findByRoleType(RoleType type) throws NonExistingRoleException {
+        Optional<Role> found = rr.findByRoleType(type);
+        if(found.isPresent()){
+            return found.get();
+        }else{
+            throw new NonExistingRoleException(type);
+        }
     }
 }

@@ -59,6 +59,7 @@ public class UserExerciseController {
      * Delete the given exercise from the user profile
      * */
     @PostMapping("users/{id}/delete-exercise/{exID}")
+    @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
     public ResponseEntity<String> deleteUserExercise(@PathVariable(name = "id") Long GTUserid, @PathVariable(name = "exID") Long exID){
         try{
             return new ResponseEntity<>(ues.deleteExercise(GTUserid, exID), HttpStatus.OK);
@@ -69,6 +70,7 @@ public class UserExerciseController {
     }
 
     @PostMapping("users/{id}/update-exercise")
+    @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
     public ResponseEntity<UserExerciseDTO> updateUserExercise(@PathVariable(name = "id") Long GTUserid, @RequestBody UserExerciseDTO updated){
         try{
             return new ResponseEntity<>(ues.updateUserExercise(GTUserid, updated), HttpStatus.OK);

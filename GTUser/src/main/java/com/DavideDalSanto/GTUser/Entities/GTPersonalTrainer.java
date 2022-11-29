@@ -4,6 +4,7 @@ import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,6 +17,19 @@ import java.util.List;
 @AllArgsConstructor
 public class GTPersonalTrainer extends JWTUser{
 
-    @OneToMany
-    List<GTUser> clientList;
+    @Builder.Default
+    @ElementCollection
+    List<Long> gtUserIds = new ArrayList<>();
+
+    @Builder.Default
+    @ElementCollection
+    private List<Long> userPlansIds= new ArrayList<>();
+
+    @Builder.Default
+    @ElementCollection
+    private List<Long> userWorkoutsId = new ArrayList<>();
+
+    @Builder.Default
+    @ElementCollection
+    private List<Long> userExercisesId= new ArrayList<>();
 }

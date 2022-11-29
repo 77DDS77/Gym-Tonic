@@ -60,6 +60,7 @@ public class WorkoutController {
      * Delete the given Workout from the user profile
      * */
     @PostMapping("users/{id}/delete-workout/{wID}")
+    @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
     public ResponseEntity<String> deleteWorkout(@PathVariable(name = "id") Long GTUserid, @PathVariable(name = "wID") Long workoutID){
         try{
             return new ResponseEntity<>(ws.deleteWorkout(GTUserid, workoutID), HttpStatus.OK);
@@ -70,6 +71,7 @@ public class WorkoutController {
     }
 
     @PostMapping("users/{id}/update-workout")
+    @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
     public ResponseEntity<WorkoutDTO> updateWorkout(@PathVariable(name = "id") Long GTUserid, @RequestBody WorkoutDTO updated){
         try{
             return new ResponseEntity<>(ws.updateWorkout(GTUserid, updated), HttpStatus.OK);
