@@ -21,9 +21,6 @@ import java.util.List;
 public class PlanController {
 
     @Autowired
-    private GTUserService us;
-
-    @Autowired
     private PlanService ps;
 
     /**

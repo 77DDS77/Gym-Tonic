@@ -80,6 +80,9 @@ public class GTUserService {
         old.setCognome(updatedUser.getCognome());
         old.setUsername(updatedUser.getUsername());
         old.setEmail(updatedUser.getEmail());
+        old.setUserExercisesId(updatedUser.getUserExercisesId());
+        old.setUserWorkoutsId(updatedUser.getUserWorkoutsId());
+        old.setUserPlansIds(updatedUser.getUserPlansIds());
 
         return ur.save(old);
     }

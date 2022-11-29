@@ -21,9 +21,6 @@ import java.util.List;
 public class WorkoutController {
 
     @Autowired
-    private GTUserService us;
-
-    @Autowired
     WorkoutService ws;
 
     /**

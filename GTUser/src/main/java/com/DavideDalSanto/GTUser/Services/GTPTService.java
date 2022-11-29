@@ -68,6 +68,10 @@ public class GTPTService {
         old.setCognome(updatedPT.getCognome());
         old.setUsername(updatedPT.getUsername());
         old.setEmail(updatedPT.getEmail());
+        old.setUserExercisesId(updatedPT.getUserExercisesId());
+        old.setUserWorkoutsId(updatedPT.getUserWorkoutsId());
+        old.setUserPlansIds(updatedPT.getUserPlansIds());
+        old.setGtUserIds(updatedPT.getGtUserIds());
 
         return ptr.save(old);
     }
