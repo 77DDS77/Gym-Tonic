@@ -51,7 +51,6 @@ public class GTUserController {
     //--------------------------POST-------------------------
 
     @PostMapping("/new-user")
-    @PreAuthorize("hasAnyRole('GTUSER', 'ADMIN')")
     public ResponseEntity<GTUser> newGTUser(@RequestBody GTUser user){
         try{
             return new ResponseEntity<>(us.save(user), HttpStatus.OK);

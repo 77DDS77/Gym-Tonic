@@ -53,7 +53,6 @@ public class GTPTController {
     //--------------------------POST-------------------------
 
     @PostMapping("/new-pt")
-    @PreAuthorize("hasAnyRole('GTPERSONALTRAINER', 'ADMIN')")
     public ResponseEntity<GTPersonalTrainer> newGTUser(@RequestBody GTPersonalTrainer pt){
         try{
             return new ResponseEntity<>(pts.save(pt), HttpStatus.OK);
