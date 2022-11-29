@@ -1,0 +1,46 @@
+
+@use '../../../styles.scss';
+
+.login{
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-container {
+  background-color: styles.$orange;
+  min-width: 180px;
+  max-width: 400px;
+  box-shadow: inset 0px 0 12px 3px #702f00fc;
+  border-radius: 10px;
+  h1{
+    color: styles.$black;
+  }
+  input{
+    color: black;
+    background-color: styles.$white;
+  }
+  button{
+    background-color: styles.$grey;
+    border: 1px solid styles.$black;
+  }
+  #login-btn:active{
+    background-color: styles.$black;
+    border: 1px solid styles.$orange;
+  }
+}
+
+.register{
+  color: styles.$orange;
+  button{
+    background-color: styles.$black;
+    color: styles.$white;
+    border: 1px solid styles.$grey;
+    // box-shadow: inset 0px 0 10px 3px #3e3939;
+  }
+  #reg-btn:active{
+    background-color: styles.$black;
+    border: 1px solid styles.$orange;
+  }
+}

@@ -1,16 +1,10 @@
 package com.DavideDalSanto.GTUser.Services;
 
-import com.DavideDalSanto.GTUser.DTO.ExerciseDTO;
-import com.DavideDalSanto.GTUser.DTO.PlanDTO;
-import com.DavideDalSanto.GTUser.DTO.UserExerciseDTO;
-import com.DavideDalSanto.GTUser.DTO.WorkoutDTO;
 import com.DavideDalSanto.GTUser.Entities.GTUser;
 import com.DavideDalSanto.GTUser.Entities.RoleType;
 import com.DavideDalSanto.GTUser.Exceptions.GTUserIdException;
 import com.DavideDalSanto.GTUser.Exceptions.NonExistingRoleException;
 import com.DavideDalSanto.GTUser.Repositories.GTUserRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,12 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Optional;
 
@@ -76,8 +64,8 @@ public class GTUserService {
      * */
     public GTUser update(GTUser updatedUser) throws GTUserIdException {
         GTUser old = getById(updatedUser.getId());
-        old.setNome(updatedUser.getNome());
-        old.setCognome(updatedUser.getCognome());
+        old.setName(updatedUser.getName());
+        old.setLastname(updatedUser.getLastname());
         old.setUsername(updatedUser.getUsername());
         old.setEmail(updatedUser.getEmail());
         old.setUserExercisesId(updatedUser.getUserExercisesId());

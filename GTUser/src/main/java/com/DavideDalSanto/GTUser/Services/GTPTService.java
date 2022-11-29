@@ -3,7 +3,6 @@ package com.DavideDalSanto.GTUser.Services;
 import com.DavideDalSanto.GTUser.Entities.GTPersonalTrainer;
 import com.DavideDalSanto.GTUser.Entities.RoleType;
 import com.DavideDalSanto.GTUser.Exceptions.GTPTIdException;
-import com.DavideDalSanto.GTUser.Exceptions.GTUserIdException;
 import com.DavideDalSanto.GTUser.Exceptions.NonExistingRoleException;
 import com.DavideDalSanto.GTUser.Repositories.GTPTRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,8 +63,8 @@ public class GTPTService {
      * */
     public GTPersonalTrainer update(GTPersonalTrainer updatedPT) throws GTPTIdException {
         GTPersonalTrainer old = getById(updatedPT.getId());
-        old.setNome(updatedPT.getNome());
-        old.setCognome(updatedPT.getCognome());
+        old.setName(updatedPT.getName());
+        old.setLastname(updatedPT.getLastname());
         old.setUsername(updatedPT.getUsername());
         old.setEmail(updatedPT.getEmail());
         old.setUserExercisesId(updatedPT.getUserExercisesId());

@@ -46,8 +46,8 @@ public class GTUserConfig {
         u.setUsername("ajeje");
         u.setEmail("dds@ds.dds");
         u.setPassword("test");
-        u.setNome("Davide");
-        u.setCognome("Dal Santo");
+        u.setName("Davide");
+        u.setLastname("Dal Santo");
         u.getRoles().add(roleAdmin());
         u.getRoles().add(roleUser());
         u.getRoles().add(rolePT());

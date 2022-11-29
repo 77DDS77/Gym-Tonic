@@ -30,8 +30,8 @@ public abstract class JWTUser {
     private String email;
 
     private String password;
-    private String nome;
-    private String cognome;
+    private String name;
+    private String lastname;
 
     private Boolean active = true;
 
@@ -56,11 +56,11 @@ public abstract class JWTUser {
     @ElementCollection
     private List<Long> userExercisesId= new ArrayList<>();
 
-    public JWTUser(String username, String email, String nome, String cognome, String password) {
+    public JWTUser(String username, String email, String name, String lastname, String password) {
         this.username = username;
         this.email = email;
-        this.nome = nome;
-        this.cognome = cognome;
+        this.name = name;
+        this.lastname = lastname;
         this.password = password;
     }
 
