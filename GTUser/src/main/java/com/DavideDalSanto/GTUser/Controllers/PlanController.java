@@ -18,6 +18,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/GT")
+@CrossOrigin("http://localhost:4200")
 public class PlanController {
 
     @Autowired

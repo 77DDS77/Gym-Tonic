@@ -18,6 +18,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/GT/users")
+@CrossOrigin("http://localhost:4200")
 public class GTUserController {
 
     @Autowired

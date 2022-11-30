@@ -56,7 +56,9 @@ public class WebSecurityConfig {
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and()
 				.authorizeRequests()
-				.antMatchers(HttpMethod.POST,"/GT/login", "GT/users/new-user", "GT/p-trainers/new-pt")
+				.antMatchers(HttpMethod.POST,"/GT/login", "/GT/users/new-user", "/GT/p-trainers/new-pt")
+				.permitAll()
+				.antMatchers(HttpMethod.GET, "/GT/all-users")
 				.permitAll()
 				.anyRequest()
 				.authenticated();

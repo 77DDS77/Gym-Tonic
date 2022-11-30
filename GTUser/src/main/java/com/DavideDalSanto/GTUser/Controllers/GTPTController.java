@@ -20,6 +20,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/GT/p-trainers")
+@CrossOrigin("http://localhost:4200")
 public class GTPTController {
 
     @Autowired

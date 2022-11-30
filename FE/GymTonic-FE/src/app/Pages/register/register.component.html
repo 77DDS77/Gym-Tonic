@@ -1,51 +1,77 @@
 <app-header></app-header>
 
-<main class="form-signin m-auto">
-  <form [formGroup]="form" (submit)="submit()">
-    <h1 class="h3 mb-3 fw-semibold">Register here:</h1>
+<div class="register">
+  <div class="container reg-form">
+    <main class="form-signin m-auto p-2">
+      <form [formGroup]="form" (submit)="submit()">
+        <h1 class="h3 mb-3 fw-semibold text-center">JOIN US!</h1>
 
-    <div class="form-floating mb-2">
-      <input formControlName="name"
-      type="text" class="form-control"
-      id="floatingInput1" placeholder="Your name">
-      <label for="floatingInput1">Your name</label>
+        <div class="form-floating mb-2">
+          <input formControlName="name"
+          type="text" class="form-control"
+          id="name" placeholder="Name">
+          <label for="floatingInput1">Name</label>
+        </div>
+
+        <div class="form-floating mb-2">
+          <input formControlName="lastname"
+          type="text" class="form-control"
+          id="lastname" placeholder="Lastname">
+          <label for="floatingInput2">Lastname</label>
+        </div>
+
+        <div class="form-floating mb-2">
+          <input formControlName="username"
+          type="text" class="form-control"
+          id="username" placeholder="Username">
+          <label for="floatingInput3">Username</label>
+        </div>
+
+        <div class="form-floating mb-2">
+          <input formControlName="email"
+          type="email" class="form-control"
+          id="email" placeholder="Email">
+          <label for="floatingInput5">Email</label>
+        </div>
+
+        <div class="form-floating mb-2">
+          <input formControlName="password"
+          type="password" class="form-control"
+          id="password" placeholder="Password">
+          <label for="floatingPassword1">Password</label>
+        </div>
+
+        <div class="form-floating mb-2">
+          <select
+            class="form-select"
+            formControlName="userType"
+            aria-label=".form-select-lg example"
+            id="userType"
+            placeholder="user-type">
+            <option value="personalTrainer">
+              Personal Trainer
+            </option>
+            <option value="athlete">
+              Athelete
+            </option>
+          </select>
+          <label for="floatingInput14">Athlete or Personal Trainer</label>
+        </div>
+
+        <label *ngIf="isFormValid == false" class="text-danger">*Form is invalid</label>
+        <button [disabled]="form.invalid" id="reg-btn" class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
+        <button [routerLink]="['/']" id="back-btn" class="w-30 btn btn-lg btn-primary my-2">Back to Login</button>
+
+      </form>
+    </main>
+
+    <div *ngIf="!uniqueData" class="text-center fw-semibold">
+      <h3>Looks like we got a problem!</h3>
+      <p>Your username or email might already be taken...	&NewLine;Try a new username, use your Fantasy!</p>
+      <p></p>
     </div>
+  </div>
+</div>
 
-    <div class="form-floating mb-2">
-      <input formControlName="lastname"
-      type="text" class="form-control"
-      id="floatingInput2" placeholder="Your lastname">
-      <label for="floatingInput2">Your lastname</label>
-    </div>
-
-    <div class="form-floating mb-2">
-      <input formControlName="username"
-      type="text" class="form-control"
-      id="floatingInput3" placeholder="Your username">
-      <label for="floatingInput3">Your username</label>
-    </div>
-    <label *ngIf="checkValidity('username')" class="text-danger">*username already taken</label>
-
-    <div class="form-floating mb-2">
-      <input formControlName="email"
-      type="email" class="form-control"
-      id="floatingInput5" placeholder="name@example.com">
-      <label for="floatingInput5">Email address</label>
-    </div>
-    <label *ngIf="checkValidity('email')" class="text-danger">*email already taken</label>
-
-    <div class="form-floating mb-2">
-      <input formControlName="password"
-      type="password" class="form-control"
-      id="floatingPassword1" placeholder="Password">
-      <label for="floatingPassword1">Password</label>
-    </div>
-
-    <label *ngIf="isFormValid == false" class="text-danger">*Form is invalid</label>
-    <button [disabled]="form.invalid" class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
-    <a [routerLink]="['/']" class="w-30 btn btn-lg btn-primary my-2">Back to Login</a>
-
-  </form>
-</main>
 
 

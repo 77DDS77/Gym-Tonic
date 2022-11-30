@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { apiUrl } from 'src/environments/environment';
 
 type AuthResponse = {
   token: string,
@@ -10,7 +11,7 @@ type AuthResponse = {
 }
 
 export interface ILogin {
-  email: string,
+  username: string,
   password: string
 }
 
@@ -21,10 +22,8 @@ export class AuthService {
 
   constructor(private http:HttpClient) { }
 
-  apiUrl:string = 'http://localhost:9191/GT';
-
   login(loginData:ILogin){
-    return this.http.post<AuthResponse>(this.apiUrl+'/login', loginData)
+    return this.http.post<AuthResponse>(apiUrl+'/login', loginData)
   }
 
   isUserLogged():boolean{

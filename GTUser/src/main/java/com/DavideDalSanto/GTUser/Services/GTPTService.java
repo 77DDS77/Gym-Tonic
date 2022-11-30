@@ -52,7 +52,7 @@ public class GTPTService {
      * */
     public GTPersonalTrainer save(GTPersonalTrainer user) throws NonExistingRoleException {
         user.setPassword(encoder.encode(user.getPassword()));
-        user.addRole(rs.findByRoleType(RoleType.ROLE_GTUSER));
+//        user.addRole(rs.findByRoleType(RoleType.ROLE_GTUSER));
         user.addRole(rs.findByRoleType(RoleType.ROLE_GTPERSONALTRAINER));
         return ptr.save(user);
     }

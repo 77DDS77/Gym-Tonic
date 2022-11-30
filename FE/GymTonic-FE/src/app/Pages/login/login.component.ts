@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       .subscribe(res => {
         this.auth.saveAccessData(res);
         console.log(res.roles);
-        if(res.roles.includes("ROLE_GTPERSONALTRAINER") && res.roles.includes("ROLE_GTUSER")){
+        if(res.roles.includes("ROLE_GTPERSONALTRAINER")){
           this.router.navigate(['/pt-home']);
         }else{
           this.router.navigate(['/user-home']);

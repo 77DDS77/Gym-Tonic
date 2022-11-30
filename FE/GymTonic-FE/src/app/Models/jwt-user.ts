@@ -14,7 +14,7 @@ export abstract class JwtUser {
   userWorkoutsId!:number[];
   userPlansIds!:number[];
 
-  constructor(username:string, email:string, name:string, lastname:string, password:string, roles:string){
+  constructor(username:string, email:string, name:string, lastname:string, password:string){
     this.username = username;
     this.email = email;
     this.name = name;

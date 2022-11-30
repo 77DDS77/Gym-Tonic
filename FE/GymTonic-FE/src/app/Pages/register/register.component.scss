@@ -1,0 +1,28 @@
+
+@use '../../../styles.scss';
+
+.register{
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.reg-form{
+  background-color: styles.$orange;
+  min-width: 180px;
+  max-width: 400px;
+  box-shadow: inset 0px 0 12px 3px #702f00fc;
+  border-radius: 10px;
+  h1{
+    color: styles.$black;
+  }
+  button{
+    background-color: styles.$grey;
+    border: 1px solid styles.$black;
+  }
+  #reg-btn:active, #back-btn:active{
+    background-color: styles.$black;
+    border: 1px solid styles.$orange;
+  }
+}
+

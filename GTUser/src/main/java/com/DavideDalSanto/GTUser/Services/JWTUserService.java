@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class JWTUserService {
 
@@ -20,4 +22,9 @@ public class JWTUserService {
         user.setPassword(encoder.encode(user.getPassword()));
         sur.save(user);
     }
+
+    public List<JWTUser> getAllUsers(){
+        return sur.findAll();
+    }
+
 }
