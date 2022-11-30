@@ -45,11 +45,28 @@
   }
 }
 
+
+#modalpls{
+  .my-modal-window{
+    .modal-content{
+      .modal-header{
+      color: red;
+      }
+    }
+  }
+}
+.my-modal-backdrop{
+  background-color: red;
+}
+
+
+
 @media screen and (min-width: 768px) {
   .navfoot{
     left: 0px;
     width: 3rem;
     height: 100vh;
+    position: fixed;
     .plus-btn{
       position: absolute;
       top: 10%;
@@ -67,4 +84,7 @@
       }
     }
   }
+  .myTooltip{
+    transform: translate(20px, 20px);
   }
+}

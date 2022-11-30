@@ -6,7 +6,25 @@
     <button *ngIf="planUp"  ngbTooltip="Plans" class="btn action-btn"><fa-icon [icon]="faLayerGroup"></fa-icon></button>
 
 
-    <button #target *ngIf="logoutUp" (click)="logout()"
-    class="btn action-btn" ngbTooltip="Logout"><fa-icon [icon]="faDoorOpen"></fa-icon></button>
+    <button #target *ngIf="logoutUp" (click)="openModale(content)"
+    class="btn action-btn" ngbTooltip="Logout"
+    tooltipClass="myTooltip"><fa-icon [icon]="faDoorOpen"></fa-icon></button>
   </div>
+</div>
+
+
+<!-- MODALE -->
+<div id="modalpls">
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Are you sure?</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <p>We will miss you!</p>
+      <button type="button" class="btn btn-danger" (click)="modal.close(logout())">Yes, log me out</button>
+    </div>
+  </ng-template>
+
 </div>

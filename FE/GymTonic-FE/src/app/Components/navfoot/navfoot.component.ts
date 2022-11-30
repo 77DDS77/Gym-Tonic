@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faDumbbell, faLayerGroup, faPlus, faScroll, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/Services/auth.service';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+
 
 
 @Component({
@@ -24,7 +26,9 @@ export class NavfootComponent implements OnInit {
 
   constructor(
     private auth:AuthService,
-    private router:Router
+    private router:Router,
+    private modalService: NgbModal,
+    private x:NgbModalConfig
     ) { }
 
   ngOnInit(): void {
@@ -47,5 +51,12 @@ export class NavfootComponent implements OnInit {
     this.auth.logOut()
     this.router.navigate(['/'])
   }
+
+  openModale(content: any) {
+    this.x.backdropClass = 'my-modal-backdrop';
+    this.x.windowClass = 'my-modal-window'
+    this.x.centered = true
+		this.modalService.open(content, this.x);
+	}
 
 }
