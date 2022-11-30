@@ -1,8 +1,12 @@
-<div class="navfoot fixed-bottom">
-  <button class="btn plus-btn" (click)="triggerActions()"></button>
+<div class="navfoot">
+  <button class="btn plus-btn" (click)="triggerActions()"><fa-icon [icon]="faPlus"></fa-icon></button>
   <div class="actions">
-    <button *ngIf="exerciseUp" class="btn action-btn"></button>
-    <button *ngIf="workoutUp" class="btn action-btn"></button>
-    <button *ngIf="planUp" class="btn action-btn"></button>
+    <button *ngIf="exerciseUp" ngbTooltip="Exercises" class="btn action-btn"><fa-icon [icon]="faDumbbell"></fa-icon></button>
+    <button *ngIf="workoutUp" ngbTooltip="Workouts" class="btn action-btn"><fa-icon [icon]="faScroll"></fa-icon></button>
+    <button *ngIf="planUp"  ngbTooltip="Plans" class="btn action-btn"><fa-icon [icon]="faLayerGroup"></fa-icon></button>
+
+
+    <button #target *ngIf="logoutUp" (click)="logout()"
+    class="btn action-btn" ngbTooltip="Logout"><fa-icon [icon]="faDoorOpen"></fa-icon></button>
   </div>
 </div>

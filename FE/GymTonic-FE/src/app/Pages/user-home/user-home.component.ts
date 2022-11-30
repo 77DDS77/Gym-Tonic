@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavfootComponent } from 'src/app/Components/navfoot/navfoot.component';
 
 @Component({
   selector: 'app-user-home',
