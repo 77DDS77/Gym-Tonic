@@ -12,6 +12,7 @@ import { HeaderComponent } from './Components/header/header.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NavfootComponent } from './Components/navfoot/navfoot.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     UserHomeComponent,
     PtHomeComponent,
     HeaderComponent,
-    NavbarComponent
+    NavbarComponent,
+    NavfootComponent
   ],
   imports: [
     BrowserModule,

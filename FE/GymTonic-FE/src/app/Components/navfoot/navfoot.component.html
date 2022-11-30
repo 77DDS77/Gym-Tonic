@@ -1,0 +1,8 @@
+<div class="navfoot fixed-bottom">
+  <button class="btn plus-btn" (click)="triggerActions()"></button>
+  <div class="actions">
+    <button *ngIf="exerciseUp" class="btn action-btn"></button>
+    <button *ngIf="workoutUp" class="btn action-btn"></button>
+    <button *ngIf="planUp" class="btn action-btn"></button>
+  </div>
+</div>
