@@ -8,6 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class JWTUserService {
@@ -25,6 +26,14 @@ public class JWTUserService {
 
     public List<JWTUser> getAllUsers(){
         return sur.findAll();
+    }
+
+    public JWTUser getById(Long id){
+        Optional<JWTUser> found = sur.findById(id);
+        if(found.isPresent()){
+            return found.get();
+        }
+        throw new IllegalStateException();
     }
 
 }

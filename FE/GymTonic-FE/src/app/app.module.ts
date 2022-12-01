@@ -11,9 +11,14 @@ import { PtHomeComponent } from './Pages/pt-home/pt-home.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavfootComponent } from './Components/navfoot/navfoot.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AuthInterceptor } from './Interceptors/auth.interceptor';
+import { PlanCardComponent } from './Components/plan-card/plan-card.component';
+import { WorkoutCardComponent } from './Components/workout-card/workout-card.component';
+import { ExerciseCardComponent } from './Components/exercise-card/exercise-card.component';
+import { ExDescriptionComponent } from './Components/ex-description/ex-description.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     PtHomeComponent,
     HeaderComponent,
     NavbarComponent,
-    NavfootComponent
+    NavfootComponent,
+    PlanCardComponent,
+    WorkoutCardComponent,
+    ExerciseCardComponent,
+    ExDescriptionComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +43,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HttpClientModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

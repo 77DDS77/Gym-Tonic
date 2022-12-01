@@ -28,7 +28,7 @@ public class PlanController {
      * Given the id of a GTUSER gets from
      * the Models microservice his plans
      * */
-    @PostMapping("{userId}/plans")
+    @GetMapping("{userId}/plans")
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
     public ResponseEntity<List<PlanDTO>> getUserPlans(@PathVariable(name = "userId") Long id){
         try{

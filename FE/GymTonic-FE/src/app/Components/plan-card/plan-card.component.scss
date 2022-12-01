@@ -1,0 +1,15 @@
+@use '../../../styles.scss';
+
+.plan, .plan-body{
+  max-width: 70%;
+  border-radius: 15px;
+}
+.plan{
+  background-color: styles.$orange;
+  border: 2px solid styles.$grey;
+  .exp-btn{
+    background-color: styles.$black;
+    color: styles.$orange;
+  }
+}
+

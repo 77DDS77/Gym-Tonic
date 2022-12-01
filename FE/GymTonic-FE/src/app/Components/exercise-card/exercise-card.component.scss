@@ -1,0 +1,12 @@
+
+@use '../../../styles.scss';
+
+.ex-desc{
+  background-color: transparent;
+  border: none;
+  color: styles.$white;
+}
+.ex-desc:active{
+  color: styles.$orange;
+}
+

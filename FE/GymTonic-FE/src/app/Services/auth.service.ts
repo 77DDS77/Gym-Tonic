@@ -32,7 +32,7 @@ export class AuthService {
 
   getLoggedUser(){
     let db = localStorage.getItem('access')
-    return db ? JSON.parse(db).user : null
+    return db ? JSON.parse(db) : null
   }
 
   getAccessToken():string{

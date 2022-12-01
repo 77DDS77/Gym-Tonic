@@ -1,0 +1,12 @@
+<div class="exercise mt-2 mb-4">
+  <div class="name">
+    <h6>- {{exercise.exercise.name}}</h6>
+  </div>
+
+  <div class="reps">
+    <p class="ms-3 d-inline">{{exercise.reps}} x {{exercise.series}}</p>
+    <app-ex-description
+      [description]="exercise.exercise.instructions">
+    </app-ex-description>
+  </div>
+</div>

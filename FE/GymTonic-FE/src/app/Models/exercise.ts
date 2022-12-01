@@ -5,7 +5,7 @@ export class Exercise {
   muscle:string;
   equipment:string;
   difficulty:string;
-  instruction:string;
+  instructions:string;
 
   constructor(name:string, type:string, muscle:string, equipment:string, difficulty:string, instruction:string){
     this.name = name;
@@ -13,6 +13,6 @@ export class Exercise {
     this.muscle = muscle;
     this.equipment = equipment;
     this.difficulty = difficulty;
-    this.instruction = instruction;
+    this.instructions = instruction;
   }
 }

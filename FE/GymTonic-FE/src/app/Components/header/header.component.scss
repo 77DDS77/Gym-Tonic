@@ -1,14 +1,18 @@
-header{
+.header{
+  position: fixed;
+  top: 0;
+  width: 100%;
   background-color: #FF7517;
   box-shadow: inset 0px 0 16px 3px #702f00fc;
-
+  z-index: 10;
   .logo{
     width: 100px;
   }
 }
 
+//z-index non funzioni
 @media screen and (min-width: 768px){
-  header{
+  .header{
     z-index: 10;
   }
 }

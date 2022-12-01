@@ -1,10 +1,20 @@
-<app-header></app-header>
+
+ <app-header></app-header>
 
 
 
+<div class="intro container text-center">
+  <h1>{{user?.name}} it's time to hit the gym!</h1>
+  <h3>Check your plans here</h3>
+</div>
 
+<app-plan-card *ngFor="let plan of userPlans"
+[plan]="plan"
+[userWorkouts]="userWorkouts"
+[userExercises]="userExercises"></app-plan-card>
 
 
 
 <app-navfoot></app-navfoot>
+
 

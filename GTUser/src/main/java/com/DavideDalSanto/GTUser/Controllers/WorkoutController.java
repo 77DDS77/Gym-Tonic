@@ -28,7 +28,7 @@ public class WorkoutController {
      * Gets all the exercises the given GTUser
      * has saved in his profile.
      * */
-    @PostMapping("{userId}/workouts")
+    @GetMapping("{userId}/workouts")
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
     public ResponseEntity<List<WorkoutDTO>> getUserWorkout(@PathVariable(name = "userId") Long id){
         try{

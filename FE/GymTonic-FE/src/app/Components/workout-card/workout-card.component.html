@@ -1,0 +1,6 @@
+
+<div class="w-100 work-head mt-1 p-2">
+  <h3 class="text-center">{{workout.name}}</h3>
+  <app-exercise-card *ngFor="let exercise of userExercises"
+  [exercise]="exercise"></app-exercise-card>
+</div>

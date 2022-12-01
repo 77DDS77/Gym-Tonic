@@ -1,0 +1,12 @@
+
+<div class="description d-inline">
+  <button class="ex-desc ms-3 " (click)="descriptionUp = !descriptionUp">description
+        <fa-icon [icon]="angleDown"></fa-icon>
+  </button>
+
+</div>
+<div class="d-block" *ngIf="descriptionUp">
+  <p>
+    {{description}}
+  </p>
+</div>
