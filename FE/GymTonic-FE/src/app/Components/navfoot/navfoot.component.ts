@@ -13,10 +13,11 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class NavfootComponent implements OnInit {
 
-  exerciseUp:boolean = false;
-  workoutUp:boolean = false;
-  planUp:boolean = false;
-  logoutUp:boolean = false;
+  exerciseUp:boolean = true;
+  workoutUp:boolean = true;
+  planUp:boolean = true;
+  logoutUp:boolean = true;
+  actionsUp:boolean = false;
 
   faPlus = faPlus;
   faDumbbell = faDumbbell;
@@ -35,16 +36,14 @@ export class NavfootComponent implements OnInit {
   }
 
   triggerActions(){
-    this.exerciseUp = !this.exerciseUp;
-    setTimeout(() => {
-      this.workoutUp = !this.workoutUp;
-    },100)
-    setTimeout(() => {
-      this.planUp = !this.planUp;
-    },200)
-    setTimeout(() => {
-      this.logoutUp = !this.logoutUp;
-    },300)
+    const actions = document.getElementById('action-box');
+    if(this.actionsUp == false){
+      actions?.classList.add('pop-up')
+      this.actionsUp = true;
+    }else{
+      actions?.classList.remove('pop-up')
+      this.actionsUp = false;
+    }
   }
 
   logout(){

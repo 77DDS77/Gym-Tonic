@@ -38,14 +38,32 @@
     justify-content: space-evenly;
     position: absolute;
     left: 50%;
-    transform: translate(-50%, -200%);
+    transform: translate(-50%, 0%);
+    transform: scale(0);
   }
-  .myToolTip .tooltip-inner{
-    transform: translateY(100px)
+
+}
+
+.pop-up{
+  animation-name: popUp;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0, 1.07, 0.35, 1.29);
+}
+
+@keyframes popUp {
+  0%{
+    transform: translateY(-50%,0%)scale(0);
+  }
+  50%{
+    transform: translate(-50%,-100%)scale(0.5%);
+  }
+  100%{
+    transform: translate(-50%,-200%)scale(1);
   }
 }
 
-
+// WHY U NO WORK
 #modalpls{
   .my-modal-window{
     .modal-content{
@@ -55,6 +73,7 @@
     }
   }
 }
+
 .my-modal-backdrop{
   background-color: red;
 }
@@ -78,7 +97,7 @@
       position: absolute;
       left: -31px;
       top: 159px;
-      transform: rotateZ(90deg);
+      transform: rotateZ(90deg)scale(0);
       .action-btn{
         transform: rotateZ(-90deg);
       }
@@ -86,5 +105,17 @@
   }
   .myTooltip{
     transform: translate(20px, 20px);
+  }
+
+  @keyframes popUp {
+    0%{
+      transform: translateY(-50%,0%)scale(0);
+    }
+    50%{
+      transform: translate(-50%,-25%)scale(0.5%);
+    }
+    100%{
+      transform: translate(0%, 0%)scale(1)rotateZ(90deg);
+    }
   }
 }
