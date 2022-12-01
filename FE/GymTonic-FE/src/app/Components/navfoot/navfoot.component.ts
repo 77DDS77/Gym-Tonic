@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { faDumbbell, faLayerGroup, faPlus, faScroll, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
+import { faDumbbell, faLayerGroup, faPlus, faScroll, faDoorOpen, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/Services/auth.service';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 
@@ -13,13 +13,11 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class NavfootComponent implements OnInit {
 
-  exerciseUp:boolean = true;
-  workoutUp:boolean = true;
-  planUp:boolean = true;
-  logoutUp:boolean = true;
+
   actionsUp:boolean = false;
 
   faPlus = faPlus;
+  faMinus = faMinus;
   faDumbbell = faDumbbell;
   faScroll = faScroll;
   faLayerGroup = faLayerGroup;

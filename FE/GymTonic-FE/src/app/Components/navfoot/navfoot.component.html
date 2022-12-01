@@ -1,12 +1,15 @@
 <div class="navfoot">
-  <button class="btn plus-btn" (click)="triggerActions()"><fa-icon [icon]="faPlus"></fa-icon></button>
+  <button class="btn plus-btn" (click)="triggerActions()">
+    <fa-icon *ngIf="!actionsUp" [icon]="faPlus"></fa-icon>
+    <fa-icon *ngIf="actionsUp" [icon]="faMinus"></fa-icon>
+  </button>
   <div class="actions" id="action-box">
-    <button *ngIf="exerciseUp" ngbTooltip="Exercises" class="btn action-btn"><fa-icon [icon]="faDumbbell"></fa-icon></button>
-    <button *ngIf="workoutUp" ngbTooltip="Workouts" class="btn action-btn"><fa-icon [icon]="faScroll"></fa-icon></button>
-    <button *ngIf="planUp"  ngbTooltip="Plans" class="btn action-btn"><fa-icon [icon]="faLayerGroup"></fa-icon></button>
+    <button ngbTooltip="Exercises" class="btn action-btn"><fa-icon [icon]="faDumbbell"></fa-icon></button>
+    <button ngbTooltip="Workouts" class="btn action-btn"><fa-icon [icon]="faScroll"></fa-icon></button>
+    <button ngbTooltip="Plans" class="btn action-btn"><fa-icon [icon]="faLayerGroup"></fa-icon></button>
 
 
-    <button #target *ngIf="logoutUp" (click)="openModale(content)"
+    <button #target (click)="openModale(content)"
     class="btn action-btn" ngbTooltip="Logout"
     tooltipClass="myTooltip"><fa-icon [icon]="faDoorOpen"></fa-icon></button>
   </div>
