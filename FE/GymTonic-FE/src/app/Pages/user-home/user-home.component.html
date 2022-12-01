@@ -8,10 +8,12 @@
   <h3>Check your plans here</h3>
 </div>
 
-<app-plan-card *ngFor="let plan of userPlans"
-[plan]="plan"
-[userWorkouts]="userWorkouts"
-[userExercises]="userExercises"></app-plan-card>
+<div class="plans">
+  <app-plan-card *ngFor="let plan of userPlans"
+  [plan]="plan"
+  [userWorkouts]="userWorkouts"
+  [userExercises]="userExercises"></app-plan-card>
+</div>
 
 
 
