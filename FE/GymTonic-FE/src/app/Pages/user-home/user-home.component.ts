@@ -50,8 +50,6 @@ export class UserHomeComponent implements OnInit {
       .subscribe(plans => {
         this.userPlans = plans;
       })
-
-      console.log(this.user);
     })
   }
 

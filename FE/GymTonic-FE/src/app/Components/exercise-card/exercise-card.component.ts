@@ -17,9 +17,6 @@ export class ExerciseCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.exercise.exercise);
-    console.log(this.exercise.exercise.instructions);
-
   }
 
 }

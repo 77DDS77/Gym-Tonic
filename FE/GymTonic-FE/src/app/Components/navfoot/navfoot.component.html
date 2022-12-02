@@ -4,9 +4,9 @@
     <fa-icon *ngIf="actionsUp" [icon]="faMinus"></fa-icon>
   </button>
   <div class="actions" id="action-box">
-    <button ngbTooltip="Exercises" class="btn action-btn"><fa-icon [icon]="faDumbbell"></fa-icon></button>
-    <button ngbTooltip="Workouts" class="btn action-btn"><fa-icon [icon]="faScroll"></fa-icon></button>
-    <button ngbTooltip="Plans" class="btn action-btn"><fa-icon [icon]="faLayerGroup"></fa-icon></button>
+    <a [routerLink]="['/new-exercise']" ngbTooltip="Exercises" class="btn action-btn"><fa-icon [icon]="faDumbbell"></fa-icon></a>
+    <a [routerLink]="['/new-workout']" ngbTooltip="Workouts" class="btn action-btn"><fa-icon [icon]="faScroll"></fa-icon></a>
+    <a [routerLink]="['/new-plan']" ngbTooltip="Plans" class="btn action-btn"><fa-icon [icon]="faLayerGroup"></fa-icon></a>
 
 
     <button #target (click)="openModale(content)"

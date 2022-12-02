@@ -4,19 +4,23 @@
 
   <div class="plan-head">
 
-    <div class="py-2 text-center">
+    <div class="plan-title py-2 px-1 text-center">
       <h4>{{plan.name}}</h4>
+      <div class="actions ms-4">
+        <fa-icon [icon]="faEdit"></fa-icon>&nbsp;&nbsp;
+        <button (click)="deletePlan(plan)"><fa-icon [icon]="faTrash"></fa-icon></button>
+      </div>
     </div>
     <div>
       <button class="w-100 fw-semibold btn exp-btn" (click)="expand = !expand">
         <div *ngIf="!expand">
-          <fa-icon [icon]="angleDown"></fa-icon>
-          <fa-icon [icon]="angleDown"></fa-icon>
+          <fa-icon [icon]="angleDown"></fa-icon>&nbsp;
+          <fa-icon [icon]="angleDown"></fa-icon>&nbsp;
           <fa-icon [icon]="angleDown"></fa-icon>
         </div>
         <div *ngIf="expand">
-          <fa-icon [icon]="angleUp"></fa-icon>
-          <fa-icon [icon]="angleUp"></fa-icon>
+          <fa-icon [icon]="angleUp"></fa-icon>&nbsp;
+          <fa-icon [icon]="angleUp"></fa-icon>&nbsp;
           <fa-icon [icon]="angleUp"></fa-icon>
         </div>
       </button>

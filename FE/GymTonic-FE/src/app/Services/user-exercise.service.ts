@@ -14,4 +14,8 @@ export class UserExerciseService {
   getUserExercises(userId:number):Observable<UserExercise[]>{
     return this.http.get<UserExercise[]>(apiUrl + '/' +userId + '/exercises');
   }
+
+  postNewUserExercise(userId:number, exercise:UserExercise):Observable<UserExercise>{
+    return this.http.post<UserExercise>(apiUrl + '/' + userId + '/new-exercise', exercise);
+  }
 }

@@ -68,3 +68,19 @@ public class WebSecurityConfig {
 		return http.build();
 	}
 }
+
+/*
+* return http
+				.cors(cors -> cors.disable())
+				.csrf(csrf -> csrf.disable())
+				.exceptionHandling((exc -> exc.authenticationEntryPoint(unauthorizedHandler)))
+				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+				.authorizeHttpRequests(auth -> {
+					auth.antMatchers(HttpMethod.POST,"/GT/login", "/GT/users/new-user", "/GT/p-trainers/new-pt")
+							.permitAll();
+					auth.antMatchers(HttpMethod.GET, "/GT/all-users")
+							.permitAll();
+					auth.anyRequest().authenticated();
+				})
+				.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class)
+				.build();*/

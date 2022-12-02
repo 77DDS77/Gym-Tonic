@@ -19,6 +19,9 @@ import { PlanCardComponent } from './Components/plan-card/plan-card.component';
 import { WorkoutCardComponent } from './Components/workout-card/workout-card.component';
 import { ExerciseCardComponent } from './Components/exercise-card/exercise-card.component';
 import { ExDescriptionComponent } from './Components/ex-description/ex-description.component';
+import { NewExerciseComponent } from './Pages/new-exercise/new-exercise.component';
+import { NewWorkoutComponent } from './Pages/new-workout/new-workout.component';
+import { NewPlanComponent } from './Pages/new-plan/new-plan.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { ExDescriptionComponent } from './Components/ex-description/ex-descripti
     PlanCardComponent,
     WorkoutCardComponent,
     ExerciseCardComponent,
-    ExDescriptionComponent
+    ExDescriptionComponent,
+    NewExerciseComponent,
+    NewWorkoutComponent,
+    NewPlanComponent
   ],
   imports: [
     BrowserModule,

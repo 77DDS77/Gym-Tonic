@@ -7,9 +7,19 @@
 .plan{
   background-color: styles.$orange;
   border: 2px solid styles.$grey;
+  .plan-title{
+    display: flex;
+  }
   .exp-btn{
     background-color: styles.$black;
     color: styles.$orange;
+  }
+  .actions {
+    font-size: 1.2rem;
+    button{
+      background-color: transparent;
+      border: none;
+    }
   }
 }
 
