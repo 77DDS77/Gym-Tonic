@@ -22,6 +22,7 @@ import { ExDescriptionComponent } from './Components/ex-description/ex-descripti
 import { NewExerciseComponent } from './Pages/new-exercise/new-exercise.component';
 import { NewWorkoutComponent } from './Pages/new-workout/new-workout.component';
 import { NewPlanComponent } from './Pages/new-plan/new-plan.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,9 @@ import { NewPlanComponent } from './Pages/new-plan/new-plan.component';
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    SweetAlert2Module,
+    SweetAlert2Module.forRoot()
   ],
   providers: [
     {

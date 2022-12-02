@@ -4,6 +4,8 @@ import { faDumbbell, faLayerGroup, faPlus, faScroll, faDoorOpen, faMinus } from 
 import { AuthService } from 'src/app/Services/auth.service';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+
 
 
 @Component({
@@ -25,9 +27,7 @@ export class NavfootComponent implements OnInit {
 
   constructor(
     private auth:AuthService,
-    private router:Router,
-    private modalService: NgbModal,
-    private x:NgbModalConfig
+    private router:Router
     ) { }
 
   ngOnInit(): void {
@@ -48,12 +48,5 @@ export class NavfootComponent implements OnInit {
     this.auth.logOut()
     this.router.navigate(['/'])
   }
-
-  openModale(content: any) {
-    this.x.backdropClass = 'my-modal-backdrop';
-    this.x.windowClass = 'my-modal-window'
-    this.x.centered = true
-		this.modalService.open(content, this.x);
-	}
 
 }

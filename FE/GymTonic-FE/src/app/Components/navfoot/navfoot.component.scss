@@ -63,22 +63,6 @@
   }
 }
 
-// WHY U NO WORK
-#modalpls{
-  .my-modal-window{
-    .modal-content{
-      .modal-header{
-      color: red;
-      }
-    }
-  }
-}
-
-.my-modal-backdrop{
-  background-color: red;
-}
-
-
 
 @media screen and (min-width: 768px) {
   .navfoot{
@@ -102,9 +86,6 @@
         transform: rotateZ(-90deg);
       }
     }
-  }
-  .myTooltip{
-    transform: translate(20px, 20px);
   }
 
   @keyframes popUp {
