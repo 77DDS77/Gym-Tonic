@@ -47,9 +47,4 @@ export class PlanCardComponent implements OnInit {
     })
   }
 
-  test(plan:Plan){
-    console.log(plan.name);
-  }
-
-
 }

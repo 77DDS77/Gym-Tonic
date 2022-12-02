@@ -14,4 +14,8 @@ export class WorkoutService {
   getUserWorkouts(userId:number):Observable<Workout[]>{
     return this.http.get<Workout[]>(apiUrl + '/' + userId + '/workouts');
   }
+
+  postNewWorkout(userId:number, workout:Workout):Observable<Workout>{
+    return this.http.post<Workout>(apiUrl + '/' + userId + '/new-workout', workout);
+  }
 }
