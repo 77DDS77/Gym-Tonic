@@ -13,19 +13,5 @@
   max-width: 400px;
   box-shadow: inset 0px 0 12px 3px #702f00fc;
   border-radius: 10px;
-  h1, h3{
-    color: styles.$black;
-  }
-  button{
-    background-color: styles.$grey;
-    border: 1px solid styles.$black;
-  }
-  #newWorkout-btn:active, #addEx-btn:active{
-    background-color: styles.$black;
-    border: 1px solid styles.$orange;
-  }
-  .choosing{
-    display: flex;
-    align-items: baseline
-  }
+
 }

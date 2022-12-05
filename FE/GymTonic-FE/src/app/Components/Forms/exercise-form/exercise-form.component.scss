@@ -1,0 +1,20 @@
+
+@use '../../../../styles.scss';
+
+form{
+  h1, h3{
+    color: styles.$black;
+  }
+  button{
+    background-color: styles.$grey;
+    border: 1px solid styles.$black;
+  }
+  #newex-btn:active{
+    background-color: styles.$black;
+    border: 1px solid styles.$orange;
+  }
+  #newex-btn:hover{
+    background-color: styles.$black;
+    border: 1px solid styles.$orange;
+  }
+}

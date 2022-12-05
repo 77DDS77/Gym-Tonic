@@ -23,6 +23,9 @@ import { NewExerciseComponent } from './Pages/new-exercise/new-exercise.componen
 import { NewWorkoutComponent } from './Pages/new-workout/new-workout.component';
 import { NewPlanComponent } from './Pages/new-plan/new-plan.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { ExerciseFormComponent } from './Components/Forms/exercise-form/exercise-form.component';
+import { WorkoutFormComponent } from './Components/Forms/workout-form/workout-form.component';
+import { PlanFormComponent } from './Components/Forms/plan-form/plan-form.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     ExDescriptionComponent,
     NewExerciseComponent,
     NewWorkoutComponent,
-    NewPlanComponent
+    NewPlanComponent,
+    ExerciseFormComponent,
+    WorkoutFormComponent,
+    PlanFormComponent
   ],
   imports: [
     BrowserModule,
