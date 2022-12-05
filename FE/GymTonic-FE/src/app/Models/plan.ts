@@ -6,7 +6,8 @@ export class Plan {
   name:string;
   workouts:Workout[] = [];
 
-  constructor(name:string){
+  constructor(name:string, workouts:Workout[]){
     this.name = name;
+    this.workouts = workouts;
   }
 }

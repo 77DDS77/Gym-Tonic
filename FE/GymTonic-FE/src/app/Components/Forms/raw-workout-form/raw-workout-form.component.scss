@@ -1,3 +1,5 @@
+
+
 @use '../../../../styles.scss';
 
 form{
@@ -7,6 +9,10 @@ form{
   button{
     background-color: styles.$grey;
     border: 1px solid styles.$black;
+  }
+  #newWorkout-btn.disabled{
+    background-color: #2c2727;
+    border: 1px solid styles.$orange;
   }
   #newWorkout-btn:active, #addEx-btn:active{
     background-color: styles.$black;

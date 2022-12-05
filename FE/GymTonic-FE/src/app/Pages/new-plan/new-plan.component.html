@@ -6,11 +6,16 @@
 
     <main class="form-newplan m-auto p-2">
 
-      <app-plan-form></app-plan-form>
+      <app-plan-form *ngIf="!rawPlan"></app-plan-form>
 
-      <div class="text-center">
-        <h3>POPI</h3>
+      <div class="text-start">
+        <h4 class="d-inline">Or start from scratch</h4>
+        <button (click)="rawPlan = !rawPlan" class="ms-2 raw">
+          <fa-icon [icon]="arrowDown"></fa-icon>
+        </button>
       </div>
+
+      <app-raw-plan-form *ngIf="rawPlan"></app-raw-plan-form>
     </main>
 
 

@@ -1,0 +1,43 @@
+<form [formGroup]="planForm">
+  <h1 class="h3 mb-3 fw-semibold text-center">CREATE YOUR PLAN HERE!</h1>
+
+  <div class="my-2">
+    <div class="form-floating">
+      <input formControlName="name"
+      type="text" class="form-control"
+      id="planName" placeholder="Name your plan">
+      <label for="planName">Name your plan</label>
+    </div>
+  </div>
+
+  <!-- SHOW ADDED WORKOUTS -->
+  <div *ngFor="let newW of newWorkouts"  class="input-group mb-3">
+    <input type="text" class="form-control"
+    aria-label="new-workout" placeholder="{{newW.name}}" readonly>
+    <button (click)="removeWorkout(newW)" class="btn btn-outline-secondary text-white"
+    type="button" id="button-addon2">Remove</button>
+  </div>
+
+  <button
+  [ngClass]="newWorkouts.length == 0 ? 'disabled' : ''"
+    [swal]="planCreatedSwal" (click)="postNewPlan()"
+    id="newPlan-btn" class="w-100 btn btn-lg btn-primary mb-2"
+    type="submit">Create plan
+  </button>
+
+
+  <app-raw-workout-form (outputWorkout)="addWorkout($event)"></app-raw-workout-form>
+
+  <!-- <label *ngIf="formIsValid == false" class="text-danger">*Form is invalid</label>
+  <button [swal]="planAddedSwal" (click)="postNewWorkout()" id="newWorkout-btn" class="w-100 btn btn-lg btn-primary mb-2" type="submit">Create plan</button> -->
+
+</form>
+
+<swal
+  #planCreatedSwal
+  title="Plan created."
+  icon="success"
+  [timerProgressBar]=true
+  [timer]=1500
+  >
+</swal>

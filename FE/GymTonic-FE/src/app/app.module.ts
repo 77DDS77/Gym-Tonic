@@ -9,7 +9,6 @@ import { RegisterComponent } from './Pages/register/register.component';
 import { UserHomeComponent } from './Pages/user-home/user-home.component';
 import { PtHomeComponent } from './Pages/pt-home/pt-home.component';
 import { HeaderComponent } from './Components/header/header.component';
-import { NavbarComponent } from './Components/navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavfootComponent } from './Components/navfoot/navfoot.component';
@@ -26,6 +25,9 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ExerciseFormComponent } from './Components/Forms/exercise-form/exercise-form.component';
 import { WorkoutFormComponent } from './Components/Forms/workout-form/workout-form.component';
 import { PlanFormComponent } from './Components/Forms/plan-form/plan-form.component';
+import { RawPlanFormComponent } from './Components/Forms/raw-plan-form/raw-plan-form.component';
+import { RawWorkoutFormComponent } from './Components/Forms/raw-workout-form/raw-workout-form.component';
+import { RawExerciseFormComponent } from './Components/Forms/raw-exercise-form/raw-exercise-form.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,6 @@ import { PlanFormComponent } from './Components/Forms/plan-form/plan-form.compon
     UserHomeComponent,
     PtHomeComponent,
     HeaderComponent,
-    NavbarComponent,
     NavfootComponent,
     PlanCardComponent,
     WorkoutCardComponent,
@@ -46,7 +47,10 @@ import { PlanFormComponent } from './Components/Forms/plan-form/plan-form.compon
     NewPlanComponent,
     ExerciseFormComponent,
     WorkoutFormComponent,
-    PlanFormComponent
+    PlanFormComponent,
+    RawPlanFormComponent,
+    RawWorkoutFormComponent,
+    RawExerciseFormComponent
   ],
   imports: [
     BrowserModule,

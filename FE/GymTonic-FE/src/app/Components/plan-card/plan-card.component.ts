@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faAngleDown, faAngleUp, faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Plan } from 'src/app/Models/plan';
 import { UserExercise } from 'src/app/Models/user-exercise';
@@ -28,7 +29,8 @@ export class PlanCardComponent implements OnInit {
   constructor(
     private planSvc:PlanService,
     private auth:AuthService,
-    private userSvc:UserService
+    private userSvc:UserService,
+    private router:Router
     ) { }
 
   ngOnInit(): void {
@@ -42,6 +44,7 @@ export class PlanCardComponent implements OnInit {
         this.planSvc.deletePlan(user.id, plan.id)
         .subscribe(res => {
           console.log("plan deleted");
+          this.router.navigate(['/user-home']);
         })
       }
     })

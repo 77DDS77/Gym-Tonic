@@ -1,4 +1,49 @@
 
-<h1 class="text-center">CREATE YOUR PLAN HERE</h1>
 
-<app-workout-form></app-workout-form>
+<form [formGroup]="form">
+  <h1 class="h3 mb-3 fw-semibold text-center">CREATE YOUR PLAN HERE!</h1>
+
+  <div class="my-2">
+    <div class="form-floating">
+      <input formControlName="name"
+      type="text" class="form-control"
+      id="planName" placeholder="Name your plan">
+      <label for="planName">Name your plan</label>
+    </div>
+  </div>
+
+  <div class="my-2 choosing">
+    <select
+    class="form-select form-select-lg mb-3"
+    aria-label="user-workout-select"
+    formControlName="workout">
+      <option selected [ngValue]=null>Choose from your workouts</option>
+      <option *ngFor="let work of userWorkouts" [ngValue]=work>{{work.name}}</option>
+    </select>
+    <button (click)="addWorkout()" id="addEx-btn" class="btn btn-primary ms-2">ADD</button>
+  </div>
+
+  <!-- SHOW THE ADDED RAW WORKOUT -->
+  <div *ngFor="let cWork of choosenWorkouts"  class="input-group mb-3">
+    <input type="text" class="form-control"
+    aria-label="workout-chosen" placeholder="{{cWork.name}}" readonly>
+    <button (click)="removeWorkout(cWork)" class="btn btn-outline-secondary text-white"
+    type="button" id="button-addon2">Remove</button>
+  </div>
+
+
+  <label *ngIf="formIsValid == false" class="text-danger">*Form is invalid</label>
+  <button [swal]="planAddedSwal" (click)="postNewWorkout()" id="newWorkout-btn" class="w-100 btn btn-lg btn-primary mb-2" type="submit">Create plan</button>
+
+</form>
+
+
+<swal
+  #planAddedSwal
+  title="Plan created."
+  icon="success"
+  [timerProgressBar]=true
+  [timer]=1500
+  >
+</swal>
+
