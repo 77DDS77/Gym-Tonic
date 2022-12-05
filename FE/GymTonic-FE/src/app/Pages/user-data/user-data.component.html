@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<div class="container data-container">
+
+  <h4>WORKOUTS:</h4>
+  <div class="workouts">
+    <div class="wrkt" *ngFor="let wrk of userWorkout">
+      <p>{{wrk.name}}</p>
+      <div class="actions">
+        <fa-icon [icon]="faEdit" class="me-3"></fa-icon>
+        <fa-icon [icon]="faTrash"></fa-icon>
+      </div>
+    </div>
+  </div>
+
+  <h4>YOUR EXERCISES:</h4>
+  <div class="exercises">
+    <div class="exrcs" *ngFor="let ex of userExercises">
+      <p>{{ex.exercise.name}} [{{ex.reps}} x {{ex.series}}]</p>
+      <div class="actions">
+        <fa-icon [icon]="faEdit" class="me-3"></fa-icon>
+        <fa-icon [icon]="faTrash"></fa-icon>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<app-navfoot></app-navfoot>

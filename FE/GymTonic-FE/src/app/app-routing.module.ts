@@ -6,6 +6,7 @@ import { NewPlanComponent } from './Pages/new-plan/new-plan.component';
 import { NewWorkoutComponent } from './Pages/new-workout/new-workout.component';
 import { PtHomeComponent } from './Pages/pt-home/pt-home.component';
 import { RegisterComponent } from './Pages/register/register.component';
+import { UserDataComponent } from './Pages/user-data/user-data.component';
 import { UserHomeComponent } from './Pages/user-home/user-home.component';
 
 const routes: Routes = [
@@ -39,6 +40,10 @@ const routes: Routes = [
   {
     path: 'new-plan',
     component: NewPlanComponent
+  },
+  {
+    path: 'user-data',
+    component: UserDataComponent
   }
 ];
 
