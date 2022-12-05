@@ -11,8 +11,8 @@
 <div class="plans">
   <app-plan-card *ngFor="let plan of userPlans"
   [plan]="plan"
-  [userWorkouts]="userWorkouts"
-  [userExercises]="userExercises"></app-plan-card>
+  [userWorkouts]="plan.workouts"
+  ></app-plan-card>
 </div>
 
 

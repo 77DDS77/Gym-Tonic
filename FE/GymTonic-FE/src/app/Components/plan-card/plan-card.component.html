@@ -34,7 +34,7 @@
 <div class="plan-body container" *ngIf="expand">
   <app-workout-card *ngFor="let workout of userWorkouts"
   [workout]="workout"
-  [userExercises]="userExercises"></app-workout-card>
+  [userExercises]="workout.userExercises"></app-workout-card>
 </div>
 
 <!-- MODALI -->

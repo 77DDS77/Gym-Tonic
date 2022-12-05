@@ -18,15 +18,11 @@ import { WorkoutService } from 'src/app/Services/workout.service';
 export class UserHomeComponent implements OnInit {
 
   user!:JwtUser | null;
-  userExercises!:UserExercise[];
-  userWorkouts!:Workout[];
   userPlans!:Plan[];
 
   constructor(
     private userSrv: UserService,
     private authSrv: AuthService,
-    private uExSrv: UserExerciseService,
-    private uWorkSrv: WorkoutService,
     private uPlanSrv: PlanService
   ) { }
 
@@ -36,19 +32,11 @@ export class UserHomeComponent implements OnInit {
     .subscribe(user => {
       this.user = user;
 
-      this.uExSrv.getUserExercises(user.id)
-      .subscribe(exs => {
-        this.userExercises = exs;
-      })
-
-      this.uWorkSrv.getUserWorkouts(user.id)
-      .subscribe(works => {
-        this.userWorkouts = works;
-      })
-
       this.uPlanSrv.getUserPlans(user.id)
       .subscribe(plans => {
         this.userPlans = plans;
+        console.log(this.userPlans);
+
       })
     })
   }
