@@ -6,6 +6,36 @@
   <button (click)="deleteWorkoutSwal.fire()" class="btn btn-outline-secondary" type="button"><fa-icon [icon]="faTrash"></fa-icon></button>
 </div>
 
+<form [formGroup]="editWorkout">
+
+  <div class="my-2">
+    <div class="form-floating">
+      <input formControlName="name"
+      type="text" class="form-control"
+      id="workoutName" placeholder="Name your workout">
+      <label for="workoutName">Name your workout</label>
+    </div>
+  </div>
+
+  <!-- SHOW ADDED EXERCISES -->
+  <div *ngFor="let newEx of workoutExercises"  class="input-group mb-3">
+    <input type="text" class="form-control"
+    aria-label="new-workout" placeholder="{{newEx.exercise.name}}  {{newEx.reps}} x {{newEx.series}}" readonly>
+    <button (click)="removeExercise(newEx)" class="btn btn-outline-secondary text-white"
+    type="button" id="button-addon2">Remove</button>
+  </div>
+
+  <button
+    [ngClass]="workoutExercises.length == 0 ? 'disabled' : ''"
+    [swal]="workoutEditedSwal" (click)="updateWorkout()"
+    id="newWorkout-btn" class="w-100 btn btn-lg btn-primary mb-2"
+    type="submit">Add workout
+  </button>
+
+</form>
+
+
+
 <!-- MODALE -->
 <swal
   #deleteWorkoutSwal
@@ -20,6 +50,15 @@
   cancelButtonAriaLabel="Cancel delete workout"
   cancelButtonColor="#2C2727"
   (confirm)="deleteWorkout(wrk.id)"
+  >
+</swal>
+
+<swal
+  #workoutEditedSwal
+  title="Workout edited."
+  icon="success"
+  [timerProgressBar]=true
+  [timer]=1500
   >
 </swal>
 
