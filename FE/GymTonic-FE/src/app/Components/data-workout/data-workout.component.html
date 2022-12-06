@@ -1,6 +1,6 @@
 
 
-<div class="input-group wrkt">
+<div class="input-group wrkt" *ngIf="!deleted">
   <p class="form-control" aria-label="workout-list">{{wrk.name}}</p>
   <button class="btn btn-outline-secondary" type="button"><fa-icon [icon]="faEdit" class="me-3"></fa-icon></button>
   <button (click)="deleteWorkoutSwal.fire()" class="btn btn-outline-secondary" type="button"><fa-icon [icon]="faTrash"></fa-icon></button>
@@ -19,7 +19,7 @@
   confirmButtonAriaLabel="Confirm delete workout"
   cancelButtonAriaLabel="Cancel delete workout"
   cancelButtonColor="#2C2727"
-
+  (confirm)="deleteWorkout(wrk.id)"
   >
 </swal>
 

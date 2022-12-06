@@ -24,6 +24,6 @@ export class UserExerciseService {
   }
 
   deleteUserExercise(userId:number, exerciseId:number):Observable<string>{
-    return this.http.delete<string>(apiUrl + '/' + userId + '/delete-exercise' + '/' + exerciseId);
+    return this.http.delete(apiUrl + '/' + userId + '/delete-exercise' + '/' + exerciseId, {responseType:'text'});
   }
 }
