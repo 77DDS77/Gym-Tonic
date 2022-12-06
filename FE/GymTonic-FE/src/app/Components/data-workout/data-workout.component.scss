@@ -1,0 +1,22 @@
+@use '../../../styles.scss';
+
+.wrkt{
+  margin-bottom: 1rem;
+  p{
+    border: 1px solid styles.$orange;
+    background-color: styles.$black;
+    color: styles.$white;
+    margin-bottom: 0px;
+  }
+  button{
+    outline: 1px solid styles.$orange;
+    border:none;
+    color: styles.$white;
+    z-index: 0;
+  }
+  button:focus, button:active{
+    background-color: styles.$black;
+    color: styles.$orange;
+    outline: 1px solid styles.$grey;
+  }
+}

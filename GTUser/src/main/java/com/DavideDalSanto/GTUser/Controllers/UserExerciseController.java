@@ -56,7 +56,7 @@ public class UserExerciseController {
     /**
      * Delete the given exercise from the user profile
      * */
-    @PostMapping("{userId}/delete-exercise/{exID}")
+    @DeleteMapping("{userId}/delete-exercise/{exID}")
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
     public ResponseEntity<String> deleteUserExercise(@PathVariable(name = "userId") Long GTUserid, @PathVariable(name = "exID") Long exID){
         try{

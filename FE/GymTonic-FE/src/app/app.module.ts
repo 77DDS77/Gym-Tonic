@@ -29,6 +29,8 @@ import { RawPlanFormComponent } from './Components/Forms/raw-plan-form/raw-plan-
 import { RawWorkoutFormComponent } from './Components/Forms/raw-workout-form/raw-workout-form.component';
 import { RawExerciseFormComponent } from './Components/Forms/raw-exercise-form/raw-exercise-form.component';
 import { UserDataComponent } from './Pages/user-data/user-data.component';
+import { DataWorkoutComponent } from './Components/data-workout/data-workout.component';
+import { DataExerciseComponent } from './Components/data-exercise/data-exercise.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { UserDataComponent } from './Pages/user-data/user-data.component';
     RawPlanFormComponent,
     RawWorkoutFormComponent,
     RawExerciseFormComponent,
-    UserDataComponent
+    UserDataComponent,
+    DataWorkoutComponent,
+    DataExerciseComponent
   ],
   imports: [
     BrowserModule,

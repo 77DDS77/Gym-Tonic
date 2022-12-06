@@ -18,4 +18,12 @@ export class UserExerciseService {
   postNewUserExercise(userId:number, exercise:UserExercise):Observable<UserExercise>{
     return this.http.post<UserExercise>(apiUrl + '/' + userId + '/new-exercise', exercise);
   }
+
+  updateUserExercise(userId:number, exercise:UserExercise):Observable<UserExercise>{
+    return this.http.post<UserExercise>(apiUrl + '/' + userId + '/update-exercise', exercise);
+  }
+
+  deleteUserExercise(userId:number, exerciseId:number):Observable<string>{
+    return this.http.delete<string>(apiUrl + '/' + userId + '/delete-exercise' + '/' + exerciseId);
+  }
 }

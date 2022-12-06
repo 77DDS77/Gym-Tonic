@@ -2,29 +2,22 @@
 
 <div class="container data-container">
 
-  <h4>WORKOUTS:</h4>
+  <h4>YOUR WORKOUTS:</h4>
   <div class="workouts">
-    <div class="wrkt" *ngFor="let wrk of userWorkout">
-      <p>{{wrk.name}}</p>
-      <div class="actions">
-        <fa-icon [icon]="faEdit" class="me-3"></fa-icon>
-        <fa-icon [icon]="faTrash"></fa-icon>
-      </div>
-    </div>
+
+    <app-data-workout [wrk]="wrk"  *ngFor="let wrk of userWorkout"></app-data-workout>
+
   </div>
 
   <h4>YOUR EXERCISES:</h4>
   <div class="exercises">
-    <div class="exrcs" *ngFor="let ex of userExercises">
-      <p>{{ex.exercise.name}} [{{ex.reps}} x {{ex.series}}]</p>
-      <div class="actions">
-        <fa-icon [icon]="faEdit" class="me-3"></fa-icon>
-        <fa-icon [icon]="faTrash"></fa-icon>
-      </div>
-    </div>
+
+    <app-data-exercise [ex]="ex" *ngFor="let ex of userExercises"></app-data-exercise>
+
   </div>
 
 </div>
 
 
 <app-navfoot></app-navfoot>
+

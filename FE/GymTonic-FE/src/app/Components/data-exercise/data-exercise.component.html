@@ -1,0 +1,51 @@
+
+<div class="input-group exrcs" *ngIf="!deleted">
+  <p class="form-control" aria-label="workout-list">{{ex.exercise.name}} [{{ex.reps}} x {{ex.series}}]</p>
+  <button (click)="updating = !updating" class="btn" type="button"><fa-icon [icon]="faEdit" class="me-3"></fa-icon></button>
+  <button (click)="deleteExerciseSwal.fire()" class="btn" type="button"><fa-icon [icon]="faTrash"></fa-icon></button>
+</div>
+
+<div class="container" *ngIf="updating">
+  <form [formGroup]="updateExercise">
+    <div class="row">
+      <div class="col-sm">
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control"
+          id="reps" placeholder="Reps"
+          formControlName="reps">
+          <label for="reps">Reps</label>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control"
+          id="series" placeholder="Series"
+          formControlName="series">
+          <label for="series">Series</label>
+        </div>
+      </div>
+      <div class="col mb-3">
+        <button (click)="updateEx(ex)" id="updt-btn" class="btn p-1 w-100 h-100">UPDATE</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+<!-- MODALE -->
+<swal
+  #deleteExerciseSwal
+  title="Delete this workout?"
+  text="You won't be able to retrieve it!"
+  icon="question"
+  [showConfirmButton]=true
+  [showCancelButton]=true
+  confirmButtonColor="#FF7517"
+  confirmButtonText="Delete it"
+  confirmButtonAriaLabel="Confirm delete workout"
+  cancelButtonAriaLabel="Cancel delete workout"
+  cancelButtonColor="#2C2727"
+  (confirm)="deleteEx(ex.id)"
+  >
+</swal>

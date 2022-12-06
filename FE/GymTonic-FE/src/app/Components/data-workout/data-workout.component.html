@@ -1,0 +1,25 @@
+
+
+<div class="input-group wrkt">
+  <p class="form-control" aria-label="workout-list">{{wrk.name}}</p>
+  <button class="btn btn-outline-secondary" type="button"><fa-icon [icon]="faEdit" class="me-3"></fa-icon></button>
+  <button (click)="deleteWorkoutSwal.fire()" class="btn btn-outline-secondary" type="button"><fa-icon [icon]="faTrash"></fa-icon></button>
+</div>
+
+<!-- MODALE -->
+<swal
+  #deleteWorkoutSwal
+  title="Delete this workout?"
+  text="You won't be able to retrieve it!"
+  icon="question"
+  [showConfirmButton]=true
+  [showCancelButton]=true
+  confirmButtonColor="#FF7517"
+  confirmButtonText="Delete it"
+  confirmButtonAriaLabel="Confirm delete workout"
+  cancelButtonAriaLabel="Cancel delete workout"
+  cancelButtonColor="#2C2727"
+
+  >
+</swal>
+

@@ -4,6 +4,23 @@
 .intro{
   color: styles.$orange;
   margin-top: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .manage{
+    background-color: styles.$black;
+    border: 1px solid styles.$orange;
+    border-radius: 15px;
+    padding: 0.3rem;
+    width: 70%;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    text-align: center;
+    a{
+      text-decoration: none;
+      color: styles.$orange;
+    }
+  }
 }
 .plans{
   margin-bottom: 6rem;
