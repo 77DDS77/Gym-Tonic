@@ -21,6 +21,10 @@
   }
 }
 
+update-forms-container{
+  max-width: 700px;
+}
+
 .updt-btn, .updt-btn.disabled{
   background-color: styles.$black;
   border: 1px solid styles.$orange;

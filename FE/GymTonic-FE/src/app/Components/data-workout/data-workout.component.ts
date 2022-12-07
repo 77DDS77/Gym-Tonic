@@ -31,6 +31,7 @@ export class DataWorkoutComponent implements OnInit {
 
   deleted:boolean = false;
   updating:boolean = false;
+  size!:number; //size of the original UserExercise array
 
   faEdit = faPencilAlt
   faTrash = faTrash;
@@ -44,7 +45,10 @@ export class DataWorkoutComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+
+    this.size = this.wrk.userExercises.length;
     this.workoutExercises = this.wrk.userExercises;
+
     this.editWorkout = new FormGroup({
       name: new FormControl(this.wrk.name, Validators.required)
     })
@@ -63,8 +67,9 @@ export class DataWorkoutComponent implements OnInit {
 
   canUpdate():boolean{
     let sameName:boolean = this.wrk.name == this.editWorkout.value.name;
-    let sameExercise:boolean = this.wrk.userExercises == this.workoutExercises;
-    if(sameName && sameExercise){
+    let sameExercise:boolean = this.size == this.workoutExercises.length;
+
+    if(sameName==true && sameExercise==true){
       return false;
     }else{
       return true;
@@ -73,6 +78,7 @@ export class DataWorkoutComponent implements OnInit {
 
   updateWorkout(){
     let userId:number = this.auth.getLoggedUser().id;
+
     this.wrk.name = this.editWorkout.value.name;
     this.wrk.userExercises = this.workoutExercises
     this.wrkSvc.updateWorkout(userId, this.wrk)
@@ -82,6 +88,7 @@ export class DataWorkoutComponent implements OnInit {
       this.updating = false;
     })
   }
+
 
 
   deleteWorkout(workoutId:number){
@@ -104,8 +111,8 @@ export class DataWorkoutComponent implements OnInit {
       this.usExSvc.postNewUserExercise(userId, new UserExercise(
         this.exerciseForm.value.exercise, this.exerciseForm.value.reps, this.exerciseForm.value.series
       ))
-      .subscribe(data => {
-        this.workoutExercises.push(data)
+      .subscribe((newExAdded) => {
+        this.workoutExercises.push(newExAdded);
         this.exerciseForm.reset();
       })
     }
