@@ -19,6 +19,10 @@ export class WorkoutService {
     return this.http.post<Workout>(apiUrl + '/' + userId + '/new-workout', workout);
   }
 
+  updateWorkout(userId:number, workout:Workout):Observable<Workout>{
+    return this.http.put<Workout>(apiUrl + '/' + userId + '/update-workout', workout);
+  }
+
   deleteWorkout(userId:number, workoutId:number):Observable<string>{
     return this.http.delete(apiUrl + '/' + userId + '/delete-workout/' + workoutId, {responseType:'text'});
   }

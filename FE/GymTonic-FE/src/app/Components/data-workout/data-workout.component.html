@@ -2,37 +2,82 @@
 
 <div class="input-group wrkt" *ngIf="!deleted">
   <p class="form-control" aria-label="workout-list">{{wrk.name}}</p>
-  <button class="btn btn-outline-secondary" type="button"><fa-icon [icon]="faEdit" class="me-3"></fa-icon></button>
+  <button (click)="updating = !updating" class="btn btn-outline-secondary" type="button"><fa-icon [icon]="faEdit" class="me-3"></fa-icon></button>
   <button (click)="deleteWorkoutSwal.fire()" class="btn btn-outline-secondary" type="button"><fa-icon [icon]="faTrash"></fa-icon></button>
 </div>
 
-<form [formGroup]="editWorkout">
+<div class="container update-forms-container" *ngIf="updating">
 
-  <div class="my-2">
-    <div class="form-floating">
-      <input formControlName="name"
-      type="text" class="form-control"
-      id="workoutName" placeholder="Name your workout">
-      <label for="workoutName">Name your workout</label>
+  <form [formGroup]="editWorkout">
+
+    <div class="my-2">
+      <div class="form-floating">
+        <input formControlName="name"
+        type="text" class="form-control"
+        id="workoutName" placeholder="Name your workout">
+        <label for="workoutName">Name your workout</label>
+      </div>
     </div>
-  </div>
 
-  <!-- SHOW ADDED EXERCISES -->
-  <div *ngFor="let newEx of workoutExercises"  class="input-group mb-3">
-    <input type="text" class="form-control"
-    aria-label="new-workout" placeholder="{{newEx.exercise.name}}  {{newEx.reps}} x {{newEx.series}}" readonly>
-    <button (click)="removeExercise(newEx)" class="btn btn-outline-secondary text-white"
-    type="button" id="button-addon2">Remove</button>
-  </div>
+    <!-- SHOW ADDED EXERCISES -->
+    <div *ngFor="let newEx of workoutExercises"  class="input-group mb-3">
+      <input type="text" class="form-control"
+      aria-label="new-workout" placeholder="{{newEx.exercise.name}}  {{newEx.reps}} x {{newEx.series}}" readonly>
+      <button (click)="removeExercise(newEx)" class="btn btn-outline-secondary text-white"
+      type="button updt-btn" id="button-addon2">Remove</button>
+    </div>
 
-  <button
-    [ngClass]="workoutExercises.length == 0 ? 'disabled' : ''"
-    [swal]="workoutEditedSwal" (click)="updateWorkout()"
-    id="newWorkout-btn" class="w-100 btn btn-lg btn-primary mb-2"
-    type="submit">Add workout
-  </button>
+    <button
+      [ngClass]="canUpdate() ? '' : 'disabled'"
+      [swal]="workoutEditedSwal" (click)="updateWorkout()"
+      class="updt-btn w-100 btn btn-lg btn-primary mb-2"
+      type="submit">Update workout
+    </button>
 
-</form>
+  </form>
+
+  <form [formGroup]="exerciseForm" (submit)="addExercise()">
+    <div class="my-2">
+      <select (change)="getExercise()"
+      class="form-select form-select-lg mb-3"
+      aria-label="muscle-select"
+      formControlName="muscle">
+        <option selected value=null>What muscle to train</option>
+        <option *ngFor="let musc of muscles" [ngValue]=musc>{{musc}}</option>
+      </select>
+    </div>
+    <div class="my-2">
+      <select class="form-select form-select-lg mb-3"
+      aria-label="exByMuscle-select"
+      formControlName="exercise">
+        <option selected [ngValue]=null>Exercise based on muscle</option>
+        <option *ngFor="let ex of exercises" [ngValue]="ex">{{ex.name}}</option>
+      </select>
+    </div>
+
+    <div class="d-flex">
+      <div class="form-floating my-2 me-2">
+        <input formControlName="reps"
+        type="number" class="form-control"
+        id="reps" placeholder="Reps">
+        <label for="reps">Reps</label>
+      </div>
+      <div class="form-floating my-2">
+        <input formControlName="series"
+        type="number" class="form-control"
+        id="series" placeholder="Series">
+        <label for="series">Series</label>
+      </div>
+    </div>
+
+    <button
+      [ngClass]="exerciseForm.invalid ? 'disabled' : ''"
+      class="updt-btn w-100 btn btn-lg btn-primary mb-2"
+      type="submit">Add exercise
+    </button>
+
+  </form>
+</div>
 
 
 

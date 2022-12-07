@@ -20,3 +20,19 @@
     outline: 1px solid styles.$grey;
   }
 }
+
+.updt-btn, .updt-btn.disabled{
+  background-color: styles.$black;
+  border: 1px solid styles.$orange;
+  color: styles.$orange;
+}
+.updt-btn:active{
+  background-color: styles.$orange;
+  border: 1px solid styles.$black;
+  color: styles.$white;
+}
+.updt-btn:hover{
+  background-color: styles.$orange;
+  border: 1px solid styles.$black;
+  color: styles.$white;
+}
