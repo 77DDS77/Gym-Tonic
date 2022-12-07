@@ -31,4 +31,8 @@ export class UserDataComponent implements OnInit {
     this.wrkSvc.getUserWorkouts(userId).subscribe(wrkx => this.userWorkout = wrkx);
   }
 
+  addExerciseFromChildOutput(ex:UserExercise){
+    this.userExercises.push(ex);
+  }
+
 }

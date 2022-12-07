@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Exercise } from 'src/app/Models/exercise';
@@ -17,6 +17,7 @@ import { WorkoutService } from 'src/app/Services/workout.service';
 export class DataWorkoutComponent implements OnInit {
 
   @Input() wrk!:Workout;
+  @Output() exerciseAdded = new EventEmitter<UserExercise>();
   editWorkout!:FormGroup
   exerciseForm!:FormGroup
 
@@ -100,6 +101,10 @@ export class DataWorkoutComponent implements OnInit {
 
   }
 
+  sendExerciseOutput(ex:UserExercise){
+    this.exerciseAdded.emit(ex);
+  }
+
   addExercise(){
     let userId:number = this.auth.getLoggedUser().id;
 
@@ -112,6 +117,9 @@ export class DataWorkoutComponent implements OnInit {
         this.exerciseForm.value.exercise, this.exerciseForm.value.reps, this.exerciseForm.value.series
       ))
       .subscribe((newExAdded) => {
+
+        this.sendExerciseOutput(newExAdded);
+
         this.workoutExercises.push(newExAdded);
         this.exerciseForm.reset();
       })

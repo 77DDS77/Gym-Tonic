@@ -5,7 +5,7 @@
   <h4>YOUR WORKOUTS:</h4>
   <div class="workouts">
 
-    <app-data-workout [wrk]="wrk"  *ngFor="let wrk of userWorkout"></app-data-workout>
+    <app-data-workout (exerciseAdded)="addExerciseFromChildOutput($event)" [wrk]="wrk"  *ngFor="let wrk of userWorkout"></app-data-workout>
 
   </div>
 
