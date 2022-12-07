@@ -1,6 +1,6 @@
 
 
-<div class="plan container mt-4 p-0">
+<div class="plan container mt-4 p-0" *ngIf="!deleted">
 
   <div class="plan-head">
 
@@ -60,5 +60,6 @@
   icon="success"
   [timerProgressBar]=true
   [timer]=1500
+  [showConfirmButton]=false
   >
 </swal>

@@ -16,7 +16,7 @@ export class PlanService {
   }
 
   deletePlan(userId:number, planId:number):Observable<string>{
-    return this.http.post<string>(apiUrl + '/' + userId + '/delete-plan/' + planId, null);
+    return this.http.delete(apiUrl + '/' + userId + '/delete-plan/' + planId, {responseType:'text'});
   }
 
   postNewPlan(userId:number, plan:Plan):Observable<Plan>{

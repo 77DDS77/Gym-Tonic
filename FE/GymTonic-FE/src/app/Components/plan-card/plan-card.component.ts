@@ -25,12 +25,12 @@ export class PlanCardComponent implements OnInit {
   @Input() userExercises!: UserExercise[];
 
   expand:boolean = false;
+  deleted:boolean = false;
 
   constructor(
     private planSvc:PlanService,
     private auth:AuthService,
-    private userSvc:UserService,
-    private router:Router
+    private userSvc:UserService
     ) { }
 
   ngOnInit(): void {
@@ -42,9 +42,8 @@ export class PlanCardComponent implements OnInit {
     .subscribe(user => {
       if(user.userPlansIds.includes(plan.id)){
         this.planSvc.deletePlan(user.id, plan.id)
-        .subscribe(res => {
-          console.log("plan deleted");
-          this.router.navigate(['/user-home']);
+        .subscribe(() => {
+          this.deleted = true;
         })
       }
     })

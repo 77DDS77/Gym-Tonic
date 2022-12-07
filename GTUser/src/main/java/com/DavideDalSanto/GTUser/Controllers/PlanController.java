@@ -58,7 +58,7 @@ public class PlanController {
     /**
      * Delete the given Plan from the user profile
      * */
-    @PostMapping("{userId}/delete-plan/{pID}")
+    @DeleteMapping("{userId}/delete-plan/{pID}")
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
     public ResponseEntity<String> deletePlan(@PathVariable(name = "userId") Long GTUserid, @PathVariable(name = "pID") Long planID){
         try{
