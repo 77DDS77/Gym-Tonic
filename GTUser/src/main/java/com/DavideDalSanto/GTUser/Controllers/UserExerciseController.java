@@ -67,7 +67,7 @@ public class UserExerciseController {
         }
     }
 
-    @PostMapping("{userId}/update-exercise")
+    @PutMapping("{userId}/update-exercise")
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
     public ResponseEntity<UserExerciseDTO> updateUserExercise(@PathVariable(name = "userId") Long GTUserid, @RequestBody UserExerciseDTO updated){
         try{

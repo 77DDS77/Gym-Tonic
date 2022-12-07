@@ -69,7 +69,7 @@ public class PlanController {
         }
     }
 
-    @PostMapping("{userId}/update-plan")
+    @PutMapping("{userId}/update-plan")
     @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
     public ResponseEntity<PlanDTO> updatePlan(@PathVariable(name = "userId") Long GTUserid, @RequestBody PlanDTO updated){
         try{

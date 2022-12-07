@@ -20,7 +20,7 @@ export class UserExerciseService {
   }
 
   updateUserExercise(userId:number, exercise:UserExercise):Observable<UserExercise>{
-    return this.http.post<UserExercise>(apiUrl + '/' + userId + '/update-exercise', exercise);
+    return this.http.put<UserExercise>(apiUrl + '/' + userId + '/update-exercise', exercise);
   }
 
   deleteUserExercise(userId:number, exerciseId:number):Observable<string>{
