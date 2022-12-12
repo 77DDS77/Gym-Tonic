@@ -1,16 +1,20 @@
 package com.DavideDalSanto.GTUser.Services;
 
 import com.DavideDalSanto.GTUser.Entities.GTPersonalTrainer;
+import com.DavideDalSanto.GTUser.Entities.GTUser;
 import com.DavideDalSanto.GTUser.Entities.RoleType;
 import com.DavideDalSanto.GTUser.Exceptions.GTPTIdException;
 import com.DavideDalSanto.GTUser.Exceptions.NonExistingRoleException;
+import com.DavideDalSanto.GTUser.Models.SearchedUser;
 import com.DavideDalSanto.GTUser.Repositories.GTPTRepository;
+import com.DavideDalSanto.GTUser.Repositories.GTUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +23,9 @@ public class GTPTService {
 
     @Autowired
     private GTPTRepository ptr;
+
+    @Autowired
+    private GTUserRepository ur;
 
     @Autowired
     private RoleService rs;
@@ -92,5 +99,25 @@ public class GTPTService {
         }else{
             throw new GTPTIdException(id);
         }
+    }
+
+    //PT Actions
+
+    public List<SearchedUser> searchUserByUsername(String username){
+        List<GTUser>  users = ur.findByUsernameContainsIgnoreCase(username);
+        List<SearchedUser> res = new ArrayList<SearchedUser>();
+
+        for(GTUser user : users){
+            SearchedUser found = new SearchedUser();
+            found.setId(user.getId());
+            found.setUsername(user.getUsername());
+            found.setName(user.getName());
+            found.setLastname(user.getLastname());
+            found.setUserExercisesId(user.getUserExercisesId());
+            found.setUserWorkoutsId(user.getUserWorkoutsId());
+            found.setUserPlansIds(user.getUserPlansIds());
+            res.add(found);
+        }
+        return res;
     }
 }

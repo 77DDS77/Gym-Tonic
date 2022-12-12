@@ -1,1 +1,14 @@
-<p>pt-home works!</p>
+<app-header></app-header>
+
+<div class="container">
+  <div class="search-user">
+    <input [(ngModel)]="username" (keyup)="$event.keyCode == 13 ? searchUser() : null" type="search" placeholder="Search username" class="form-control">
+    <p>
+      {{usersFound | json}}
+    </p>
+  </div>
+</div>
+
+
+
+<app-navfoot></app-navfoot>

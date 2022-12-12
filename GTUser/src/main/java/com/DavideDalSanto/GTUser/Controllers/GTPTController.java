@@ -5,6 +5,7 @@ import com.DavideDalSanto.GTUser.Entities.GTUser;
 import com.DavideDalSanto.GTUser.Exceptions.GTPTIdException;
 import com.DavideDalSanto.GTUser.Exceptions.GTUserIdException;
 import com.DavideDalSanto.GTUser.Exceptions.NonExistingRoleException;
+import com.DavideDalSanto.GTUser.Models.SearchedUser;
 import com.DavideDalSanto.GTUser.Services.GTPTService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,4 +99,22 @@ public class GTPTController {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
+
+    //--------------------------ACTIONS-------------------------
+    /**
+    * Used on the PT-home search bar to return the
+     * searched GTUser
+     * */
+    @GetMapping("/search-user/{username}")
+    @PreAuthorize("hasRole('GTPERSONALTRAINER')")
+    public ResponseEntity<List<SearchedUser>> searchUserByUsername(@PathVariable(name="username") String username){
+        try{
+            return new ResponseEntity<>(pts.searchUserByUsername(username), HttpStatus.OK);
+        }catch(Exception e){
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+
 }

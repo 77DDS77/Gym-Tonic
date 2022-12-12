@@ -9,7 +9,7 @@ import { RegisterComponent } from './Pages/register/register.component';
 import { UserHomeComponent } from './Pages/user-home/user-home.component';
 import { PtHomeComponent } from './Pages/pt-home/pt-home.component';
 import { HeaderComponent } from './Components/header/header.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavfootComponent } from './Components/navfoot/navfoot.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -62,6 +62,7 @@ import { DataExerciseComponent } from './Components/data-exercise/data-exercise.
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     FontAwesomeModule,
