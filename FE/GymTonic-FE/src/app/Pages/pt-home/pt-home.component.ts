@@ -17,13 +17,14 @@ export class PtHomeComponent implements OnInit {
   constructor(private ptSvc:PtService) { }
 
   ngOnInit(): void {
+    this.searchUser();
   }
 
 
   searchUser(){
     console.log(this.username);
 
-    this.ptSvc.searchUser(this.username)
+    this.ptSvc.searchUser("dds")
     .subscribe(users => {
       this.usersFound = users;
       this.username = "";

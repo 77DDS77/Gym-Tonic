@@ -2,8 +2,12 @@
 @use '../../../styles.scss';
 
 .user-card{
-  width: 200px;
-  color: white;
+  width: 250px;
+  height: 300px;
+  color:rgba(255, 255, 255, 0.769);
+  background-color: styles.$black;
+  border-radius: 0px 0px 10px 10px;
+  box-shadow: 0px 12px 20px 1px rgb(0 0 0 / 57%);
   .user-head{
     border-radius: 10px 10px 0px 0px;
     border-bottom: 1px solid styles.$black;
@@ -13,7 +17,7 @@
       border: none;
       background-color: transparent;
       :active{
-        color:white;
+        color:styles.$grey;
       }
     }
     .user-id{
@@ -23,7 +27,125 @@
     }
   }
   .user-body{
-    background-color: styles.$black;
-    border-radius: 0px 0px 10px 10px;
+    ul{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      li{
+        list-style: none;
+        height: 3rem;
+        background-color: styles.$grey;
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+        position: relative;
+        border-radius: 0 10px 10px 0;
+        box-shadow: 3px 5px 5px #191919;;
+        p{
+          font-size: 2rem;
+        }
+        .deets-btn{
+          position: absolute;
+          right: 0px;
+          height: 3rem;
+          width: 36px;
+          background-color: styles.$black;
+          color: styles.$orange;
+          border: none;
+          font-size: 1.8rem;
+          margin-left: 1px;
+          border-radius: 0 10px 10px 0;
+        }
+        .deets-btn:active{
+          color: styles.$white;
+          background-color: styles.$grey;
+        }
+      }
+    }
+    .follow-btn{
+      background-color: transparent;
+      border: none;
+      outline: 1px solid styles.$orange;
+      border-radius: 5px;
+      color: styles.$orange;
+      font-style: italic;
+    }
+    .followed{
+      background-color: styles.$orange;
+      color: styles.$black;
+    }
+  }
+}
+
+
+
+@media screen and (min-width: 356px){
+  .user-card{
+    width: 160px;
+    height: 230px;
+    .user-body{
+      ul{
+        li{
+          height: 2rem;
+          margin-bottom: 0.6rem;
+          padding-left: 0.5rem;
+          p{
+            font-size: 1.2rem;
+          }
+          .deets-btn{
+            height: 2rem;
+            width: 25px;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px){
+  .user-card{
+    width: 250px;
+    height: 300px;
+    .user-body{
+      ul{
+        li{
+          height: 3rem;
+          margin-bottom: 1rem;
+          padding-left: 1rem;
+          p{
+            font-size: 2rem;
+          }
+          .deets-btn{
+            height: 3rem;
+            width: 36px;
+            font-size: 1.8rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1076px){
+  .user-card{
+    width: 160px;
+    height: 230px;
+    .user-body{
+      ul{
+        li{
+          height: 2rem;
+          margin-bottom: 0.6rem;
+          padding-left: 0.5rem;
+          p{
+            font-size: 1.2rem;
+          }
+          .deets-btn{
+            height: 2rem;
+            width: 25px;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
   }
 }

@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faUserMinus, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faChevronRight, faUserMinus, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { Plan } from 'src/app/Models/plan';
 import { SearchedUser } from 'src/app/Models/searchedUser';
+import { UserExercise } from 'src/app/Models/user-exercise';
+import { Workout } from 'src/app/Models/workout';
 import { AuthService } from 'src/app/Services/auth.service';
 import { PtService } from 'src/app/Services/pt.service';
 import { UserService } from 'src/app/Services/user.service';
@@ -16,8 +19,10 @@ export class UserFoundComponent implements OnInit {
 
   userPlus = faUserPlus;
   userMinus = faUserMinus;
+  angleRight = faChevronRight;
 
   followed:boolean = false;
+  outputDetails:UserExercise[] | Workout[] | Plan[] = [];
 
   constructor(
     private auth:AuthService,

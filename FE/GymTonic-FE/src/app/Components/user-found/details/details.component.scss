@@ -1,0 +1,15 @@
+.details-container{
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    .details{
+      position: absolute;
+      width: 337px;
+      height: 230px;
+      bottom: 12px;
+      left: 177px;
+      background-color: blue;
+      border-radius: 10px;
+    }
+  }
