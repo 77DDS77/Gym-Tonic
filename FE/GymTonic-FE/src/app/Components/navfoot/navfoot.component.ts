@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faDumbbell, faLayerGroup, faPlus, faScroll, faDoorOpen, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/Services/auth.service';
-import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 

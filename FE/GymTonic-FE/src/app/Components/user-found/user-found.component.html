@@ -1,0 +1,38 @@
+
+<div class="user-card mt-3">
+  <div class="user-head text-center p-2">
+    <h5 class="d-inline fw-bold">
+      {{user.username}} <span class="user-id">#{{user.id}}</span>
+    </h5>
+    <div class="follow d-inline ms-3">
+      <button class="follow-user" (click)="toggleFollowUser()">
+        <fa-icon *ngIf="!followed" [icon]="userPlus"></fa-icon>
+        <fa-icon *ngIf="followed" [icon]="userMinus"></fa-icon>
+      </button>
+    </div>
+  </div>
+  <div class="user-body">
+    <ul class="pt-2 pb-2 mb-0">
+      <li>Exercises: {{user.userExercisesId.length}}</li>
+      <li>Workouts: {{user.userWorkoutsId.length}}</li>
+      <li>Plans: {{user.userPlansIds.length}}</li>
+    </ul>
+
+    <div class="actions text-end">
+      <div class="row" *ngIf="followed">
+        <div class="col">
+          <div ngbDropdown class="d-inline-block">
+            <button type="button" class="btn actions-btn text-white" ngbDropdownToggle>
+              Details
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button ngbDropdownItem>Check exercises</button>
+              <button ngbDropdownItem>Check workouts</button>
+              <button ngbDropdownItem>Check plans</button>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+</div>

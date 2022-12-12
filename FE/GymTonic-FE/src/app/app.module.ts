@@ -31,6 +31,7 @@ import { RawExerciseFormComponent } from './Components/Forms/raw-exercise-form/r
 import { UserDataComponent } from './Pages/user-data/user-data.component';
 import { DataWorkoutComponent } from './Components/data-workout/data-workout.component';
 import { DataExerciseComponent } from './Components/data-exercise/data-exercise.component';
+import { UserFoundComponent } from './Components/user-found/user-found.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { DataExerciseComponent } from './Components/data-exercise/data-exercise.
     RawExerciseFormComponent,
     UserDataComponent,
     DataWorkoutComponent,
-    DataExerciseComponent
+    DataExerciseComponent,
+    UserFoundComponent
   ],
   imports: [
     BrowserModule,

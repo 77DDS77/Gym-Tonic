@@ -6,9 +6,9 @@ export class SearchedUser {
   username:string;
   name:string;
   lastname:string;
-  exerciseIds:number[];
-  workoutIds:number[];
-  planIds:number[];
+  userExercisesId:number[];
+  userWorkoutsId:number[];
+  userPlansIds:number[];
 
   constructor(id:number, username:string, name:string,
     lastname:string, exerciseIds:number[], workoutIds:number[],
@@ -17,8 +17,8 @@ export class SearchedUser {
       this.username = username;
       this.name = name;
       this.lastname = lastname;
-      this.exerciseIds = exerciseIds;
-      this.workoutIds = workoutIds;
-      this.planIds = plansIds;
+      this.userExercisesId = exerciseIds;
+      this.userWorkoutsId = workoutIds;
+      this.userPlansIds = plansIds;
     }
 }

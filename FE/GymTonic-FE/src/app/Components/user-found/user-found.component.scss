@@ -1,0 +1,29 @@
+
+@use '../../../styles.scss';
+
+.user-card{
+  width: 200px;
+  color: white;
+  .user-head{
+    border-radius: 10px 10px 0px 0px;
+    border-bottom: 1px solid styles.$black;
+    background-color: styles.$orange;
+    color: styles.$black;
+    .follow-user{
+      border: none;
+      background-color: transparent;
+      :active{
+        color:white;
+      }
+    }
+    .user-id{
+      color: styles.$grey;
+      font-style: italic;
+      font-size: 1rem;
+    }
+  }
+  .user-body{
+    background-color: styles.$black;
+    border-radius: 0px 0px 10px 10px;
+  }
+}
