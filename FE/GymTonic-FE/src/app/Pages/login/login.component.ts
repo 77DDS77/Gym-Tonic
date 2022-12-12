@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { AuthService } from 'src/app/Services/auth.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-login',
@@ -12,6 +15,7 @@ export class LoginComponent implements OnInit {
 
   form!: FormGroup;
   formIsValid!: boolean;
+  deleteExerciseSwal!:SwalComponent
 
   constructor(
     private auth:AuthService,
@@ -29,16 +33,29 @@ export class LoginComponent implements OnInit {
     if(this.form.valid){
 
       this.auth.login(this.form.value)
-      .subscribe(res => {
-        this.auth.saveAccessData(res);
-        if(res.roles.includes("ROLE_GTPERSONALTRAINER")){
-          this.router.navigate(['/pt-home']);
-        }else{
-          this.router.navigate(['/user-home']);
+      .subscribe( {
+        next: (res) => {
+          this.auth.saveAccessData(res);
+          if(res.roles.includes("ROLE_GTPERSONALTRAINER")){
+            this.router.navigate(['/pt-home']);
+          }else{
+            this.router.navigate(['/user-home']);
+          }
+          this.form.reset();
+        },
+        error: () => {
+          Swal.fire({
+            title: 'Error!',
+            text: 'Invalid credentials!',
+            icon: 'error',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true
+          })
+          this.form.reset();
         }
-        // this.router.navigate(['/customers'])
-        this.form.reset();
       })
+
     }
     else{
       this.formIsValid = false;
