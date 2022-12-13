@@ -1,3 +1,61 @@
 <div class="details-container">
-    <div class="details"></div>
+    <div class="details slide-in">
+        <div class="details-head text-center p-2">
+          <button (click)="close()" class="back-btn me-3"><fa-icon [icon]="closeIcon"></fa-icon></button>
+            <h5 class="mb-0 fw-bold d-inline">
+                {{getTitle()}}
+            </h5>
+        </div>
+        <div class="details-body">
+            <!-- EXERCISE TEMPLATE -->
+            <div class="exercises" *ngIf="details[0].exercise != undefined">
+              <ul class="p-2 mb-0">
+                  <li *ngFor="let ex of details">
+                      <p class="d-inline">
+                        {{ex?.exercise?.name}}
+                        <span>
+                            [{{ex?.reps}} x {{ex?.series}}]
+                        </span>
+                      </p>
+                  </li>
+              </ul>
+            </div>
+
+            <!-- WORKOUT TEMPLATE -->
+            <div class="workouts" *ngIf="details[0].userExercises != undefined">
+              <ul class="p-2 mb-0">
+                  <li *ngFor="let wrk of details">
+                      <p class="mb-0 d-inline">
+                        {{wrk?.name}}
+                      </p>
+                      <button (click)="passToSubDetails(wrk)" class="p-0 deets-btn">
+                        <fa-icon [icon]="angleRight"></fa-icon>
+                      </button>
+                  </li>
+              </ul>
+            </div>
+
+            <!-- PLANS TEMPLATE -->
+            <div class="plans" *ngIf="details[0].workouts != undefined">
+              <ul class="p-2 mb-0">
+                  <li *ngFor="let pln of details">
+                      <p class="mb-0 d-inline">
+                        {{pln?.name}}
+                      </p>
+                      <button (click)="passToSubDetails(pln)" class="p-0 deets-btn">
+                        <fa-icon [icon]="angleRight"></fa-icon>
+                      </button>
+                  </li>
+              </ul>
+              <div class="add-plan px-2">
+                <button class="add-plan-btn w-100">
+                  <span class="fw-bold">Add Plan</span>
+                </button>
+              </div>
+            </div>
+
+        </div>
+    </div>
 </div>
+
+<sub-details *ngIf="subDeets" (closeSubDeets)="closeSubDeets()" [subDetailsRecieved]="subDetails"></sub-details>

@@ -1,0 +1,112 @@
+
+@use '../../../../../styles.scss';
+
+.sub-details-container{
+    position: relative;
+    .sub-details{
+        position: absolute;
+        width: 250px;
+        height: 300px;
+        bottom: 0px;
+        left: 0px;
+        background-color: styles.$black;
+        border-radius: 10px;
+        overflow: scroll;
+        .details-head{
+            border-radius: 10px 10px 0px 0px;
+            border-bottom: 1px solid styles.$black;
+            background-color: styles.$orange;
+            color: styles.$black;
+            position: sticky;
+            top: 0px;
+            z-index: 3;
+            .back-btn{
+              background-color: transparent;
+              border: none;
+              font-size: 30px;
+              position: absolute;
+              left: 0px;
+              bottom: -4px;
+            }
+        }
+        .details-body{
+            .exercises, .workouts, .plans{
+                overflow: scroll;
+                //gli manca la height ????
+              ul{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                li{
+                  list-style: none;
+                  height: 3rem;
+                  background-color: styles.$grey;
+                  margin-bottom: 1rem;
+                  padding-left: 1rem;
+                  position: relative;
+                  border-radius: 0 10px 10px 0;
+                  box-shadow: 3px 5px 5px #191919;;
+                  p{
+                    font-size: 1rem;
+                    color: white;
+                  }
+                }
+              }
+            }
+
+            .workouts, .plans{
+              ul{
+                li{
+                  p{
+                    line-height: 45px;
+                  }
+                }
+              }
+              .deets-btn{
+                position: absolute;
+                right: 0px;
+                height: 3rem;
+                width: 36px;
+                background-color: styles.$black;
+                color: styles.$orange;
+                border: none;
+                font-size: 1.8rem;
+                margin-left: 1px;
+                border-radius: 0 10px 10px 0;
+              }
+              .deets-btn:active{
+                color: styles.$white;
+                background-color: styles.$grey;
+              }
+            }
+        }
+    }
+}
+
+
+
+
+.slide-in{
+    animation-name: slideIn;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.31, 0.98, 0.8, 1);
+}
+
+@keyframes slideIn {
+    0%{
+        transform: translateX(-250px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+//hiding scrollbar
+*::-webkit-scrollbar,
+*::-webkit-scrollbar-thumb {
+    width: 0px;
+
+}

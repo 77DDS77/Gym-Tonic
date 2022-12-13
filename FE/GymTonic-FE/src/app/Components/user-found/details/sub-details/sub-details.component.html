@@ -1,0 +1,46 @@
+
+<div class="sub-details-container">
+    <div class="sub-details slide-in">
+        <div class="details-head text-center p-2">
+            <button (click)="close()" class="back-btn me-3"><fa-icon [icon]="closeIcon"></fa-icon></button>
+            <h5 class="mb-0 fw-bold d-inline">
+                {{subDetailsRecieved.name}}
+            </h5>
+        </div>
+        <div class="details-body">
+
+            <!-- EXERCISE INSIDE WORKOUT TEMPLATE -->
+            <div class="exercises" *ngIf="subDetailsRecieved.userExercises != undefined">
+              <ul class="p-2 mb-0">
+                  <li *ngFor="let ex of subDetailsRecieved.userExercises">
+                      <p class="d-inline">
+                        {{ex?.exercise?.name}}
+                        <span>
+                            [{{ex?.reps}} x {{ex?.series}}]
+                        </span>
+                      </p>
+                  </li>
+              </ul>
+            </div>
+
+            <!-- WORKOUT INSIDE PLAN TEMPLATE -->
+            <div class="workouts" *ngIf="subDetailsRecieved.workouts != undefined">
+              <ul class="p-2 mb-0">
+                  <li *ngFor="let wrk of subDetailsRecieved.workouts">
+                      <p class="mb-0 d-inline">
+                        {{wrk?.name}}
+                      </p>
+                      <button (click)="test(wrk)" class="p-0 deets-btn">
+                        <fa-icon [icon]="angleRight"></fa-icon>
+                      </button>
+                  </li>
+              </ul>
+            </div>
+
+            <!-- FARE TEMPLATE PER EXERCISE DENTRO WORKOUT DENTRO PLAN ???? -->
+
+        </div>
+    </div>
+</div>
+
+<sub-details *ngIf="planDeets" (closeSubDeets)="closePlanDeets()" [subDetailsRecieved]="planDetails"></sub-details>

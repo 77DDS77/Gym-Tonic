@@ -1,12 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faAngleRight, faChevronRight, faUserMinus, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faUserMinus, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { Plan } from 'src/app/Models/plan';
 import { SearchedUser } from 'src/app/Models/searchedUser';
 import { UserExercise } from 'src/app/Models/user-exercise';
 import { Workout } from 'src/app/Models/workout';
 import { AuthService } from 'src/app/Services/auth.service';
+import { UserExerciseService } from 'src/app/Services/user-exercise.service';
 import { PtService } from 'src/app/Services/pt.service';
-import { UserService } from 'src/app/Services/user.service';
+import { WorkoutService } from 'src/app/Services/workout.service';
+import { PlanService } from 'src/app/Services/plan.service';
 
 @Component({
   selector: 'user-found',
@@ -22,12 +24,15 @@ export class UserFoundComponent implements OnInit {
   angleRight = faChevronRight;
 
   followed:boolean = false;
-  outputDetails:UserExercise[] | Workout[] | Plan[] = [];
+  deets:boolean = false;
+  inputDetails:UserExercise[] | Workout[] | Plan[] = [];
 
   constructor(
     private auth:AuthService,
     private ptSvc:PtService,
-    private userSvc:UserService) { }
+    private uexSvc:UserExerciseService,
+    private wrkSvc:WorkoutService,
+    private planSvc:PlanService) { }
 
   ngOnInit(): void {
     this.checkIfFollowed();
@@ -63,6 +68,37 @@ export class UserFoundComponent implements OnInit {
         })
       }
     })
+  }
+
+  exerciseDeets(){
+    this.uexSvc.getUserExercises(this.user.id)
+    .subscribe(exx => {
+      this.inputDetails = [];
+      this.inputDetails = exx;
+      this.deets = true;
+    })
+  }
+
+  workoutDeets(){
+    this.wrkSvc.getUserWorkouts(this.user.id)
+    .subscribe(wrks => {
+      this.inputDetails = [];
+      this.inputDetails = wrks;
+      this.deets = true;
+    })
+  }
+
+  planDeets(){
+    this.planSvc.getUserPlans(this.user.id)
+    .subscribe(plans => {
+      this.inputDetails = [];
+      this.inputDetails = plans;
+      this.deets = true;
+    })
+  }
+
+  closeDeets(){
+    this.deets = false;
   }
 
 }

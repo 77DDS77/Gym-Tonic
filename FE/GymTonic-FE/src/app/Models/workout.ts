@@ -11,4 +11,5 @@ export class Workout {
     this.userExercises = userExs;
 
   }
+
 }
