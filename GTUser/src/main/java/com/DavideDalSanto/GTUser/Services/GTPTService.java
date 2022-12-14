@@ -4,6 +4,7 @@ import com.DavideDalSanto.GTUser.Entities.GTPersonalTrainer;
 import com.DavideDalSanto.GTUser.Entities.GTUser;
 import com.DavideDalSanto.GTUser.Entities.RoleType;
 import com.DavideDalSanto.GTUser.Exceptions.GTPTIdException;
+import com.DavideDalSanto.GTUser.Exceptions.GTUserIdException;
 import com.DavideDalSanto.GTUser.Exceptions.NonExistingRoleException;
 import com.DavideDalSanto.GTUser.Models.SearchedUser;
 import com.DavideDalSanto.GTUser.Repositories.GTPTRepository;
@@ -28,12 +29,17 @@ public class GTPTService {
     private GTUserRepository ur;
 
     @Autowired
+    private GTUserService us;
+
+    @Autowired
     private RoleService rs;
 
     @Autowired
     PasswordEncoder encoder;
 
-    public List<GTPersonalTrainer> getAll(){return ptr.findAll();}
+    public List<GTPersonalTrainer> getAll() {
+        return ptr.findAll();
+    }
 
     public Page<GTPersonalTrainer> getAllPaginate(Pageable p) {
         return ptr.findAll(p);
@@ -42,10 +48,10 @@ public class GTPTService {
     /**
      * Get a Personal Trainer by its ID,
      * if not found throws an exception.
-     * */
+     */
     public GTPersonalTrainer getById(Long id) throws GTPTIdException {
         Optional<GTPersonalTrainer> found = ptr.findById(id);
-        if(found.isPresent()){
+        if (found.isPresent()) {
             return found.get();
         }
         throw new GTPTIdException(id);
@@ -56,7 +62,7 @@ public class GTPTService {
      * Save a Personal Trainer in the DB,
      * before saving encode his password and
      * sets its roles.
-     * */
+     */
     public GTPersonalTrainer save(GTPersonalTrainer user) throws NonExistingRoleException {
         user.setPassword(encoder.encode(user.getPassword()));
 //        user.addRole(rs.findByRoleType(RoleType.ROLE_GTUSER));
@@ -67,7 +73,7 @@ public class GTPTService {
     /**
      * Updates a Personal Trainer's info except for its
      * password.
-     * */
+     */
     public GTPersonalTrainer update(GTPersonalTrainer updatedPT) throws GTPTIdException {
         GTPersonalTrainer old = getById(updatedPT.getId());
         old.setName(updatedPT.getName());
@@ -85,7 +91,7 @@ public class GTPTService {
     /**
      * Updates a Personal Trainer's password making sure its
      * encoded.
-     * */
+     */
     public GTPersonalTrainer updatePassword(GTPersonalTrainer user) throws GTPTIdException {
         GTPersonalTrainer old = getById(user.getId());
         old.setPassword(encoder.encode(user.getPassword()));
@@ -93,21 +99,26 @@ public class GTPTService {
     }
 
     public String delete(Long id) throws GTPTIdException {
-        if(ptr.findById(id).isPresent()) {
+        if (ptr.findById(id).isPresent()) {
             ptr.delete(ptr.findById(id).get());
             return "Personal Trainer deleted.";
-        }else{
+        } else {
             throw new GTPTIdException(id);
         }
     }
 
     //PT Actions
 
-    public List<SearchedUser> searchUserByUsername(String username){
-        List<GTUser>  users = ur.findByUsernameContainsIgnoreCase(username);
+    /**
+     * Used for the searchbar endpoint
+     * parse GTUser in a SearchedUser for security
+     * reason.
+     */
+    public List<SearchedUser> searchUserByUsername(String username) {
+        List<GTUser> users = ur.findByUsernameContainsIgnoreCase(username);
         List<SearchedUser> res = new ArrayList<SearchedUser>();
 
-        for(GTUser user : users){
+        for (GTUser user : users) {
             SearchedUser found = new SearchedUser();
             found.setId(user.getId());
             found.setUsername(user.getUsername());
@@ -117,6 +128,31 @@ public class GTPTService {
             found.setUserWorkoutsId(user.getUserWorkoutsId());
             found.setUserPlansIds(user.getUserPlansIds());
             res.add(found);
+        }
+        return res;
+    }
+
+    /**
+     * Used to return the GTUsers that a PT is
+     * following but first parsing them in
+     * SearchedUser, so he never has access to
+     * their sensible data.
+     * */
+    public List<SearchedUser> getPtFollowedUsers(Long ptID) throws GTPTIdException, GTUserIdException {
+        GTPersonalTrainer found = getById(ptID);
+        List<Long> userIds = found.getGtUserIds();
+        List<SearchedUser> res = new ArrayList<>();
+        for (Long id : userIds) {
+            GTUser user = us.getById(id);
+            SearchedUser converted = new SearchedUser();
+            converted.setId(user.getId());
+            converted.setUsername(user.getUsername());
+            converted.setName(user.getName());
+            converted.setLastname(user.getLastname());
+            converted.setUserExercisesId(user.getUserExercisesId());
+            converted.setUserWorkoutsId(user.getUserWorkoutsId());
+            converted.setUserPlansIds(user.getUserPlansIds());
+            res.add(converted);
         }
         return res;
     }

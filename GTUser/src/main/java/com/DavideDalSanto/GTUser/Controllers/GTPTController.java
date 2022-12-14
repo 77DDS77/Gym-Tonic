@@ -111,6 +111,18 @@ public class GTPTController {
         try{
             return new ResponseEntity<>(pts.searchUserByUsername(username), HttpStatus.OK);
         }catch(Exception e){
+            log.error(e.getMessage());
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/my-users/{ptId}")
+    @PreAuthorize("hasRole('GTPERSONALTRAINER')")
+    public ResponseEntity<List<SearchedUser>> getFollowedUsers(@PathVariable(name = "ptId") Long ptId){
+        try{
+            return new ResponseEntity<>(pts.getPtFollowedUsers(ptId), HttpStatus.OK);
+        } catch (GTPTIdException | GTUserIdException e) {
+            log.error(e.getMessage());
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
