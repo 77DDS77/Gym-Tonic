@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faChevronRight, faUserMinus, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { Plan } from 'src/app/Models/plan';
 import { SearchedUser } from 'src/app/Models/searchedUser';
@@ -18,6 +18,8 @@ import { PlanService } from 'src/app/Services/plan.service';
 export class UserFoundComponent implements OnInit {
 
   @Input() user!:SearchedUser;
+
+  @Output() followedUser = new EventEmitter<boolean>();
 
   userPlus = faUserPlus;
   userMinus = faUserMinus;
@@ -54,10 +56,11 @@ export class UserFoundComponent implements OnInit {
     .subscribe(pt => {
       if(this.followed == false){
         pt.gtUserIds.push(this.user.id);
-
         this.ptSvc.updatePT(pt)
         .subscribe(() => {
           this.followed = true;
+          //output followed user
+          this.followedUser.emit(true)
         })
       }else{
         const index = pt.gtUserIds.indexOf(this.user.id, 0);
@@ -65,6 +68,8 @@ export class UserFoundComponent implements OnInit {
         this.ptSvc.updatePT(pt)
         .subscribe(() => {
           this.followed = false;
+          //output unfollowed user
+          this.followedUser.emit(false)
         })
       }
     })

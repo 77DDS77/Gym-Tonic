@@ -2,9 +2,13 @@
 
 <div class="container">
   <div class="search-user">
-    <input [(ngModel)]="username" (keyup)="$event.keyCode == 13 ? searchUser() : null" type="search" placeholder="Search username" class="form-control">
+    <div class="search-bar">
+      <input [(ngModel)]="username" (keyup)="$event.keyCode == 13 ? searchUser() : null" type="search" placeholder="Search username" class="form-control">
+      <button (click)="clearSearch()" class="clear-btn ms-2">Clear</button>
+    </div>
 
     <div class="users-found d-flex justify-content-around flex-wrap gap-3 mb-5">
+      <user-found (followedUser)="addFollowed($event, user)" [user]="user" *ngFor="let user of usersFound"></user-found>
       <user-found [user]="user" *ngFor="let user of usersFound"></user-found>
       <user-found [user]="user" *ngFor="let user of usersFound"></user-found>
       <user-found [user]="user" *ngFor="let user of usersFound"></user-found>
@@ -13,7 +17,13 @@
       <user-found [user]="user" *ngFor="let user of usersFound"></user-found>
       <user-found [user]="user" *ngFor="let user of usersFound"></user-found>
       <user-found [user]="user" *ngFor="let user of usersFound"></user-found>
-      <user-found [user]="user" *ngFor="let user of usersFound"></user-found>
+    </div>
+  </div>
+
+  <div class="pt-user">
+    <h1>MY USERS (TOGLIERE)</h1>
+    <div class="users-found d-flex justify-content-around flex-wrap gap-3 mb-5">
+      <user-found (followedUser)="addFollowed($event, user)" [user]="user" *ngFor="let user of myUsers"></user-found>
     </div>
   </div>
 </div>

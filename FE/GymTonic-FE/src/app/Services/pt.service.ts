@@ -17,6 +17,10 @@ export class PtService {
     return this.http.get<SearchedUser[]>(apiUrl + '/p-trainers/search-user/' + username);
   }
 
+  getFollowed(ptId:number):Observable<SearchedUser[]>{
+    return this.http.get<SearchedUser[]>(apiUrl + '/p-trainers/my-users/' + ptId);
+  }
+
   getPtById(id:number):Observable<GTPTrainer>{
     return this.http.get<GTPTrainer>(apiUrl + '/p-trainers/' + id);
   }

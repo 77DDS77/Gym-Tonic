@@ -29,13 +29,14 @@ export class SubDetailsComponent implements OnInit {
     this.closeSubDeets.emit(false)
   }
 
-  test(x:Workout){
+  closeSubDetails(x:Workout){
     this.planDeets = true;
     this.planDetails = x;
   }
 
   closePlanDeets(){
-    this.closeSubDeets.emit(false)
+    // this.closeSubDeets.emit(false)
+    this.planDeets = false;
   }
 
 }

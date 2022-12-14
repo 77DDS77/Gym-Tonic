@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GTUser } from 'src/app/Models/gtuser';
 import { SearchedUser } from 'src/app/Models/searchedUser';
+import { AuthService } from 'src/app/Services/auth.service';
 import { PtService } from 'src/app/Services/pt.service';
 
 @Component({
@@ -11,24 +11,45 @@ import { PtService } from 'src/app/Services/pt.service';
 export class PtHomeComponent implements OnInit {
 
   usersFound:SearchedUser[] = [];
+  myUsers:SearchedUser[] = [];
   searchBar!:HTMLInputElement
   username:string = "";
 
-  constructor(private ptSvc:PtService) { }
+  constructor(
+    private ptSvc:PtService,
+    private auth:AuthService
+    ) { }
 
   ngOnInit(): void {
-    this.searchUser();
+    this.getMyUsers()
   }
 
+  getMyUsers(){
+    this.ptSvc.getFollowed(this.auth.getLoggedUser().id)
+    .subscribe(users => {
+      this.myUsers = users;
+    })
+  }
+
+  addFollowed(followed:boolean, userToAdd:SearchedUser){
+    if(followed == true){
+      this.myUsers.push(userToAdd);
+    }else{
+      const index = this.myUsers.indexOf(userToAdd, 0);
+      this.myUsers.splice(index, 1);
+    }
+  }
 
   searchUser(){
-    console.log(this.username);
-
-    this.ptSvc.searchUser("dds")
+    this.ptSvc.searchUser(this.username)
     .subscribe(users => {
       this.usersFound = users;
       this.username = "";
     })
+  }
+
+  clearSearch(){
+    this.usersFound = [];
   }
 
 }

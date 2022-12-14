@@ -31,8 +31,6 @@ export class DetailsComponent implements OnInit {
   }
 
   getTitle(){
-    console.log(this.isExercise(this.details));
-
     if(this.isExercise(this.details)){
       return "Exercises";
     }else if(this.isWorkout(this.details)){

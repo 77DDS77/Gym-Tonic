@@ -83,6 +83,57 @@
     }
 }
 
+@media screen and (min-width: 356px){
+  .sub-details-container{
+    .sub-details{
+      width: 160px;
+      height: 230px;
+      bottom: 0px;
+      left: 0px;
+      .details-body{
+        .exercises, .workouts, .plans{
+          ul{
+            li{
+              padding-left: 10px;
+              p{
+                font-size: 0.8rem;
+              }
+              .deets-btn{
+                width: 25px;
+                font-size: 1.5rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px){
+  .sub-details-container{
+    .sub-details{
+      width: 250px;
+      height: 300px;
+      .details-body{
+        .exercises, .workouts, .plans{
+          ul{
+            li{
+              p{
+                font-size: 1rem;
+              }
+              .deets-btn{
+                width: 36px;
+                font-size: 1.8rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 
 
 

@@ -11,7 +11,7 @@
         <p class="d-inline">
           Exercises: {{user.userExercisesId.length}}
         </p>
-        <button (click)="exerciseDeets()" class="p-0 deets-btn">
+        <button *ngIf="followed" (click)="exerciseDeets()" class="p-0 deets-btn">
           <fa-icon [icon]="angleRight"></fa-icon>
         </button>
       </li>
@@ -19,7 +19,7 @@
         <p class="d-inline">
           Workouts: {{user.userWorkoutsId.length}}
         </p>
-        <button (click)="workoutDeets()" class="p-0 deets-btn">
+        <button *ngIf="followed" (click)="workoutDeets()" class="p-0 deets-btn">
           <fa-icon [icon]="angleRight"></fa-icon>
         </button>
       </li>
@@ -27,7 +27,7 @@
         <p class="d-inline">
           Plans: {{user.userPlansIds.length}}
         </p>
-        <button (click)="planDeets()" class="p-0 deets-btn">
+        <button *ngIf="followed" (click)="planDeets()" class="p-0 deets-btn">
           <fa-icon [icon]="angleRight"></fa-icon>
         </button>
       </li>
