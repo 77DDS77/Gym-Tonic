@@ -17,7 +17,7 @@ export class PtHomeComponent implements OnInit {
 
   constructor(
     private ptSvc:PtService,
-    private auth:AuthService
+    private auth:AuthService,
     ) { }
 
   ngOnInit(): void {

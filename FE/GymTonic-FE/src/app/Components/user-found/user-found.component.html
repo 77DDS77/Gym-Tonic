@@ -1,9 +1,13 @@
 
 <div class="user-card mt-3">
-  <div class="user-head text-center p-2">
-    <h5 class="d-inline fw-bold">
+  <div [ngClass]="followed ? 'can-edit' : ''" class="user-head text-center p-2">
+    <h5 class="d-inline fw-bold m-0">
       {{user.username}} <span class="user-id">#{{user.id}}</span>
     </h5>
+    <button (click)="editUser()" *ngIf="followed" class="edit-btn">
+      <fa-icon *ngIf="!editing" [icon]="edit"></fa-icon>
+      <fa-icon *ngIf="editing" [icon]="closeEdit"></fa-icon>
+    </button>
   </div>
   <div class="user-body">
     <ul class="pt-2 pb-2 px-2 mb-0">
@@ -45,3 +49,5 @@
 </div>
 
 <user-details (closeDeets)="closeDeets()" [details]="inputDetails" *ngIf="deets"></user-details>
+
+<manage-user [user]="user" *ngIf="editing"></manage-user>

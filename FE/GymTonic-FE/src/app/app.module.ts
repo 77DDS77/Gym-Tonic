@@ -34,6 +34,7 @@ import { DataExerciseComponent } from './Components/data-exercise/data-exercise.
 import { UserFoundComponent } from './Components/user-found/user-found.component';
 import { DetailsComponent } from './Components/user-found/details/details.component';
 import { SubDetailsComponent } from './Components/user-found/details/sub-details/sub-details.component';
+import { ManageUserComponent } from './Components/manage-user/manage-user.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { SubDetailsComponent } from './Components/user-found/details/sub-details
     UserFoundComponent,
     DetailsComponent,
     SubDetailsComponent,
+    ManageUserComponent,
   ],
   imports: [
     BrowserModule,

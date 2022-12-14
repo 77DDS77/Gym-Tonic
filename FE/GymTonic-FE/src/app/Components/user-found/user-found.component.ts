@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { faChevronRight, faUserMinus, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faChevronRight, faCross, faEdit, faMarker, faPenSquare, faTimes, faUserMinus, faUserPlus, faXRay } from '@fortawesome/free-solid-svg-icons';
 import { Plan } from 'src/app/Models/plan';
 import { SearchedUser } from 'src/app/Models/searchedUser';
 import { UserExercise } from 'src/app/Models/user-exercise';
@@ -24,9 +24,12 @@ export class UserFoundComponent implements OnInit {
   userPlus = faUserPlus;
   userMinus = faUserMinus;
   angleRight = faChevronRight;
+  edit = faArrowRight;
+  closeEdit= faTimes;
 
   followed:boolean = false;
   deets:boolean = false;
+  editing:boolean = false;
   inputDetails:UserExercise[] | Workout[] | Plan[] = [];
 
   constructor(
@@ -34,7 +37,8 @@ export class UserFoundComponent implements OnInit {
     private ptSvc:PtService,
     private uexSvc:UserExerciseService,
     private wrkSvc:WorkoutService,
-    private planSvc:PlanService) { }
+    private planSvc:PlanService,
+    ) { }
 
   ngOnInit(): void {
     this.checkIfFollowed();
@@ -104,6 +108,10 @@ export class UserFoundComponent implements OnInit {
 
   closeDeets(){
     this.deets = false;
+  }
+
+  editUser(){
+    this.editing = !this.editing;
   }
 
 }

@@ -8,7 +8,11 @@
     </div>
 
     <div class="users-found d-flex justify-content-around flex-wrap gap-3 mb-5">
-      <user-found (followedUser)="addFollowed($event, user)" [user]="user" *ngFor="let user of usersFound"></user-found>
+      <user-found
+      (followedUser)="addFollowed($event, user)"
+      [user]="user"
+      *ngFor="let user of usersFound"></user-found>
+
       <user-found [user]="user" *ngFor="let user of usersFound"></user-found>
       <user-found [user]="user" *ngFor="let user of usersFound"></user-found>
       <user-found [user]="user" *ngFor="let user of usersFound"></user-found>
@@ -23,8 +27,14 @@
   <div class="pt-user">
     <h1>MY USERS (TOGLIERE)</h1>
     <div class="users-found d-flex justify-content-around flex-wrap gap-3 mb-5">
-      <user-found (followedUser)="addFollowed($event, user)" [user]="user" *ngFor="let user of myUsers"></user-found>
+      <user-found
+      (followedUser)="addFollowed($event, user)"
+      [user]="user"
+      *ngFor="let user of myUsers"></user-found>
     </div>
+
+
+
   </div>
 </div>
 

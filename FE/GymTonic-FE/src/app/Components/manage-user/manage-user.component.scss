@@ -1,0 +1,35 @@
+
+@use '../../../styles.scss';
+
+.edit-container{
+    margin-top: 3rem;
+    width: 250px;
+    background-color: red;
+    border-radius: 10px;
+
+    height: 500px; //da togliere e fare senza
+    margin-bottom: 500px;
+    .edit-head{
+        border-radius: 10px 10px 0px 0px;
+        display: flex;
+        justify-content: space-around;
+        background-color: styles.$orange;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        .edit-forms-btn{
+            height: 50px;
+            width: 50px;
+            background-color: styles.$black;
+            color: styles.$orange;
+            border: none;
+            padding: 0.5rem;
+            font-size: 20px;
+            border-radius: 25px;
+            box-shadow: 0px 1px 20px 3px rgb(0 0 0 / 57%);
+        }
+        .edit-forms-btn:active{
+            box-shadow: none;
+            transform: translateY(2px);
+        }
+    }
+}

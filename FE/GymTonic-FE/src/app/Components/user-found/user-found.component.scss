@@ -25,6 +25,24 @@
       font-style: italic;
       font-size: 1rem;
     }
+    .edit-btn{
+      width: 40px;
+      border: none;
+      background-color: styles.$black;
+      color: styles.$white;
+      border-radius: 10px;
+      display:flex;
+      justify-content: center;
+      box-shadow: 0px 1px 20px 3px rgb(0 0 0 / 57%);
+    }
+    .edit-btn:active{
+      box-shadow: none;
+      transform: translateY(2px);
+    }
+  }
+  .can-edit{
+    display: flex;
+    justify-content: space-between;
   }
   .user-body{
     ul{
