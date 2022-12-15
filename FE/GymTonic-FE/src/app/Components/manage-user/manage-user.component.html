@@ -27,7 +27,8 @@
             <manage-exercise *ngIf="exx"
               [userId]="user.id"
               [exercise]="ex"
-              (exDeleted)="exDeleted($event, ex)"></manage-exercise>
+              (exDeleted)="exDeleted($event, ex)"
+              (exUpdated)="exUpdated($event, ex)"></manage-exercise>
         </div>
       </div>
 

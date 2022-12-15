@@ -16,6 +16,7 @@ export class ManageExerciseComponent implements OnInit {
   @Input() userId!:number;
 
   @Output() exDeleted = new EventEmitter<boolean>();
+  @Output() exUpdated = new EventEmitter<UserExercise>();
 
   updateExercise!:FormGroup;
 
@@ -36,10 +37,11 @@ export class ManageExerciseComponent implements OnInit {
 
   updateEx(){
     this.exercise.reps = this.updateExercise.value.reps;
-    this.exercise.reps = this.updateExercise.value.series;
+    this.exercise.series = this.updateExercise.value.series;
     this.exSvc.updateUserExercise(this.userId, this.exercise)
     .subscribe(updated => {
       this.exercise = updated;
+      this.exUpdated.emit(updated)
       Swal.fire({
         title: 'Exercise updated!',
         icon: 'success',

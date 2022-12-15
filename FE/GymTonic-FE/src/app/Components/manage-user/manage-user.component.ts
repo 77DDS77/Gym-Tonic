@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faDumbbell, faScroll, faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 import { Plan } from 'src/app/Models/plan';
 import { SearchedUser } from 'src/app/Models/searchedUser';
@@ -16,6 +16,7 @@ import { WorkoutService } from 'src/app/Services/workout.service';
 export class ManageUserComponent implements OnInit {
 
   @Input() user!:SearchedUser;
+  @Output() updateSignal = new EventEmitter<boolean>()
 
   userExercises: UserExercise[] = [];
   userWorkouts: Workout[] = [];
@@ -66,11 +67,19 @@ export class ManageUserComponent implements OnInit {
   exDeleted(value:boolean, ex:UserExercise){
     const index = this.userExercises.indexOf(ex, 0);
     this.userExercises.splice(index, 1);
+    this.updateSignal.emit(true);
+  }
+
+  exUpdated(updated:UserExercise, old:UserExercise){
+    const index = this.userExercises.indexOf(old, 0);
+    this.userExercises.splice(index, 1, updated);
+    this.updateSignal.emit(true);
   }
 
   addExercise(ex:UserExercise){
     this.userExercises.push(ex);
     this.addEx =false;
+    this.updateSignal.emit(true);
   }
 
 }

@@ -49,6 +49,39 @@
               font-size: 1rem;
               color: white;
             }
+
+          }
+        }
+      }
+      .exercises{
+        ul{
+          li{
+            padding: 0px;
+            .ex-content{
+              display: flex;
+              background-color: red;
+              justify-content: flex-end;
+              height: 3rem;
+              .ex-name{
+                width: 100%;
+                background-color: beige;
+                border: 1px solid black;
+              }
+              .ex-name, .ex-reps, .ex-series{
+                background-color: beige;
+                display: flex;
+                border: 1px solid black;
+                justify-content: center;
+                align-items: center;
+                padding: 7px;
+              }
+              .ex-reps, .ex-series{
+                width: 50px;
+                font-weight: 600;
+                padding: 0px;
+                font-size: 1.9rem;
+              }
+            }
           }
         }
       }

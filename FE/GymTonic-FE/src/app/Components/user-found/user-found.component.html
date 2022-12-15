@@ -13,7 +13,7 @@
     <ul class="pt-2 pb-2 px-2 mb-0">
       <li>
         <p class="d-inline">
-          Exercises: {{user.userExercisesId.length}}
+          Exercises: {{userExercises.length}}
         </p>
         <button *ngIf="followed" (click)="exerciseDeets()" class="p-0 deets-btn">
           <fa-icon [icon]="angleRight"></fa-icon>
@@ -21,7 +21,7 @@
       </li>
       <li>
         <p class="d-inline">
-          Workouts: {{user.userWorkoutsId.length}}
+          Workouts: {{userWorkouts.length}}
         </p>
         <button *ngIf="followed" (click)="workoutDeets()" class="p-0 deets-btn">
           <fa-icon [icon]="angleRight"></fa-icon>
@@ -29,7 +29,7 @@
       </li>
       <li>
         <p class="d-inline">
-          Plans: {{user.userPlansIds.length}}
+          Plans: {{userPlans.length}}
         </p>
         <button *ngIf="followed" (click)="planDeets()" class="p-0 deets-btn">
           <fa-icon [icon]="angleRight"></fa-icon>
@@ -50,4 +50,4 @@
 
 <user-details (closeDeets)="closeDeets()" [details]="inputDetails" *ngIf="deets"></user-details>
 
-<manage-user [user]="user" *ngIf="editing"></manage-user>
+<manage-user (updateSignal)="updateUser($event)" [user]="user" *ngIf="editing"></manage-user>

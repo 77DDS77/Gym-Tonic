@@ -27,6 +27,10 @@ export class UserFoundComponent implements OnInit {
   edit = faArrowRight;
   closeEdit= faTimes;
 
+  userExercises: UserExercise[] = [];
+  userWorkouts: Workout[] = [];
+  userPlans: Plan[] = [];
+
   followed:boolean = false;
   deets:boolean = false;
   editing:boolean = false;
@@ -42,6 +46,29 @@ export class UserFoundComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkIfFollowed();
+    this.getUserContent();
+  }
+
+  getUserContent(){
+    //GET EXERCISES
+    this.uexSvc.getUserExercises(this.user.id)
+    .subscribe(exx => {
+      this.userExercises = exx;
+    })
+    // GET WORKOUTS
+    this.wrkSvc.getUserWorkouts(this.user.id)
+    .subscribe(wrks => {
+      this.userWorkouts = wrks;
+    })
+    //GET PLANS
+    this.planSvc.getUserPlans(this.user.id)
+    .subscribe(plans => {
+      this.userPlans = plans;
+    })
+  }
+
+  updateUser(event:boolean){
+    this.getUserContent();
   }
 
   checkIfFollowed(){
@@ -80,30 +107,23 @@ export class UserFoundComponent implements OnInit {
   }
 
   exerciseDeets(){
-    this.uexSvc.getUserExercises(this.user.id)
-    .subscribe(exx => {
-      this.inputDetails = [];
-      this.inputDetails = exx;
-      this.deets = true;
-    })
+    console.log(this.userExercises);
+
+    this.inputDetails = [];
+    this.inputDetails = this.userExercises;
+    this.deets = true;
   }
 
   workoutDeets(){
-    this.wrkSvc.getUserWorkouts(this.user.id)
-    .subscribe(wrks => {
-      this.inputDetails = [];
-      this.inputDetails = wrks;
-      this.deets = true;
-    })
+    this.inputDetails = [];
+    this.inputDetails = this.userWorkouts;
+    this.deets = true;
   }
 
   planDeets(){
-    this.planSvc.getUserPlans(this.user.id)
-    .subscribe(plans => {
-      this.inputDetails = [];
-      this.inputDetails = plans;
-      this.deets = true;
-    })
+    this.inputDetails = [];
+    this.inputDetails = this.userPlans;
+    this.deets = true;
   }
 
   closeDeets(){
