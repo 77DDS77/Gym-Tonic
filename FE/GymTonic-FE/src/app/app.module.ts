@@ -38,6 +38,7 @@ import { ManageUserComponent } from './Components/manage-user/manage-user.compon
 import { ManageExerciseComponent } from './Components/manage-user/manage-exercise/manage-exercise.component';
 import { ManageWorkoutComponent } from './Components/manage-user/manage-workout/manage-workout.component';
 import { ManagePlanComponent } from './Components/manage-user/manage-plan/manage-plan.component';
+import { AddExerciseComponent } from './Components/manage-user/manage-exercise/add-exercise/add-exercise.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { ManagePlanComponent } from './Components/manage-user/manage-plan/manage
     ManageExerciseComponent,
     ManageWorkoutComponent,
     ManagePlanComponent,
+    AddExerciseComponent,
   ],
   imports: [
     BrowserModule,

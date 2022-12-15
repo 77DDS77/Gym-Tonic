@@ -28,6 +28,7 @@ export class ManageUserComponent implements OnInit {
   exx:boolean = true;
   wrks:boolean = false;
   plns:boolean = false;
+  addEx:boolean = false;
 
   constructor(
     private exSvc:UserExerciseService,
@@ -65,6 +66,11 @@ export class ManageUserComponent implements OnInit {
   exDeleted(value:boolean, ex:UserExercise){
     const index = this.userExercises.indexOf(ex, 0);
     this.userExercises.splice(index, 1);
+  }
+
+  addExercise(ex:UserExercise){
+    this.userExercises.push(ex);
+    this.addEx =false;
   }
 
 }
