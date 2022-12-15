@@ -2,15 +2,47 @@
 <div class="edit-container">
 
     <div class="edit-head">
-      <button class="edit-forms-btn">
+
+      <button (click)="showExercises()" class="edit-forms-btn">
           <fa-icon [icon]="exercise"></fa-icon>
       </button>
-      <button class="edit-forms-btn">
+      <button (click)="showWorkouts()" class="edit-forms-btn">
           <fa-icon [icon]="workout"></fa-icon>
       </button>
-      <button class="edit-forms-btn">
+      <button (click)="showPlans()" class="edit-forms-btn">
           <fa-icon [icon]="plan"></fa-icon>
       </button>
+
+    </div>
+
+    <div class="edit-body">
+
+      <div *ngIf="exx">
+        <div class="folder-flag">Exercises</div>
+        <button class="new-element mt-2 ms-2">Add exercise</button>
+        <div class="exercises" *ngFor="let ex of userExercises">
+            <manage-exercise *ngIf="exx"
+              [userId]="user.id"
+              [exercise]="ex"
+              (exDeleted)="exDeleted($event, ex)"></manage-exercise>
+        </div>
+      </div>
+
+      <div *ngIf="wrks">
+        <div class="folder-flag">Workouts</div>
+        <button class="new-element mt-2 ms-2">Add workout</button>
+        <div class="workouts" *ngFor="let wrk of userWorkouts">
+            <manage-workout *ngIf="wrks" [userId]="user.id" [workout]="wrk"></manage-workout>
+        </div>
+      </div>
+
+      <div *ngIf="plns">
+        <div class="folder-flag">Plans</div>
+        <button class="new-element mt-2 ms-2">Add plan</button>
+        <div class="plans" *ngFor="let pln of userPlans">
+            <manage-plan *ngIf="plns" [userId]="user.id" [plan]="pln"></manage-plan>
+        </div>
+      </div>
 
     </div>
 

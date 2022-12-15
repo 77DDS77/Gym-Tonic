@@ -2,20 +2,24 @@
 @use '../../../styles.scss';
 
 .edit-container{
-    margin-top: 3rem;
+    margin-top: 2rem;
     width: 250px;
-    background-color: red;
+    background-color:  styles.$black;
     border-radius: 10px;
 
-    height: 500px; //da togliere e fare senza
+    height: 510px; //da togliere e fare senza
     margin-bottom: 500px;
+    overflow: scroll;
     .edit-head{
+        position: sticky;
+        top: 0px;
         border-radius: 10px 10px 0px 0px;
         display: flex;
         justify-content: space-around;
         background-color: styles.$orange;
         padding-top: 5px;
         padding-bottom: 5px;
+        z-index: 2;
         .edit-forms-btn{
             height: 50px;
             width: 50px;
@@ -32,4 +36,36 @@
             transform: translateY(2px);
         }
     }
+    .edit-body{
+        .exercises, .workouts, .plans{
+            padding: 10px;
+        }
+        .folder-flag{
+            background-color: styles.$orange;
+            color: styles.$white;
+            text-align: center;
+            font-size: 1.1rem;
+            font-style: italic;
+            font-weight: 600;
+        }
+        .new-element{
+            border: none;
+            background-color: styles.$orange;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0px 1px 20px 3px rgb(0 0 0 / 57%);
+        }
+        .new-element:active{
+            box-shadow: none;
+            transform: translateY(2px);
+        }
+    }
+}
+
+//hiding scrollbar
+*::-webkit-scrollbar,
+*::-webkit-scrollbar-thumb {
+  width: 0px;
+
 }

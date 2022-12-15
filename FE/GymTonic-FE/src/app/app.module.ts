@@ -35,6 +35,9 @@ import { UserFoundComponent } from './Components/user-found/user-found.component
 import { DetailsComponent } from './Components/user-found/details/details.component';
 import { SubDetailsComponent } from './Components/user-found/details/sub-details/sub-details.component';
 import { ManageUserComponent } from './Components/manage-user/manage-user.component';
+import { ManageExerciseComponent } from './Components/manage-user/manage-exercise/manage-exercise.component';
+import { ManageWorkoutComponent } from './Components/manage-user/manage-workout/manage-workout.component';
+import { ManagePlanComponent } from './Components/manage-user/manage-plan/manage-plan.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +68,9 @@ import { ManageUserComponent } from './Components/manage-user/manage-user.compon
     DetailsComponent,
     SubDetailsComponent,
     ManageUserComponent,
+    ManageExerciseComponent,
+    ManageWorkoutComponent,
+    ManagePlanComponent,
   ],
   imports: [
     BrowserModule,

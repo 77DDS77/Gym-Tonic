@@ -2,12 +2,13 @@
 
 .details-container{
   position: relative;
-  // visibility: hidden;
+  height: 1px;
+  background-color: transparent;
   .details{
     position: absolute;
     width: 250px;
     height: 300px;
-    bottom: 0px;
+    bottom: 1px;
     left: 0px;
     background-color: styles.$black;
     border-radius: 10px;

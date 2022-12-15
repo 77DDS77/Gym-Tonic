@@ -1,0 +1,38 @@
+
+<div class="exercise-card">
+
+    <div class="exercise-head">
+        {{exercise.exercise.name}}
+    </div>
+
+    <div class="exercise-body">
+
+        <form [formGroup]="updateExercise">
+            <div class="form-controller">
+                <label for="reps" class="me-2">Reps:</label>
+                <input type="number"
+                placeholder="reps" id="reps"
+                formControlName="reps">
+            </div>
+
+            <div class="form-controller">
+                <label for="series" class="me-2">Series:</label>
+                <input type="number"
+                placeholder="series" id="series"
+                formControlName="series">
+            </div>
+
+            <div class="btns-container">
+                <div class="btns-box">
+                  <button (click)="updateEx()" class="action-btn"><fa-icon [icon]="save"></fa-icon></button>
+                  <button (click)="deleteEx()" class="action-btn"><fa-icon [icon]="trash"></fa-icon></button>
+                </div>
+            </div>
+
+        </form>
+
+
+    </div>
+
+</div>
+
