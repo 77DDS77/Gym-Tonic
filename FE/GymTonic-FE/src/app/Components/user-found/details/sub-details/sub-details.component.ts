@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { faAngleLeft, faAngleRight, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faAngleRight, faChevronRight, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Plan } from 'src/app/Models/plan';
 import { Workout } from 'src/app/Models/workout';
 
@@ -16,6 +16,7 @@ export class SubDetailsComponent implements OnInit {
 
   closeIcon = faAngleLeft;
   angleRight = faChevronRight;
+  times = faTimes;
 
   planDeets:boolean = false;
   planDetails!: Workout;

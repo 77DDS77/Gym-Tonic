@@ -39,6 +39,9 @@ import { ManageExerciseComponent } from './Components/manage-user/manage-exercis
 import { ManageWorkoutComponent } from './Components/manage-user/manage-workout/manage-workout.component';
 import { ManagePlanComponent } from './Components/manage-user/manage-plan/manage-plan.component';
 import { AddExerciseComponent } from './Components/manage-user/manage-exercise/add-exercise/add-exercise.component';
+import { ExInventoryComponent } from './Components/manage-user/pt-inventory/ex-inventory/ex-inventory.component';
+import { WrkInventoryComponent } from './Components/manage-user/pt-inventory/wrk-inventory/wrk-inventory.component';
+import { PlnInventoryComponent } from './Components/manage-user/pt-inventory/pln-inventory/pln-inventory.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +76,9 @@ import { AddExerciseComponent } from './Components/manage-user/manage-exercise/a
     ManageWorkoutComponent,
     ManagePlanComponent,
     AddExerciseComponent,
+    ExInventoryComponent,
+    WrkInventoryComponent,
+    PlnInventoryComponent,
   ],
   imports: [
     BrowserModule,

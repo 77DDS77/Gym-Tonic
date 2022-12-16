@@ -59,18 +59,13 @@
             padding: 0px;
             .ex-content{
               display: flex;
-              background-color: red;
               justify-content: flex-end;
               height: 3rem;
-              .ex-name{
-                width: 100%;
-                background-color: beige;
-                border: 1px solid black;
-              }
+              background-color: styles.$grey;
+              border-radius: 10px;
               .ex-name, .ex-reps, .ex-series{
-                background-color: beige;
+                background-color: styles.$grey;
                 display: flex;
-                border: 1px solid black;
                 justify-content: center;
                 align-items: center;
                 padding: 7px;
@@ -80,6 +75,22 @@
                 font-weight: 600;
                 padding: 0px;
                 font-size: 1.9rem;
+                color: styles.$orange;
+              }
+              .ex-name{
+                color: styles.$white;
+                width: 100%;
+                border-radius: 10px 0px 0px 10px;
+              }
+              .ex-series{
+                border-radius: 0px 10px 10px 0px;
+              }
+              .times{
+                position: absolute;
+                bottom: 11px;
+                right: 28px;
+                color: styles.$orange;
+                font-size: 1em;
               }
             }
           }
@@ -151,6 +162,29 @@
             }
           }
         }
+        .exercises{
+          ul{
+            li{
+              padding-left: 0px;
+              .ex-content{
+                height: 3.5rem;
+                .ex-reps, .ex-series{
+                  width: 30px;
+                  font-size: 1.4rem;
+                }
+                .ex-name{
+                  width: 100%;
+                  font-size: 0.8rem;
+                }
+                .times{
+                  bottom: 7px;
+                  right: 17px;
+                  font-size: 1em;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -171,6 +205,50 @@
               .deets-btn{
                 width: 36px;
                 font-size: 1.8rem;
+              }
+            }
+          }
+        }
+        .exercises{
+          ul{
+            li{
+              padding: 0px;
+              .ex-content{
+                display: flex;
+                justify-content: flex-end;
+                height: 3rem;
+                background-color: styles.$grey;
+                border-radius: 10px;
+                .ex-name, .ex-reps, .ex-series{
+                  background-color: styles.$grey;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  padding: 7px;
+                }
+                .ex-reps, .ex-series{
+                  width: 50px;
+                  font-weight: 600;
+                  padding: 0px;
+                  font-size: 1.9rem;
+                  color: styles.$orange;
+                }
+                .ex-name{
+                  font-size: 1rem;
+                  color: styles.$white;
+                  width: 100%;
+                  border-radius: 10px 0px 0px 10px;
+                }
+                .ex-series{
+                  border-radius: 0px 10px 10px 0px;
+                }
+                .times{
+                  position: absolute;
+                  bottom: 11px;
+                  right: 28px;
+                  color: styles.$orange;
+                  font-size: 1em;
+                }
               }
             }
           }

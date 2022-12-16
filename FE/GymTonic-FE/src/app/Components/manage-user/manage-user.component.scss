@@ -1,146 +1,223 @@
-
 @use '../../../styles.scss';
 
-.edit-container{
+.edit-container {
+  margin-top: 2rem;
+  width: 250px;
+  background-color: styles.$black;
+  border-radius: 10px;
+
+  height: 510px; //da togliere e fare senza
+  margin-bottom: 3rem;
+  overflow: scroll;
+
+  .edit-head {
+    position: sticky;
+    top: 0px;
+    border-radius: 10px 10px 0px 0px;
+    display: flex;
+    justify-content: space-around;
+    background-color: styles.$orange;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    z-index: 2;
+
+    .edit-forms-btn {
+      height: 50px;
+      width: 50px;
+      background-color: styles.$black;
+      color: styles.$orange;
+      border: none;
+      padding: 0.5rem;
+      font-size: 20px;
+      border-radius: 25px;
+      box-shadow: 0px 1px 20px 3px rgb(0 0 0 / 57%);
+    }
+
+    .edit-forms-btn:active {
+      box-shadow: none;
+      transform: translateY(2px);
+    }
+  }
+
+  .edit-body {
+
+    .exercises,
+    .workouts,
+    .plans {
+      padding: 10px;
+    }
+
+    .folder-flag {
+      background-color: styles.$orange;
+      color: styles.$black;
+      text-align: center;
+      font-size: 1.1rem;
+      font-style: italic;
+      font-weight: 700;
+    }
+
+    .new-element {
+      border: none;
+      background-color: styles.$orange;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0px 1px 20px 3px rgb(0 0 0 / 57%);
+    }
+
+    .new-element:active {
+      box-shadow: none;
+      transform: translateY(2px);
+    }
+  }
+}
+
+@media screen and (min-width: 356px) {
+  .edit-container {
+    width: 160px;
+
+    .edit-head {
+      padding-top: 5px;
+      padding-bottom: 5px;
+
+      .edit-forms-btn {
+        height: 50px;
+        width: 50px;
+        padding: 0.5rem;
+        font-size: 20px;
+        border-radius: 25px;
+      }
+    }
+
+    .edit-body {
+
+      .exercises,
+      .workouts,
+      .plans {
+        padding: 10px;
+      }
+
+      .folder-flag {
+        font-size: 1.1rem;
+      }
+
+      .new-element {
+        border-radius: 5px;
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .edit-container {
     margin-top: 2rem;
     width: 250px;
-    background-color:  styles.$black;
-    border-radius: 10px;
 
     height: 510px; //da togliere e fare senza
-    margin-bottom: 500px;
+    margin-bottom: 3rem;
     overflow: scroll;
-    .edit-head{
-        position: sticky;
-        top: 0px;
-        border-radius: 10px 10px 0px 0px;
-        display: flex;
-        justify-content: space-around;
+
+
+    .edit-body {
+
+      .exercises,
+      .workouts,
+      .plans {
+        padding: 10px;
+      }
+
+      .folder-flag {
         background-color: styles.$orange;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        z-index: 2;
-        .edit-forms-btn{
-            height: 50px;
-            width: 50px;
-            background-color: styles.$black;
-            color: styles.$orange;
-            border: none;
-            padding: 0.5rem;
-            font-size: 20px;
-            border-radius: 25px;
-            box-shadow: 0px 1px 20px 3px rgb(0 0 0 / 57%);
-        }
-        .edit-forms-btn:active{
-            box-shadow: none;
-            transform: translateY(2px);
-        }
+        color: styles.$black;
+        text-align: center;
+        font-size: 1.1rem;
+        font-style: italic;
+        font-weight: 700;
+      }
     }
-    .edit-body{
-        .exercises, .workouts, .plans{
-            padding: 10px;
-        }
-        .folder-flag{
-            background-color: styles.$orange;
-            color: styles.$black;
-            text-align: center;
-            font-size: 1.1rem;
-            font-style: italic;
-            font-weight: 700;
-        }
-        .new-element{
-            border: none;
-            background-color: styles.$orange;
-            border-radius: 5px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            box-shadow: 0px 1px 20px 3px rgb(0 0 0 / 57%);
-        }
-        .new-element:active{
-            box-shadow: none;
-            transform: translateY(2px);
-        }
-    }
+  }
+
 }
 
 
 .bounceInUp {
-    -webkit-animation-name: bounceInUp;
-    animation-name: bounceInUp;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
+  -webkit-animation-name: bounceInUp;
+  animation-name: bounceInUp;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }
 
 @-webkit-keyframes bounceInUp {
 
-    100% {
-        -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    }
+  100% {
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
 
-    0% {
-        opacity: 0;
-        -webkit-transform: translate3d(0, 3000px, 0);
-        transform: translate3d(0, 3000px, 0);
-    }
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 3000px, 0);
+    transform: translate3d(0, 3000px, 0);
+  }
 
-    60% {
-        opacity: 1;
-        -webkit-transform: translate3d(0, -20px, 0);
-        transform: translate3d(0, -20px, 0);
-    }
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, -20px, 0);
+    transform: translate3d(0, -20px, 0);
+  }
 
-    75% {
-        -webkit-transform: translate3d(0, 10px, 0);
-        transform: translate3d(0, 10px, 0);
-    }
+  75% {
+    -webkit-transform: translate3d(0, 10px, 0);
+    transform: translate3d(0, 10px, 0);
+  }
 
-    90% {
-        -webkit-transform: translate3d(0, -5px, 0);
-        transform: translate3d(0, -5px, 0);
-    }
+  90% {
+    -webkit-transform: translate3d(0, -5px, 0);
+    transform: translate3d(0, -5px, 0);
+  }
 
-    100% {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 @keyframes bounceInUp {
 
-    100% {
-        -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-    }
+  100% {
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
 
-    0% {
-        opacity: 0;
-        -webkit-transform: translate3d(0, 3000px, 0);
-        transform: translate3d(0, 3000px, 0);
-    }
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 3000px, 0);
+    transform: translate3d(0, 3000px, 0);
+  }
 
-    60% {
-        opacity: 1;
-        -webkit-transform: translate3d(0, -20px, 0);
-        transform: translate3d(0, -20px, 0);
-    }
+  60% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, -20px, 0);
+    transform: translate3d(0, -20px, 0);
+  }
 
-    75% {
-        -webkit-transform: translate3d(0, 10px, 0);
-        transform: translate3d(0, 10px, 0);
-    }
+  75% {
+    -webkit-transform: translate3d(0, 10px, 0);
+    transform: translate3d(0, 10px, 0);
+  }
 
-    90% {
-        -webkit-transform: translate3d(0, -5px, 0);
-        transform: translate3d(0, -5px, 0);
-    }
+  90% {
+    -webkit-transform: translate3d(0, -5px, 0);
+    transform: translate3d(0, -5px, 0);
+  }
 
-    100% {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 //hiding scrollbar

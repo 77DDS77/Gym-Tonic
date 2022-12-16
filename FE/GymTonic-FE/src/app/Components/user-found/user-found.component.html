@@ -4,7 +4,7 @@
     <h5 class="d-inline fw-bold m-0">
       {{user.username}} <span class="user-id">#{{user.id}}</span>
     </h5>
-    <button (click)="editUser()" *ngIf="followed" class="edit-btn">
+    <button (click)="editUser()" *ngIf="followed" [ngClass]="editing ? 'red-btn' : ''" class="edit-btn">
       <fa-icon *ngIf="!editing" [icon]="edit"></fa-icon>
       <fa-icon *ngIf="editing" [icon]="closeEdit"></fa-icon>
     </button>
@@ -48,6 +48,9 @@
 
 </div>
 
+
 <user-details (closeDeets)="closeDeets()" [details]="inputDetails" *ngIf="deets"></user-details>
 
-<manage-user (updateSignal)="updateUser($event)" [user]="user" *ngIf="editing"></manage-user>
+<div>
+  <manage-user (updateSignal)="updateUser($event)" [user]="user" *ngIf="editing"></manage-user>
+</div>

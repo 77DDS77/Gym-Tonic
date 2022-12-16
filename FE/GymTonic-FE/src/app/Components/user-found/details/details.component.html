@@ -11,18 +11,15 @@
             <div class="exercises" *ngIf="details[0].exercise != undefined">
               <ul class="p-2 mb-0">
                   <li *ngFor="let ex of details">
-                      <!-- <p class="d-inline">
-                        {{ex?.exercise?.name}}
-                        <span>
-                            [{{ex?.reps}} x {{ex?.series}}]
-                        </span>
-                      </p> -->
                       <div class="ex-content">
                         <div class="ex-name">
                           {{ex?.exercise?.name}}
                         </div>
-                        <div class="ex-reps">
+                        <div class="ex-reps me-3">
                           {{ex?.reps}}
+                        </div>
+                        <div class="times">
+                          <fa-icon [icon]="times"></fa-icon>
                         </div>
                         <div class="ex-series">
                           {{ex?.series}}

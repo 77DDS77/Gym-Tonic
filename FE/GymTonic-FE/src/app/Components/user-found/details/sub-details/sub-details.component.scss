@@ -30,55 +30,99 @@
             }
         }
         .details-body{
-            .exercises, .workouts, .plans{
-                overflow: scroll;
-                //gli manca la height ????
-              ul{
-                display: flex;
-                flex-direction: column;
-                justify-content: space-evenly;
-                li{
-                  list-style: none;
+          .exercises, .workouts, .plans{
+              overflow: scroll;
+              //gli manca la height ????
+            ul{
+              display: flex;
+              flex-direction: column;
+              justify-content: space-evenly;
+              li{
+                list-style: none;
+                height: 3rem;
+                background-color: styles.$grey;
+                margin-bottom: 1rem;
+                padding-left: 1rem;
+                position: relative;
+                border-radius: 0 10px 10px 0;
+                box-shadow: 3px 5px 5px #191919;;
+                p{
+                  font-size: 1rem;
+                  color: white;
+                }
+              }
+            }
+          }
+
+          .workouts, .plans{
+            ul{
+              li{
+                p{
+                  line-height: 45px;
+                }
+              }
+            }
+            .deets-btn{
+              position: absolute;
+              right: 0px;
+              height: 3rem;
+              width: 36px;
+              background-color: styles.$black;
+              color: styles.$orange;
+              border: none;
+              font-size: 1.8rem;
+              margin-left: 1px;
+              border-radius: 0 10px 10px 0;
+            }
+            .deets-btn:active{
+              color: styles.$white;
+              background-color: styles.$grey;
+            }
+          }
+
+          .exercises{
+            ul{
+              li{
+                padding: 0px;
+                .ex-content{
+                  display: flex;
+                  justify-content: flex-end;
                   height: 3rem;
                   background-color: styles.$grey;
-                  margin-bottom: 1rem;
-                  padding-left: 1rem;
-                  position: relative;
-                  border-radius: 0 10px 10px 0;
-                  box-shadow: 3px 5px 5px #191919;;
-                  p{
-                    font-size: 1rem;
-                    color: white;
+                  border-radius: 10px;
+                  .ex-name, .ex-reps, .ex-series{
+                    background-color: styles.$grey;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 7px;
+                  }
+                  .ex-reps, .ex-series{
+                    width: 50px;
+                    font-weight: 600;
+                    padding: 0px;
+                    font-size: 1.9rem;
+                    color: styles.$orange;
+                  }
+                  .ex-name{
+                    color: styles.$white;
+                    width: 100%;
+                    border-radius: 10px 0px 0px 10px;
+                  }
+                  .ex-series{
+                    border-radius: 0px 10px 10px 0px;
+                  }
+                  .times{
+                    position: absolute;
+                    bottom: 11px;
+                    right: 28px;
+                    color: styles.$orange;
+                    font-size: 1em;
                   }
                 }
               }
             }
-
-            .workouts, .plans{
-              ul{
-                li{
-                  p{
-                    line-height: 45px;
-                  }
-                }
-              }
-              .deets-btn{
-                position: absolute;
-                right: 0px;
-                height: 3rem;
-                width: 36px;
-                background-color: styles.$black;
-                color: styles.$orange;
-                border: none;
-                font-size: 1.8rem;
-                margin-left: 1px;
-                border-radius: 0 10px 10px 0;
-              }
-              .deets-btn:active{
-                color: styles.$white;
-                background-color: styles.$grey;
-              }
-            }
+          }
         }
     }
 }
@@ -105,6 +149,29 @@
             }
           }
         }
+        .exercises{
+          ul{
+            li{
+              padding-left: 0px;
+              .ex-content{
+                height: 3.5rem;
+                .ex-reps, .ex-series{
+                  width: 30px;
+                  font-size: 1.4rem;
+                }
+                .ex-name{
+                  width: 100%;
+                  font-size: 0.8rem;
+                }
+                .times{
+                  bottom: 7px;
+                  right: 17px;
+                  font-size: 1em;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -125,6 +192,34 @@
               .deets-btn{
                 width: 36px;
                 font-size: 1.8rem;
+              }
+            }
+          }
+        }
+        .exercises{
+          ul{
+            li{
+              padding: 0px;
+              .ex-content{
+                height: 3rem;
+                .ex-name, .ex-reps, .ex-series{
+                  padding: 7px;
+                }
+                .ex-reps, .ex-series{
+                  width: 50px;
+                  font-size: 1.9rem;
+                }
+                .ex-name{
+                  font-size: 1rem;
+                  color: styles.$white;
+                  width: 100%;
+                  border-radius: 10px 0px 0px 10px;
+                }
+                .times{
+                  bottom: 11px;
+                  right: 28px;
+                  font-size: 1em;
+                }
               }
             }
           }

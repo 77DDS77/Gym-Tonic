@@ -19,6 +19,7 @@ export class AddExerciseComponent implements OnInit {
 
   addExForm!: FormGroup;
 
+  exercises: Exercise[] = []
   muscles: string[] =
     [
       'abdominals', 'abductors', 'adductors','biceps', 'calves', 'chest',
@@ -26,7 +27,7 @@ export class AddExerciseComponent implements OnInit {
       'neck', 'quadriceps', 'traps', 'triceps'
     ];
 
-  exercises: Exercise[] = []
+  showExInventory:boolean = false;
 
   constructor(
     private exSvc: ExerciseService,

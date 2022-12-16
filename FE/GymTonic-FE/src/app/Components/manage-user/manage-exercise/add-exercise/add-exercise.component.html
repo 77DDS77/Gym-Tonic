@@ -2,6 +2,14 @@
 <div class="add-ex-form-container p-2">
   <div class="add-ex-form">
 
+    <div class="from-inventory">
+      <button (click)="showExInventory = !showExInventory" class="inventory-btn">
+        Add from inventory
+      </button>
+    </div>
+
+    <ex-inventory *ngIf="showExInventory"></ex-inventory>
+
     <form [formGroup]="addExForm" class="p-2" (submit)="postExercise()">
 
         <div class="my-2">
@@ -9,7 +17,7 @@
           class="form-select form-select-lg mb-3"
           aria-label="muscle-select"
           formControlName="muscle">
-            <option selected value=null>Choose muscle</option>
+            <option selected value=null>Muscle</option>
             <option *ngFor="let musc of muscles" [ngValue]=musc>{{musc}}</option>
           </select>
         </div>
@@ -17,13 +25,13 @@
           <select class="form-select form-select-lg mb-3"
           aria-label="exByMuscle-select"
           formControlName="exercise">
-            <option selected [ngValue]=null>Choose exercise</option>
+            <option selected [ngValue]=null>Exercise</option>
             <option *ngFor="let ex of exercises" [ngValue]="ex">{{ex.name}}</option>
           </select>
         </div>
 
-        <div class="d-flex">
-          <div class="mb-2 me-2">
+        <div class="reps-series-container">
+          <div class="mb-2">
             <input formControlName="reps"
             type="number" class="reps-input"
             id="reps" placeholder="Reps">
@@ -43,6 +51,7 @@
 
       </form>
 
-
   </div>
 </div>
+
+

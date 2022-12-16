@@ -39,6 +39,9 @@
       box-shadow: none;
       transform: translateY(2px);
     }
+    .red-btn{
+      background-color:	#ff3333;
+    }
   }
   .can-edit{
     display: flex;
@@ -119,7 +122,6 @@
     }
   }
 }
-
 @media screen and (min-width: 768px){
   .user-card{
     width: 250px;
