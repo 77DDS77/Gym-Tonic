@@ -45,34 +45,14 @@ public class WebSecurityConfig {
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.cors()
-				.and()
-				.csrf()
-				.disable()
-				.exceptionHandling()
-				.authenticationEntryPoint(unauthorizedHandler)
-				.and()
-				.sessionManagement()
-				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-				.and()
-				.authorizeRequests()
-				.antMatchers(HttpMethod.POST,"/GT/login", "/GT/users/new-user", "/GT/p-trainers/new-pt")
-				.permitAll()
-				.antMatchers(HttpMethod.GET, "/GT/all-users")
-				.permitAll()
-				.anyRequest()
-				.authenticated();
-
-		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-
-		return http.build();
-	}
-}
-
-/*
-* return http
-				.cors(cors -> cors.disable())
-				.csrf(csrf -> csrf.disable())
+		return http
+				.cors(cors -> {
+					try {
+						cors.and().csrf().disable();
+					} catch (Exception e) {
+						throw new RuntimeException(e);
+					}
+				})
 				.exceptionHandling((exc -> exc.authenticationEntryPoint(unauthorizedHandler)))
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authorizeHttpRequests(auth -> {
@@ -83,4 +63,34 @@ public class WebSecurityConfig {
 					auth.anyRequest().authenticated();
 				})
 				.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class)
-				.build();*/
+				.build();
+	}
+}
+
+/*
+ * OLD SECURITY FILTER CHAIN
+ * 	 * @ Bean
+ public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+ http.cors()
+ .and()
+ .csrf()
+ .disable()
+ .exceptionHandling()
+ .authenticationEntryPoint(unauthorizedHandler)
+ .and()
+ .sessionManagement()
+ .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+ .and()
+ .authorizeRequests()
+ .antMatchers(HttpMethod.POST,"/GT/login", "/GT/users/new-user", "/GT/p-trainers/new-pt")
+ .permitAll()
+ .antMatchers(HttpMethod.GET, "/GT/all-users")
+ .permitAll()
+ .anyRequest()
+ .authenticated();
+
+ http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+
+ return http.build();
+ }
+ */
