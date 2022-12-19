@@ -30,4 +30,8 @@ export class UserService {
   newGTPT(pt:GTPTrainer):Observable<GTPTrainer>{
     return this.http.post<GTPTrainer>(apiUrl + '/p-trainers/new-pt', pt);
   }
+
+  updateGTUser(user:GTUser):Observable<GTUser>{
+    return this.http.put<GTUser>(apiUrl + '/users/update-user', user);
+  }
 }

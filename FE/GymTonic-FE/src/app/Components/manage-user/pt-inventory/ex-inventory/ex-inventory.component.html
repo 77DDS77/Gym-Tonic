@@ -3,5 +3,44 @@
 <div class="inv-page mt-3">
   <div class="inv-modal">
 
+    <div class="inv-title text-center pt-2">
+      <p class="mb-0">Select exercises:</p>
+    </div>
+    <div class="ex-added ms-2" *ngIf="exToAdd.length > 0">
+      <p class="mb-0">Adding: <span class="ex-number">{{exToAdd.length}}</span>
+        <span *ngIf="exToAdd.length == 1"> exercise</span>
+        <span *ngIf="exToAdd.length > 1"> exercises</span>
+      </p>
+      <button (click)="addExToUser()" class="add-btn mb-3">Add to user <span>#{{userId}}</span> </button>
+    </div>
+
+    <div class="exercises">
+      <ul class="p-2 mb-0">
+          <li *ngFor="let ex of exInventory">
+              <div [ngClass]="addedOrNot(ex) ? 'selected' : ''" class="ex-content">
+                <div class="ex-name">
+                  {{ex?.exercise?.name}}
+                </div>
+                <div class="ex-reps me-3">
+                  {{ex?.reps}}
+                </div>
+                <div class="times">
+                  <fa-icon [icon]="times"></fa-icon>
+                </div>
+                <div class="ex-series">
+                  {{ex?.series}}
+                </div>
+              </div>
+
+              <div class="actions my-2">
+                <button (click)="preAddOrRemove(ex)" class="select-btn">
+                  <span *ngIf="addedOrNot(ex) == false">Select</span>
+                  <span *ngIf="addedOrNot(ex) == true">Remove</span>
+                </button>
+              </div>
+          </li>
+      </ul>
+    </div>
+
   </div>
 </div>

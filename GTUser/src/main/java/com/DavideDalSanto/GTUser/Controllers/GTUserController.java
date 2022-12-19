@@ -63,7 +63,7 @@ public class GTUserController {
     //--------------------------PUT-------------------------
 
     @PutMapping("/update-user")
-    @PreAuthorize("hasAnyRole('GTUSER', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('GTUSER', 'GTPERSONALTRAINER', 'ADMIN')")
     public ResponseEntity<GTUser> updateUser(@RequestBody GTUser updatedUser){
         try{
             return new ResponseEntity<>(us.update(updatedUser), HttpStatus.OK);

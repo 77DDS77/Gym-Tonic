@@ -22,13 +22,16 @@
           <p class="m-0">Exercises</p>
         </div>
         <button (click)="addEx = !addEx" class="new-element mt-2 ms-2">Add exercise</button>
+
         <add-exercise [userId]="user.id" (outputExercise)="addExercise($event)" *ngIf="addEx"></add-exercise>
+
         <div class="exercises" *ngFor="let ex of userExercises.reverse()">
             <manage-exercise *ngIf="exx"
               [userId]="user.id"
               [exercise]="ex"
               (exDeleted)="exDeleted($event, ex)"
-              (exUpdated)="exUpdated($event, ex)"></manage-exercise>
+              (exUpdated)="exUpdated($event, ex)">
+            </manage-exercise>
         </div>
       </div>
 

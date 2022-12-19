@@ -1,8 +1,111 @@
 
+@use '../../../../../styles.scss';
+
 .inv-page{
   .inv-modal{
     height: 385px;
-    background-color: red;
+    background-color: styles.$black;
+    border: 1px solid styles.$orange;
     border-radius: 15px;
+    overflow: scroll;
+    .inv-title{
+      color: styles.$orange;
+    }
+    .inv-title p, .select-btn{
+      font-weight: 700;
+    }
+    .ex-added{
+      color: styles.$orange;
+      font-weight: 700;
+      .ex-number{
+        color: white;
+      }
+      .add-btn{
+        background-color: styles.$orange;
+        color: styles.$black;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 3px 5px 5px #191919;
+        font-weight: 700;
+        span{
+          color: styles.$grey;
+        }
+      }
+      .add-btn:active{
+        box-shadow: none;
+        transform: translateY(2px);
+      }
+    }
+    .exercises{
+      ul{
+        li{
+          padding: 0px;
+          .ex-content{
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+            height: 3rem;
+            background-color: styles.$grey;
+            border-radius: 10px;
+            box-shadow: 3px 5px 5px #191919;
+            .ex-name, .ex-reps, .ex-series{
+              background-color: styles.$grey;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding: 7px;
+            }
+            .ex-reps, .ex-series{
+              width: 50px;
+              font-weight: 600;
+              padding: 0px;
+              font-size: 1.9rem;
+              color: styles.$orange;
+            }
+            .ex-name{
+              color: styles.$white;
+              width: 100%;
+              border-radius: 10px 0px 0px 10px;
+            }
+            .ex-series{
+              border-radius: 0px 10px 10px 0px;
+            }
+            .times{
+              position: absolute;
+              bottom: 11px;
+              right: 28px;
+              color: styles.$orange;
+              font-size: 1em;
+            }
+          }
+          .actions{
+            display: flex;
+            justify-content: center;
+            .select-btn{
+              background-color: styles.$orange;
+              color: styles.$black;
+              border: none;
+              border-radius: 5px;
+              box-shadow: 3px 5px 5px #191919;
+            }
+            .select-btn:active{
+              box-shadow: none;
+              transform: translateY(2px);
+            }
+          }
+          .selected{
+            border: 1px solid limegreen;
+          }
+        }
+      }
+    }
   }
+}
+
+
+//hiding scrollbar
+*::-webkit-scrollbar,
+*::-webkit-scrollbar-thumb {
+  width: 0px;
+
 }

@@ -107,8 +107,6 @@ export class UserFoundComponent implements OnInit {
   }
 
   exerciseDeets(){
-    console.log(this.userExercises);
-
     this.inputDetails = [];
     this.inputDetails = this.userExercises;
     this.deets = true;

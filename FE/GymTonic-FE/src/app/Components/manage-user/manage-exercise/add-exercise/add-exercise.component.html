@@ -8,7 +8,7 @@
       </button>
     </div>
 
-    <ex-inventory *ngIf="showExInventory"></ex-inventory>
+    <ex-inventory [userId]="userId" *ngIf="showExInventory"></ex-inventory>
 
     <form [formGroup]="addExForm" class="p-2" (submit)="postExercise()">
 
