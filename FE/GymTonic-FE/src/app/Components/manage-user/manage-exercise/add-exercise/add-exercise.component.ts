@@ -78,4 +78,8 @@ export class AddExerciseComponent implements OnInit {
     }
   }
 
+  exFromInventory(ex:UserExercise){
+    this.outputExercise.emit(ex);
+  }
+
 }
