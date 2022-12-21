@@ -1,3 +1,5 @@
+@use '../../../styles.scss';
+
 .header{
   position: fixed;
   top: 0;
@@ -5,9 +7,30 @@
   background-color: #FF7517;
   box-shadow: inset 0px 0 16px 3px #702f00fc;
   z-index: 10;
+  position: relative;
   .logo{
     width: 100px;
     cursor: pointer;
+  }
+
+  .user{
+    position: absolute;
+    bottom: -42px;
+    left: 6px;
+    background-color: styles.$black;
+    color: styles.$orange;
+    border-radius: 8px;
+    padding: 3px 10px;
+    font-weight: 600;
+    p{
+      margin-bottom: 0px;
+      font-size: 1.2rem;
+      span{
+        font-size: 1rem;
+        color: #ef6100ba;
+        font-weight: 400;
+      }
+    }
   }
 }
 
@@ -15,6 +38,9 @@
 @media screen and (min-width: 768px){
   .header{
     z-index: 10;
+    .user{
+      left: 60px
+    }
   }
 }
 

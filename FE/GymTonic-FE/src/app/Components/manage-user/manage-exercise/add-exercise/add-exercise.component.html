@@ -4,7 +4,9 @@
 
     <div class="from-inventory">
       <button (click)="showExInventory = !showExInventory" class="inventory-btn">
-        Add from inventory
+        <span *ngIf="!showExInventory">Add from inventory</span>
+        <span *ngIf="showExInventory">Close inventory</span>
+
       </button>
     </div>
 

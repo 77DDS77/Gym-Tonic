@@ -1,6 +1,9 @@
 
 @use '../../../styles.scss';
 
+h3{
+  color: styles.$orange;
+}
 .search-user{
   margin-top: 4rem;
   .search-bar{
@@ -30,3 +33,4 @@
     }
   }
 }
+

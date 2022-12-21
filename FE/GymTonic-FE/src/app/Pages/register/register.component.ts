@@ -65,6 +65,7 @@ export class RegisterComponent implements OnInit {
             }
             this.authSrv.login(user)
             .subscribe({
+              next: (authRes) => this.authSrv.saveAccessData(authRes),
               complete: () =>{
                 this.router.navigate(['/user-home']);
               }
@@ -73,7 +74,7 @@ export class RegisterComponent implements OnInit {
             this.form.reset();
           },
           error: (err) => {
-            console.log(err.error, err.message);
+            console.error(err.error, err.message);
             this.uniqueData = false;
           }
         })

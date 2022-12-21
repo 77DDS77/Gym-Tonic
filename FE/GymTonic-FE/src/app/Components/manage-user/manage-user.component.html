@@ -21,7 +21,10 @@
         <div class="folder-flag">
           <p class="m-0">Exercises</p>
         </div>
-        <button (click)="addEx = !addEx" class="new-element mt-2 ms-2">Add exercise</button>
+        <button (click)="addEx = !addEx" class="new-element mt-2 ms-2">
+          <span *ngIf="!addEx">Add exercise</span>
+          <span *ngIf="addEx">Close</span>
+        </button>
 
         <add-exercise [userId]="user.id" (outputExercise)="addExercise($event)" *ngIf="addEx"></add-exercise>
 
