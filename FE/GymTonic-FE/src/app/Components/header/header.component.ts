@@ -34,8 +34,6 @@ export class HeaderComponent implements OnInit {
   }
 
   getLoggedUserData(){
-    console.log(this.isUserLogged());
-
     if(this.isUserLogged()){
       this.user = this.auth.getLoggedUser();
     }

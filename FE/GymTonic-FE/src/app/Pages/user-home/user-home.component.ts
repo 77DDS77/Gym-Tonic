@@ -35,8 +35,6 @@ export class UserHomeComponent implements OnInit {
       this.uPlanSrv.getUserPlans(user.id)
       .subscribe(plans => {
         this.userPlans = plans;
-        console.log(this.userPlans);
-
       })
     })
   }
