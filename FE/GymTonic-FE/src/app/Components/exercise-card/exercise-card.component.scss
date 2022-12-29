@@ -1,12 +1,28 @@
 
 @use '../../../styles.scss';
 
-.ex-desc{
-  background-color: transparent;
-  border: none;
-  color: styles.$white;
+.exercise{
+  .ex-details{
+    display: flex;
+    flex: auto;
+    align-items: center;
+    justify-content: space-between;
+    .name{
+      p{
+        margin: 0px;
+        font-size: 1.1rem;
+      }
+    }
+    .reps{
+      flex-shrink: 0;
+      .sxr{
+        font-size: 1.8rem;
+        fa-icon{
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
 }
-.ex-desc:active{
-  color: styles.$orange;
-}
+
 

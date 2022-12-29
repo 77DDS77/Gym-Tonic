@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faAngleUp, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { UserExercise } from 'src/app/Models/user-exercise';
 
 @Component({
@@ -11,8 +11,7 @@ export class ExerciseCardComponent implements OnInit {
 
   @Input() exercise!: UserExercise;
 
-  angleDown = faAngleDown;
-  angleUp = faAngleUp;
+  times = faTimes;
 
   constructor() { }
 

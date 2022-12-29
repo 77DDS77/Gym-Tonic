@@ -1,12 +1,22 @@
-<div class="exercise mt-2 mb-4">
-  <div class="name">
-    <h6>- {{exercise.exercise.name}}</h6>
+<div class="exercise my-2 p-2">
+
+  <div class="ex-details">
+
+    <div class="name">
+      <p>{{exercise.exercise.name}}</p>
+    </div>
+
+    <div class="reps">
+      <p class="sxr ms-2 mb-0">
+        {{exercise.reps}}
+        <fa-icon [icon]="times"></fa-icon>
+        {{exercise.series}}
+      </p>
+    </div>
+
   </div>
 
-  <div class="reps">
-    <p class="ms-3 d-inline">{{exercise.reps}} x {{exercise.series}}</p>
-    <app-ex-description
-      [description]="exercise.exercise.instructions">
-    </app-ex-description>
-  </div>
+  <app-ex-description
+    [description]="exercise.exercise.instructions">
+  </app-ex-description>
 </div>

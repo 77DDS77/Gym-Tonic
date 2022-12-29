@@ -1,8 +1,13 @@
 
 @use '../../../styles.scss';
 
-.work-head{
+.work-card{
   background-color: styles.$black;
   color: styles.$white;
   border-radius: 15px;
+  .work-head{
+    background-color: styles.$orange;
+    color: styles.$black;
+    border-radius: 15px 15px 0px 0px;
+  }
 }

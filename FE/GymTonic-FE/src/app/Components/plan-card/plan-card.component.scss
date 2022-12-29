@@ -9,7 +9,8 @@
   border: 2px solid styles.$grey;
   .plan-title{
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
+    align-items: center;
   }
   .exp-btn{
     background-color: styles.$black;
