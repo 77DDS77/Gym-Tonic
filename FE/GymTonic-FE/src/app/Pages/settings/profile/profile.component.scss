@@ -1,0 +1,44 @@
+
+@use '../../../../styles.scss';
+
+.profile-settings{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  h2{
+    color: styles.$orange;
+  }
+  .profile-data{
+    padding: 10px;
+    background-color: styles.$black;
+    color: styles.$white;
+    border-radius: 10px;
+    box-shadow: 0px 6px 20px 3px rgb(0 0 0 / 57%);
+    .data{
+      display: flex;
+      flex-direction: column;
+      .data-group{
+        p{
+          margin-bottom: 0px;
+          span{
+            color: styles.$orange;
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 450px){
+  .profile-settings{
+    .profile-data{
+      width: 470px;
+      .data{
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+    }
+  }
+}
