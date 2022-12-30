@@ -2,16 +2,12 @@
 @use '../../../styles.scss';
 
 .data-container{
-  margin-top: 6rem;
+  margin-top: 3rem;
   margin-bottom: 6rem;
   display: flex;
   flex-direction: column;
   h4{
     color:styles.$orange;
   }
-
-}
-
-@media screen and (min-width: 768px){
 
 }

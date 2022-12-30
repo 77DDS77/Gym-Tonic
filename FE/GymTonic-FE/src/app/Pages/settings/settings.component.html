@@ -1,1 +1,18 @@
-<p>settings works!</p>
+<app-header></app-header>
+
+<div class="settings-container">
+  <div class="settings">
+    <a [routerLink]="['/settings/profile']" class="profile">
+      <fa-icon [icon]="profile" class="icon"></fa-icon>
+      <p class="mb-0 sub">Profile</p>
+    </a>
+    <a [routerLink]="['/settings/user-data']" class="data">
+      <fa-icon [icon]="saved" class="icon blur-out"></fa-icon>
+      <p class="mb-0 sub">Data</p>
+    </a>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+
+<app-navfoot></app-navfoot>

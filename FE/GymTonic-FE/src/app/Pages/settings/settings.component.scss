@@ -1,0 +1,49 @@
+@use '../../../styles.scss';
+
+.settings-container{
+  display: flex;
+  justify-content: center;
+  .settings{
+    width: 270px;
+    margin-top: 4rem;
+    background-color: styles.$orange;
+    padding: 10px 0px 10px 0px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0px 1px 20px 3px rgb(0 0 0 / 57%);
+    .profile, .data{
+      text-decoration: none;
+      color: styles.$orange;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      height: 100px;
+      width: 100px;
+      border-radius: 10px;
+      background-color: styles.$black;
+      box-shadow: 0px 1px 20px 3px rgb(0 0 0 / 57%);
+      fa-icon{
+        font-size: 3rem;
+      }
+      .sub{
+        display: none;
+      }
+      &:active{
+        box-shadow: none;
+        transform: translateY(2px);
+      }
+      &:hover{
+        .icon{
+          display: none;
+        }
+        .sub{
+          display: block;
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}

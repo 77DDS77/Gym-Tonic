@@ -6,6 +6,8 @@ import { NewPlanComponent } from './Pages/new-plan/new-plan.component';
 import { NewWorkoutComponent } from './Pages/new-workout/new-workout.component';
 import { PtHomeComponent } from './Pages/pt-home/pt-home.component';
 import { RegisterComponent } from './Pages/register/register.component';
+import { ProfileComponent } from './Pages/settings/profile/profile.component';
+import { SettingsComponent } from './Pages/settings/settings.component';
 import { UserDataComponent } from './Pages/user-data/user-data.component';
 import { UserHomeComponent } from './Pages/user-home/user-home.component';
 
@@ -47,8 +49,18 @@ const routes: Routes = [
     component: NewPlanComponent
   },
   {
-    path: 'user-data',
-    component: UserDataComponent
+    path: 'settings',
+    component: SettingsComponent,
+    children: [
+      {
+        path:'profile',
+        component: ProfileComponent
+      },
+      {
+        path: 'user-data',
+        component: UserDataComponent
+      }
+    ]
   }
 ];
 
