@@ -2,6 +2,8 @@
 @use '../../../styles.scss';
 
 .exercise{
+  background-color: styles.$grey;
+  border-radius: 5px;
   .ex-details{
     display: flex;
     flex: auto;

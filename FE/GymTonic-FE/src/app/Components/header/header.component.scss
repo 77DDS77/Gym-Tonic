@@ -12,16 +12,18 @@
     width: 100px;
     cursor: pointer;
   }
-
-  .user{
+  .user, .settings{
     position: absolute;
     bottom: -42px;
-    left: 6px;
     background-color: styles.$black;
     color: styles.$orange;
     border-radius: 8px;
     padding: 3px 10px;
     font-weight: 600;
+  }
+
+  .user{
+    left: 6px;
     p{
       margin-bottom: 0px;
       font-size: 1.2rem;
@@ -30,6 +32,13 @@
         color: #ef6100ba;
         font-weight: 400;
       }
+    }
+  }
+  .settings{
+    right: 6px;
+    a{
+      text-decoration: none;
+      color: styles.$orange;
     }
   }
 }

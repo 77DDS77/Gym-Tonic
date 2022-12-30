@@ -42,6 +42,7 @@ import { AddExerciseComponent } from './Components/manage-user/manage-exercise/a
 import { ExInventoryComponent } from './Components/manage-user/pt-inventory/ex-inventory/ex-inventory.component';
 import { WrkInventoryComponent } from './Components/manage-user/pt-inventory/wrk-inventory/wrk-inventory.component';
 import { PlnInventoryComponent } from './Components/manage-user/pt-inventory/pln-inventory/pln-inventory.component';
+import { SettingsComponent } from './Pages/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { PlnInventoryComponent } from './Components/manage-user/pt-inventory/pln
     ExInventoryComponent,
     WrkInventoryComponent,
     PlnInventoryComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
