@@ -30,6 +30,32 @@
   }
 }
 
+.edit-actions{
+  margin-top: 1.8rem;
+  margin-bottom: 6rem;
+  display: flex;
+  justify-content: center;
+  .actions{
+    width: 300px;
+    display: flex;
+    justify-content: space-evenly;
+    button{
+      border: none;
+      background-color: styles.$orange;
+      padding: 10px 5px 10px 5px;
+      line-height: 1.2rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1.2rem;
+      box-shadow: 0px 6px 20px 3px rgb(0 0 0 / 57%);
+      &:active{
+        box-shadow: none;
+        transform: translateY(2px);
+      }
+    }
+  }
+}
+
 @media screen and (min-width: 450px){
   .profile-settings{
     .profile-data{
@@ -38,6 +64,15 @@
         flex-direction: row;
         justify-content: space-between;
         flex-wrap: wrap;
+      }
+    }
+  }
+  .edit-actions{
+    .actions{
+      width: 450px;
+      button{
+        line-height: 1.59rem;
+        font-size: 1.5rem;
       }
     }
   }
