@@ -2,24 +2,19 @@
 @use '../../../styles.scss';
 
 .intro{
-  color: styles.$orange;
   margin-top: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  .manage{
-    background-color: styles.$black;
-    border: 1px solid styles.$orange;
+  padding: 15px 0px 15px 0px;
+  .title{
+    font-size: 40px;
+    font-weight: 600;
+    color: #FF7517;
+    background-color: #2C2727;
     border-radius: 15px;
-    padding: 0.3rem;
-    width: 70%;
-    margin-bottom: 2rem;
-    font-size: 1rem;
-    text-align: center;
-    a{
-      text-decoration: none;
-      color: styles.$orange;
-    }
+    padding: 23px 40px;
+    box-shadow: inset 0px 0px 20px 15px #3e3939;
   }
 }
 .plans{

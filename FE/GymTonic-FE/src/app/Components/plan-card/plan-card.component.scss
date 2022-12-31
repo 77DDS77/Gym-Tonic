@@ -7,6 +7,10 @@
 .plan{
   background-color: styles.$orange;
   border: 2px solid styles.$grey;
+  .plan-head{
+    box-shadow: 0px 6px 20px 3px rgb(0 0 0 / 57%);
+    border-radius: 15px;
+  }
   .plan-title{
     display: flex;
     justify-content: space-between;
