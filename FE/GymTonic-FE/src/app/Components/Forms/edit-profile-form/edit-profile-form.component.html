@@ -1,0 +1,40 @@
+
+<div class="form-container">
+  <form [formGroup]="profileForm" (submit)="editProfile()">
+
+    <!-- EDIT NAME -->
+    <div class="form-floating my-2 edit-name">
+      <input formControlName="name"
+      type="text" class="form-control"
+      id="name" placeholder="Name">
+      <label for="reps">Name</label>
+    </div>
+
+    <!-- EDIT LASTNAME -->
+    <div class="form-floating my-2 edit-lastname">
+      <input formControlName="lastname"
+      type="text" class="form-control"
+      id="lastname" placeholder="Lastname">
+      <label for="reps">Lastname</label>
+    </div>
+
+    <!-- EDIT USERNAME -->
+    <div class="form-floating my-2 edit-username">
+      <input formControlName="username"
+      type="text" class="form-control"
+      id="username" placeholder="Username">
+      <label for="reps">Username</label>
+    </div>
+
+    <!-- EDIT EMAIL -->
+    <div class="form-floating my-2 edit-email">
+      <input formControlName="email"
+      type="text" class="form-control"
+      id="email" placeholder="Email">
+      <label for="reps">Email</label>
+    </div>
+
+    <button id="newex-btn" class="w-100 btn btn-lg btn-primary mb-2" type="submit">Update</button>
+
+  </form>
+</div>

@@ -25,4 +25,7 @@ export class ProfileComponent implements OnInit {
     })
   }
 
+  updateUser(updatedUser: JwtUser){
+    this.user = updatedUser;
+  }
 }

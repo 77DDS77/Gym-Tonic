@@ -44,6 +44,7 @@ import { WrkInventoryComponent } from './Components/manage-user/pt-inventory/wrk
 import { PlnInventoryComponent } from './Components/manage-user/pt-inventory/pln-inventory/pln-inventory.component';
 import { SettingsComponent } from './Pages/settings/settings.component';
 import { ProfileComponent } from './Pages/settings/profile/profile.component';
+import { EditProfileFormComponent } from './Components/Forms/edit-profile-form/edit-profile-form.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { ProfileComponent } from './Pages/settings/profile/profile.component';
     PlnInventoryComponent,
     SettingsComponent,
     ProfileComponent,
+    EditProfileFormComponent,
   ],
   imports: [
     BrowserModule,
