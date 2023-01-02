@@ -12,6 +12,8 @@ export class ProfileComponent implements OnInit {
 
   user!:JwtUser | undefined;
 
+  profileEditing:boolean = false;
+
   constructor(
     private auth:AuthService,
     private userSvc:UserService

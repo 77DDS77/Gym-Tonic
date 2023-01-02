@@ -1,35 +1,42 @@
+<div class="profile-component">
 
-<div class="profile-settings">
 
-  <div class="profile-data mt-3">
-    <div class="text-center">
-      <h2 class="mb-3">YOUR PROFILE</h2>
-    </div>
-    <div class="data">
-      <div class="data-group">
-        <p> <span>Name: </span> {{user?.name}}</p>
-        <p> <span>Lastname: </span> {{user?.lastname}}</p>
-        <p> <span>Email: </span> {{user?.email}}</p>
-        <p> <span>Username: </span> {{user?.username}}</p>
+  <div class="profile-settings">
+
+    <div class="profile-data mt-3">
+      <div class="text-center">
+        <h2 class="mb-3">YOUR PROFILE</h2>
       </div>
-      <div class="data-group">
-        <p> <span>ID: </span> {{user?.id}}</p>
-        <p> <span>Exercises: </span> {{user?.userExercisesId?.length}}</p>
-        <p> <span>Workouts: </span> {{user?.userWorkoutsId?.length}}</p>
-        <p> <span>Plans: </span> {{user?.userPlansIds?.length}}</p>
+      <div class="data">
+        <div class="data-group">
+          <p> <span>Name: </span> {{user?.name}}</p>
+          <p> <span>Lastname: </span> {{user?.lastname}}</p>
+          <p> <span>Email: </span> {{user?.email}}</p>
+          <p> <span>Username: </span> {{user?.username}}</p>
+        </div>
+        <div class="data-group">
+          <p> <span>ID: </span> {{user?.id}}</p>
+          <p> <span>Exercises: </span> {{user?.userExercisesId?.length}}</p>
+          <p> <span>Workouts: </span> {{user?.userWorkoutsId?.length}}</p>
+          <p> <span>Plans: </span> {{user?.userPlansIds?.length}}</p>
+        </div>
       </div>
+
+
     </div>
 
 
   </div>
-
-
-</div>
-<div class="edit-actions">
-  <div class="actions">
-    <button>Edit profile</button>
-    <button>Change password</button>
+  <div class="edit-actions">
+    <div class="actions">
+      <button (click)="profileEditing = !profileEditing">
+        <p *ngIf="!profileEditing" class="mb-0">Edit profile</p>
+        <p *ngIf="profileEditing" class="mb-0">Close</p>
+      </button>
+      <button>Change password</button>
+    </div>
   </div>
-</div>
 
-<app-edit-profile-form [user]="user" (updated)="updateUser($event)"></app-edit-profile-form>
+  <app-edit-profile-form *ngIf="profileEditing" [user]="user" (updated)="updateUser($event)"></app-edit-profile-form>
+
+</div>

@@ -60,7 +60,7 @@ export class EditProfileFormComponent implements OnInit {
   /*
     Checks if the user data has been changed or not.
   */
-  private checkIfDataChanged() {
+  protected checkIfDataChanged() {
     if (
       this.profileForm.value.name === this.user?.name &&
       this.profileForm.value.lastname === this.user?.lastname &&

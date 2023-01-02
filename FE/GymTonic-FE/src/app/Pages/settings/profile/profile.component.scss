@@ -1,6 +1,10 @@
 
 @use '../../../../styles.scss';
 
+.profile-component{
+  padding-bottom: 6rem;
+}
+
 .profile-settings{
   display: flex;
   justify-content: center;
@@ -32,7 +36,7 @@
 
 .edit-actions{
   margin-top: 1.8rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   display: flex;
   justify-content: center;
   .actions{
