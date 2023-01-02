@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faCogs } from '@fortawesome/free-solid-svg-icons';
-import { JwtUser } from 'src/app/Models/jwt-user';
 import { AuthService } from 'src/app/Services/auth.service';
+
+type AuthResponse = {
+  token: string,
+  id:number,
+  username:string,
+  roles:string[],
+  expirationTime:Date
+}
 
 @Component({
   selector: 'app-header',
@@ -11,7 +18,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  user!: JwtUser;
+  user!: AuthResponse;
 
   settings = faCogs
 

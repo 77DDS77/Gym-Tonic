@@ -7,7 +7,7 @@ type AuthResponse = {
   id:number,
   username:string,
   roles:string[],
-  data:Date
+  expirationTime:Date
 }
 
 export interface ILogin {
@@ -30,7 +30,7 @@ export class AuthService {
     return localStorage.getItem('access') != null
   }
 
-  getLoggedUser(){
+  getLoggedUser():AuthResponse{
     let db = localStorage.getItem('access')
     return db ? JSON.parse(db) : null
   }
@@ -46,5 +46,16 @@ export class AuthService {
 
   logOut(){
     localStorage.removeItem('access')
+  }
+
+  getUsername():string | null{
+    let db = localStorage.getItem('access')
+    return db ? JSON.parse(db).username : null
+  }
+
+  changeUsername(newUsername:string){
+    let logged = this.getLoggedUser()
+    logged.username = newUsername
+    this.saveAccessData(logged);
   }
 }

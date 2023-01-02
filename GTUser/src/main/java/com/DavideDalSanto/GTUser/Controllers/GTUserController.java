@@ -69,7 +69,7 @@ public class GTUserController {
             return new ResponseEntity<>(us.update(updatedUser), HttpStatus.OK);
         } catch (GTUserIdException e) {
             log.error(e.getMessage());
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(null, HttpStatus.CONFLICT);
         }
     }
 
