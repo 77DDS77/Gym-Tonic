@@ -73,6 +73,9 @@ public class GTUserController {
         }
     }
 
+    /*
+    * currently not implement due to refactoring.
+    *
     @PutMapping("/update-password")
     @PreAuthorize("hasAnyRole('GTUSER', 'ADMIN')")
     public ResponseEntity<GTUser> updatePassword(@RequestBody GTUser updatedUser){
@@ -82,7 +85,7 @@ public class GTUserController {
             log.error(e.getMessage());
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
-    }
+    }*/
 
     //--------------------------DELETE-------------------------
 

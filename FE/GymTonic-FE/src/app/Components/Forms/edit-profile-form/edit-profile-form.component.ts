@@ -20,7 +20,6 @@ import Swal from 'sweetalert2';
 })
 export class EditProfileFormComponent implements OnInit {
   @Input() user!: JwtUser | undefined;
-  @Output() updated = new EventEmitter<JwtUser>();
 
   profileForm!: FormGroup;
 

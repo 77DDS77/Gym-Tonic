@@ -45,6 +45,7 @@ import { PlnInventoryComponent } from './Components/manage-user/pt-inventory/pln
 import { SettingsComponent } from './Pages/settings/settings.component';
 import { ProfileComponent } from './Pages/settings/profile/profile.component';
 import { EditProfileFormComponent } from './Components/Forms/edit-profile-form/edit-profile-form.component';
+import { EditPasswordFormComponent } from './Components/Forms/edit-password-form/edit-password-form.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { EditProfileFormComponent } from './Components/Forms/edit-profile-form/e
     SettingsComponent,
     ProfileComponent,
     EditProfileFormComponent,
+    EditPasswordFormComponent,
   ],
   imports: [
     BrowserModule,

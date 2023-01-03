@@ -76,6 +76,9 @@ public class GTPTController {
         }
     }
 
+    /*
+    * Currently not implemented due to refactoring.
+    *
     @PutMapping("/update-password")
     @PreAuthorize("hasAnyRole('GTPERSONALTRAINER', 'ADMIN')")
     public ResponseEntity<GTPersonalTrainer> updatePassword(@RequestBody GTPersonalTrainer updatedPT){
@@ -85,7 +88,7 @@ public class GTPTController {
             log.error(e.getMessage());
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
-    }
+    }*/
 
     //--------------------------DELETE-------------------------
 

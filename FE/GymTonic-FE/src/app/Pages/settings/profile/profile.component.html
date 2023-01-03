@@ -37,6 +37,6 @@
     </div>
   </div>
 
-  <app-edit-profile-form *ngIf="profileEditing" [user]="user" (updated)="updateUser($event)"></app-edit-profile-form>
-
+  <app-edit-profile-form *ngIf="profileEditing" [user]="user"></app-edit-profile-form>
+  <app-edit-password-form [user]="user"></app-edit-password-form>
 </div>
