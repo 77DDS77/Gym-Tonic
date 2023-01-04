@@ -1,49 +1,54 @@
 <div class="profile-component">
 
+  <div class="block1">
+    <div class="profile-settings">
 
-  <div class="profile-settings">
+      <div class="profile-data mt-3">
+        <div class="text-center">
+          <h2 class="mb-3">YOUR PROFILE</h2>
+        </div>
+        <div class="data">
+          <div class="data-group">
+            <p> <span>Name: </span> {{user?.name}}</p>
+            <p> <span>Lastname: </span> {{user?.lastname}}</p>
+            <p> <span>Email: </span> {{user?.email}}</p>
+            <p> <span>Username: </span> {{user?.username}}</p>
+          </div>
+          <div class="data-group">
+            <p> <span>ID: </span> {{user?.id}}</p>
+            <p> <span>Exercises: </span> {{user?.userExercisesId?.length}}</p>
+            <p> <span>Workouts: </span> {{user?.userWorkoutsId?.length}}</p>
+            <p> <span>Plans: </span> {{user?.userPlansIds?.length}}</p>
+          </div>
+        </div>
 
-    <div class="profile-data mt-3">
-      <div class="text-center">
-        <h2 class="mb-3">YOUR PROFILE</h2>
-      </div>
-      <div class="data">
-        <div class="data-group">
-          <p> <span>Name: </span> {{user?.name}}</p>
-          <p> <span>Lastname: </span> {{user?.lastname}}</p>
-          <p> <span>Email: </span> {{user?.email}}</p>
-          <p> <span>Username: </span> {{user?.username}}</p>
-        </div>
-        <div class="data-group">
-          <p> <span>ID: </span> {{user?.id}}</p>
-          <p> <span>Exercises: </span> {{user?.userExercisesId?.length}}</p>
-          <p> <span>Workouts: </span> {{user?.userWorkoutsId?.length}}</p>
-          <p> <span>Plans: </span> {{user?.userPlansIds?.length}}</p>
-        </div>
+
       </div>
 
 
     </div>
 
+    <div class="edit-actions">
+      <div class="actions">
 
-  </div>
+        <button (click)="editProfile()">
+          <p *ngIf="!profileEditing" class="mb-0">Edit profile</p>
+          <p *ngIf="profileEditing" class="mb-0">Close</p>
+        </button>
 
-  <div class="edit-actions">
-    <div class="actions">
+        <button (click)="editPswrd()">
+          <p *ngIf="!pswrdEditing" class="mb-0">Change password</p>
+          <p *ngIf="pswrdEditing" class="mb-0">Close</p>
+        </button>
 
-      <button (click)="editProfile()">
-        <p *ngIf="!profileEditing" class="mb-0">Edit profile</p>
-        <p *ngIf="profileEditing" class="mb-0">Close</p>
-      </button>
-
-      <button (click)="editPswrd()">
-        <p *ngIf="!pswrdEditing" class="mb-0">Change password</p>
-        <p *ngIf="pswrdEditing" class="mb-0">Close</p>
-      </button>
-
+      </div>
     </div>
+
+  </div><!--test1-->
+
+  <div class="block2">
+    <app-edit-profile-form *ngIf="profileEditing" [user]="user"></app-edit-profile-form>
+    <app-edit-password-form *ngIf="pswrdEditing" [user]="user"></app-edit-password-form>
   </div>
 
-  <app-edit-profile-form *ngIf="profileEditing" [user]="user"></app-edit-profile-form>
-  <app-edit-password-form *ngIf="pswrdEditing" [user]="user"></app-edit-password-form>
 </div>

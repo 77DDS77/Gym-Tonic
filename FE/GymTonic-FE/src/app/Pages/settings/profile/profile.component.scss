@@ -81,3 +81,16 @@
     }
   }
 }
+
+@media screen and (min-width: 960px){
+  .profile-component{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .block2{
+      margin-top: 70px;
+    }
+  }
+}
+
+
