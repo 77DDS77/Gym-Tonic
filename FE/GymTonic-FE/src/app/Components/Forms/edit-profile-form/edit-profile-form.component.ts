@@ -8,8 +8,10 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { GTPTrainer } from 'src/app/Models/gtptrainer';
 import { JwtUser } from 'src/app/Models/jwt-user';
 import { AuthService } from 'src/app/Services/auth.service';
+import { PtService } from 'src/app/Services/pt.service';
 import { UserService } from 'src/app/Services/user.service';
 import Swal from 'sweetalert2';
 
@@ -25,6 +27,7 @@ export class EditProfileFormComponent implements OnInit {
 
   constructor(
     private userSvc: UserService,
+    private ptSvc: PtService,
     private auth: AuthService,
     private router: Router
   ) {}
@@ -89,47 +92,99 @@ export class EditProfileFormComponent implements OnInit {
       denyButtonColor: '#3E3939'
     }).then((result) => {
       if (result.isConfirmed) {
+        const LOGGED_ROLES = this.auth.getLoggedUser().roles
         currentUser.name = this.profileForm.value.name;
         currentUser.lastname = this.profileForm.value.lastname;
         currentUser.username = this.profileForm.value.username;
         currentUser.email = this.profileForm.value.email;
 
-        this.userSvc.updateGTUser(currentUser).subscribe({
-          next: () => {
-            Swal.fire({
-              icon: 'success',
-              title: 'Updated successfully!',
-              timer: 1500,
-              timerProgressBar: true,
-              showConfirmButton: false,
-              confirmButtonColor: '#FF7517'
-            });
-          },
-          complete: () => {
-            this.auth.logOut();
-            this.router.navigate(['']);
-          },
-          error: (error) => {
-            console.error(error);
-            if (error.error.status === 500) {
-              Swal.fire({
-                icon: 'error',
-                title: 'ERROR!',
-                text: 'Username is already taken! Please try again.',
-                confirmButtonColor: '#FF7517'
-              });
-            }
-          },
-        });
+        /*
+         * Manage both User and Personal Trainer update
+        */
+        if(LOGGED_ROLES.includes("ROLE_GTUSER")){
+          //GTUSER
+          this.gtUserUpdate(currentUser);
+        }else if(LOGGED_ROLES.includes("ROLE_GTPERSONALTRAINER")){
+          //GTPERSONALTRAINER
+          this.personalTrainerUpdate(currentUser as GTPTrainer);
+        }
+
       } else if (result.isDenied) {
-        Swal.fire({
-          icon: 'info',
-          title:'Changes are not saved',
-          timer: 1500,
-          timerProgressBar: true,
-          showConfirmButton: false,
-        });
+        this.notSavedSwal();
       }
+    });
+  }
+
+  /**
+   * Update for GTUSER
+  */
+  gtUserUpdate(user:JwtUser){
+    this.userSvc.updateGTUser(user).subscribe({
+      next: () => {
+        this.successUpdateSwal();
+      },
+      complete: () => {
+        this.auth.logOut();
+        this.router.navigate(['']);
+      },
+      error: (error) => {
+        console.error(error);
+        if (error.error.status === 500) {
+          this.usernameTakenSwal();
+        }
+      }
+    });
+  }
+
+  /**
+   * Update for GTPERSONALTRAINER
+  */
+  personalTrainerUpdate(user:GTPTrainer){
+    this.ptSvc.updatePT(user).subscribe({
+      next: () => {
+        this.successUpdateSwal();
+      },
+      complete: () => {
+        this.auth.logOut();
+        this.router.navigate(['']);
+      },
+      error: (error) => {
+        console.error(error);
+        if (error.error.status === 500) {
+          this.usernameTakenSwal();
+        }
+      }
+    });
+  }
+
+  // -- MODALS --
+  successUpdateSwal(){
+    Swal.fire({
+      icon: 'success',
+      title: 'Updated successfully!',
+      timer: 1500,
+      timerProgressBar: true,
+      showConfirmButton: false,
+      confirmButtonColor: '#FF7517'
+    });
+  }
+
+  usernameTakenSwal(){
+    Swal.fire({
+      icon: 'error',
+      title: 'ERROR!',
+      text: 'Username is already taken! Please try again.',
+      confirmButtonColor: '#FF7517'
+    });
+  }
+
+  notSavedSwal(){
+    Swal.fire({
+      icon: 'info',
+      title:'Changes are not saved',
+      timer: 1500,
+      timerProgressBar: true,
+      showConfirmButton: false,
     });
   }
 

@@ -1,5 +1,5 @@
 
-//TODO capire se mi serve
+type role = { id: number, roleType: string }[]
 
 export abstract class JwtUser {
 
