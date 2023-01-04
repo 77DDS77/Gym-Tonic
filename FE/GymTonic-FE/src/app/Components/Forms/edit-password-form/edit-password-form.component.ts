@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AsyncValidatorFn, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { JwtUser } from 'src/app/Models/jwt-user';
 import { UserService } from 'src/app/Services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-password-form',
@@ -23,8 +24,8 @@ export class EditPasswordFormComponent implements OnInit {
       oldPassword: new FormControl('', {
         validators: [Validators.required]
       }),
-      newPassword: new FormControl('', Validators.required),
-      confirmPassword: new FormControl('', Validators.required)
+      newPassword: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      confirmPassword: new FormControl('', [Validators.required, Validators.minLength(5)])
     });
   }
 
@@ -42,19 +43,22 @@ export class EditPasswordFormComponent implements OnInit {
               this.userSvc.updatePassword(USER.id, this.editPassword.value.newPassword)
               .subscribe({
                 next: () => {
-                  console.log('password updated');
+                  //console.log('password updated');
+                  this.updatedSwal();
                 },
                 error: (err) => {
                   console.error('password not updated');
                   console.error(err);
+                  this.updateErrorSwal();
                 },
               });
             }else{
-              console.error("new and confirm dont match");
-
+              //console.error("new and confirm dont match");
+              this.newConfirmErrorSwal();
             }
           } else {
-            console.error("password old and actual don't match");
+            //console.error("password old and actual don't match");
+            this.oldPwErrorSwal();
           }
         },
         error: (err) => {
@@ -62,6 +66,50 @@ export class EditPasswordFormComponent implements OnInit {
         },
       });
     }
+  }
+
+  updatedSwal(){
+    Swal.fire({
+      icon: 'success',
+      title: 'Password updated!',
+      timer:2000,
+      timerProgressBar: true,
+      showConfirmButton: false
+    });
+    this.editPassword.reset();
+  }
+  newConfirmErrorSwal(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Mismatch error.',
+      text:'New password and confirm password are not the same',
+      timer:2500,
+      timerProgressBar: true,
+      showConfirmButton: false
+    });
+    this.editPassword.reset();
+  }
+  oldPwErrorSwal(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Mismatch error.',
+      text:"Old password doesn't match your actual password.",
+      timer:2000,
+      timerProgressBar: true,
+      showConfirmButton: false
+    });
+    this.editPassword.reset();
+  }
+  updateErrorSwal(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Something went wrong!',
+      text:'Try again in a couple minutes.',
+      timer:2000,
+      timerProgressBar: true,
+      showConfirmButton: false
+    });
+    this.editPassword.reset();
   }
 
   /*

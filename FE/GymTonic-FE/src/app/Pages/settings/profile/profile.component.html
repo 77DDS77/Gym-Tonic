@@ -27,16 +27,23 @@
 
 
   </div>
+
   <div class="edit-actions">
     <div class="actions">
-      <button (click)="profileEditing = !profileEditing">
+
+      <button (click)="editProfile()">
         <p *ngIf="!profileEditing" class="mb-0">Edit profile</p>
         <p *ngIf="profileEditing" class="mb-0">Close</p>
       </button>
-      <button>Change password</button>
+
+      <button (click)="editPswrd()">
+        <p *ngIf="!pswrdEditing" class="mb-0">Change password</p>
+        <p *ngIf="pswrdEditing" class="mb-0">Close</p>
+      </button>
+
     </div>
   </div>
 
   <app-edit-profile-form *ngIf="profileEditing" [user]="user"></app-edit-profile-form>
-  <app-edit-password-form [user]="user"></app-edit-password-form>
+  <app-edit-password-form *ngIf="pswrdEditing" [user]="user"></app-edit-password-form>
 </div>

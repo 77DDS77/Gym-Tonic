@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
   user!:JwtUser | undefined;
 
   profileEditing:boolean = false;
+  pswrdEditing:boolean = false;
 
   constructor(
     private auth:AuthService,
@@ -25,6 +26,15 @@ export class ProfileComponent implements OnInit {
       next: (user) => this.user = user,
       error: (err) => console.error(err)
     })
+  }
+
+  editProfile() {
+    this.profileEditing = !this.profileEditing;
+    this.pswrdEditing = false;
+  }
+  editPswrd() {
+    this.pswrdEditing = !this.pswrdEditing;
+    this.profileEditing = false;
   }
 
 }
