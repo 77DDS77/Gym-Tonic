@@ -14,7 +14,6 @@ import { WorkoutService } from 'src/app/Services/workout.service';
 export class WorkoutFormComponent implements OnInit {
 
   form!: FormGroup;
-  formIsValid: boolean = true;
   userExercises: UserExercise[] = [];
   choosenExercises: UserExercise[] = [];
 
@@ -28,7 +27,6 @@ export class WorkoutFormComponent implements OnInit {
 
     this.form = new FormGroup({
       name: new FormControl(null, Validators.required),
-      muscle: new FormControl(null, Validators.required),
       exercise: new FormControl(null, Validators.required)
     })
   }

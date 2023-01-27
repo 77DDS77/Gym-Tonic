@@ -1,16 +1,25 @@
 <app-header></app-header>
 
-<div class="new-ex">
+<div class="new-ex px-4">
 
-  <div class="container">
+  <div class="container contour pt-2 pb-4">
+
+    <h1 class="text-center">CREATE YOUR EXERCISE!
+      <button class="help-tt-btn"
+      [ngbTooltip]="newExHelp"
+      triggers="click"><fa-icon [icon]="question"></fa-icon></button>
+    </h1>
+
+    <ng-template #newExHelp>To create your exercise start from choosing wich muscle you want
+      to train, then select the preferred exercise and set the Reps and Series.
+      Once created it will be saved on your profile, you then can add it
+      to a workout.
+    </ng-template>
 
     <main class="form-newex m-auto p-2">
 
       <app-exercise-form></app-exercise-form>
 
-      <div class="text-center">
-        <h3>THEN ADD IT TO A WORKOUT</h3>
-      </div>
     </main>
 
 

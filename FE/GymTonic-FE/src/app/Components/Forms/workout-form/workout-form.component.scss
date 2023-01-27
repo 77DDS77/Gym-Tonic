@@ -5,17 +5,17 @@ form{
   h1, h3{
     color: styles.$black;
   }
-  button{
-    background-color: styles.$grey;
-    border: 1px solid styles.$black;
-  }
-  #newWorkout-btn:active, #addEx-btn:active{
+  button, #newWorkout-btn, #addEx-btn{
+    border: styles.$orange;
     background-color: styles.$black;
-    border: 1px solid styles.$orange;
-  }
-  #newWorkout-btn:hover, #addEx-btn:hover{
-    background-color: styles.$black;
-    border: 1px solid styles.$orange;
+    color: styles.$orange;
+    box-shadow: 0px 9px 20px 3px rgb(0 0 0 / 57%);
+    &:active{
+      transform: translateY(2px);
+    }
+    &:hover{
+      transform: translateY(-2px);
+    }
   }
   .choosing{
     display: flex;

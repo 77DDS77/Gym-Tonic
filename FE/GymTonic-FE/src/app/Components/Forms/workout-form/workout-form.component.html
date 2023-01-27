@@ -1,5 +1,4 @@
 <form [formGroup]="form">
-  <h1 class="h3 mb-3 fw-semibold text-center">CREATE YOUR WORKOUT HERE!</h1>
 
   <div class="my-2">
     <div class="form-floating">
@@ -18,20 +17,21 @@
       <option selected value=null>Choose from your exercises</option>
       <option *ngFor="let ex of userExercises" [ngValue]=ex>{{ex.exercise.name}}</option>
     </select>
-    <button (click)="addExercise()" id="addEx-btn" class="btn btn-primary ms-2">ADD</button>
+    <button (click)="addExercise()" id="addEx-btn" class="btn ms-2">ADD</button>
   </div>
 
-  <!-- METTERE QUA LA COSA PER DOPO -->
   <div *ngFor="let cEx of choosenExercises"  class="input-group mb-3">
     <input type="text" class="form-control"
     aria-label="exercise-chosen" placeholder="{{cEx.exercise.name}}" readonly>
-    <button (click)="removeExercise(cEx)" class="btn btn-outline-secondary text-white"
+    <button (click)="removeExercise(cEx)" class="btn"
     type="button" id="button-addon2">Remove</button>
   </div>
 
 
-  <label *ngIf="formIsValid == false" class="text-danger">*Form is invalid</label>
-  <button [swal]="workoutAddedSwal" (click)="postNewWorkout()" id="newWorkout-btn" class="w-100 btn btn-lg btn-primary mb-2" type="submit">Create workout</button>
+  <button [disabled]="!form.valid || choosenExercises.length < 1"
+  [swal]="workoutAddedSwal" (click)="postNewWorkout()"
+  id="newWorkout-btn" class="w-100 btn btn-lg mb-2"
+  type="submit">Create workout</button>
 
 </form>
 

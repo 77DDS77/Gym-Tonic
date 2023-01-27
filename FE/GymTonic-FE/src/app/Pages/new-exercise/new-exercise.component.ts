@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Exercise } from 'src/app/Models/exercise';
-import { UserExercise } from 'src/app/Models/user-exercise';
-import { AuthService } from 'src/app/Services/auth.service';
-import { ExerciseService } from 'src/app/Services/exercise.service';
-import { UserExerciseService } from 'src/app/Services/user-exercise.service';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-new-exercise',
@@ -13,6 +8,7 @@ import { UserExerciseService } from 'src/app/Services/user-exercise.service';
 })
 export class NewExerciseComponent implements OnInit {
 
+  question = faQuestionCircle;
 
   constructor(
     ) { }

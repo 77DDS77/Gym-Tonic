@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { findIndex } from 'rxjs';
 import { Exercise } from 'src/app/Models/exercise';
 import { UserExercise } from 'src/app/Models/user-exercise';
@@ -14,6 +15,8 @@ import { WorkoutService } from 'src/app/Services/workout.service';
   styleUrls: ['./new-workout.component.scss']
 })
 export class NewWorkoutComponent implements OnInit {
+
+  question = faQuestionCircle;
 
   constructor() { }
 

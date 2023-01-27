@@ -1,17 +1,26 @@
 
 <app-header></app-header>
 
-<div class="new-workout">
+<div class="new-workout px-4">
 
-  <div class="container">
+  <div class="container contour pt-2 pb-4">
+
+    <h1 class="text-center">CREATE YOUR WORKOUT!
+      <button class="help-tt-btn"
+      [ngbTooltip]="newExHelp"
+      triggers="click"><fa-icon [icon]="question"></fa-icon></button>
+    </h1>
+
+    <ng-template #newExHelp>
+      Here you can create your workout starting from the exercises saved in your profile.
+      Give it a name and start adding the exercises you want. After you are done you can save it
+      and add it to one or more of your plans.
+    </ng-template>
 
     <main class="form-newWorkout m-auto p-2">
 
       <app-workout-form></app-workout-form>
 
-      <div class="text-center">
-        <h3>THEN ADD IT TO A PLAN</h3>
-      </div>
     </main>
 
 
